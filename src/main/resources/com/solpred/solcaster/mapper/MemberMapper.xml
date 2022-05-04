@@ -6,4 +6,12 @@
         select mem_id from s_member
     </select>
 
+    <insert id="joinInsert" parameterType="com.solpred.solcaster.domain.Member">
+        insert into s_member values(#{mem_id}, #{mem_pw}, #{mem_name}, #{mem_addr}, #{mem_phone},'N','N',now())
+    </insert>
+
+    <select id="login" parameterType="com.solpred.solcaster.domain.Member" resultType="com.solpred.solcaster.domain.Member">
+        select * from s_member where mem_id = #{mem_id} and mem_pw = #{mem_pw}
+    </select>
+
 </mapper>

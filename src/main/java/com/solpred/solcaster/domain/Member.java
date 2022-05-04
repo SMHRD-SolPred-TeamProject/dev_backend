@@ -9,7 +9,8 @@ public class Member {
     private String mem_pw;
     private String mem_name;
     private String mem_addr;
+    private String mem_addrDetail;
     private String mem_phone;
     private String mem_purchase;
-
+    private String mem_type;
 }

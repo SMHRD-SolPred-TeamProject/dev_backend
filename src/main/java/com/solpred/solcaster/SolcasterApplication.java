@@ -1,4 +1,4 @@
-package com.solpred.solcaster.solcaster;
+package com.solpred.solcaster;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

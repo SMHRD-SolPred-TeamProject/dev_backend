@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solpred.solcaster.mapper.MemberMapper">
+
+    <select id="findAll" resultType="com.solpred.solcaster.domain.Member">
+        select mem_id from s_member
+    </select>
+
+</mapper>

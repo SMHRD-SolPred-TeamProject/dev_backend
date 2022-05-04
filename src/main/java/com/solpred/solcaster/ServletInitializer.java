@@ -1,4 +1,4 @@
-package com.solpred.solcaster.solcaster;
+package com.solpred.solcaster;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

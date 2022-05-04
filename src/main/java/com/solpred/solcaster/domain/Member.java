@@ -1,4 +1,4 @@
-package com.solpred.solcaster.solcaster.domain;
+package com.solpred.solcaster.domain;
 
 import lombok.Data;
 

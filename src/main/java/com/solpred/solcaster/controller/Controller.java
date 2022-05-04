@@ -1,6 +1,5 @@
-package com.solpred.solcaster.solcaster.controller;
+package com.solpred.solcaster.controller;
 
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @org.springframework.stereotype.Controller

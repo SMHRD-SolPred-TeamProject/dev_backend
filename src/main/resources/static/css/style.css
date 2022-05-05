@@ -250,6 +250,10 @@
     padding-right: calc(((100% - 1320px) / 2) + 0.75rem);
   }
 }
+.info {
+  text-align: center;
+  display: inline-block;
+}
 
 /*** Service ***/
 .service-item {
@@ -368,6 +372,16 @@
 }
 
 /*** Quote ***/
+
+.video {
+  padding-top: 25px;
+  padding-left: 320px;
+}
+
+.quote-text {
+  padding-left: 50px;
+}
+
 @media (min-width: 992px) {
   .container.quote {
     max-width: 100% !important;
@@ -580,4 +594,13 @@
 
 .footer .copyright a:hover {
   color: var(--primary);
+}
+
+.footer-logo {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+.vertical-center {
+  margin: auto 0;
 }

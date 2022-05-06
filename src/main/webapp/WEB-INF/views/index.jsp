@@ -130,7 +130,7 @@
                     <a href="goLoginForm" class="nav-item nav-link">LOGIN</a>
                 </c:when>
                 <c:otherwise>
-                    <a href="goLogOut" class="nav-item nav-link">LOGUT</a>
+                    <a href="goLogOut" class="nav-item nav-link">LOGOUT</a>
                 </c:otherwise>
             </c:choose>
             <a href="about.html" class="nav-item nav-link">About</a>

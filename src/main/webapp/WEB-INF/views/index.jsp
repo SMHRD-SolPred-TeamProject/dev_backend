@@ -130,6 +130,9 @@
                     <a href="goLoginForm" class="nav-item nav-link">LOGIN</a>
                 </c:when>
                 <c:otherwise>
+                    <c:if test="${sessionScope.member.getMem_type() eq 'Y'}">
+                        <a href="goManage" class="nav-item nav-link">MANAGE</a>
+                    </c:if>
                     <a href="goLogOut" class="nav-item nav-link">LOGOUT</a>
                 </c:otherwise>
             </c:choose>
@@ -140,8 +143,7 @@
                         href="#"
                         class="nav-link dropdown-toggle"
                         data-bs-toggle="dropdown"
-                >Solution</a
-                >
+                >Solution</a>
                 <div class="dropdown-menu bg-light m-0">
                     <a href="smart_energy.html" class="dropdown-item">Smart Energy</a>
                     <a href="smart_farm.html" class="dropdown-item">Smart Farm</a>

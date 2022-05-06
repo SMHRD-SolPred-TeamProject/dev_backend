@@ -53,8 +53,8 @@
 
                 <div class="btn-groups">
                     <button id="btnLogin" class="login loginBtn, btn btn-warning btn-lg" type="submit">로그인</button>
-                    <button class="join-l joinBtn, btn btn-warning btn-lg" type="submit"
-                            onClick="location.href='./join'">가입하기
+                    <button class="join-l joinBtn, btn btn-warning btn-lg" type="button"
+                            onClick="location.href='${pageContext.request.contextPath}/join.html'">가입하기
                     </button>
                 </div>
             </form>
@@ -64,6 +64,7 @@
     <footer class="my-3 text-center text-small"></footer>
 </div>
 <script src="assets/js/join.js"></script>
+
 <%--
 <script>
     window.addEventListener(

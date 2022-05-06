@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: smhrd
@@ -124,7 +125,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="goLoginForm" class="nav-item nav-link">LOGIN</a>
+            <c:choose>
+                <c:when test="${sessionScope.member == null}">
+                    <a href="goLoginForm" class="nav-item nav-link">LOGIN</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="goLogOut" class="nav-item nav-link">LOGUT</a>
+                </c:otherwise>
+            </c:choose>
             <a href="about.html" class="nav-item nav-link">About</a>
             <a href="service.html" class="nav-item nav-link">Service</a>
             <div class="nav-item dropdown">
@@ -808,7 +816,17 @@
                 <h5 class="text-white mb-4">Quick Links</h5>
                 <a class="btn btn-link" href="index.html">HOME</a>
                 <a class="btn btn-link" href="about.html">About Us</a>
-                <a class="btn btn-link" href="goLoginForm">Login</a>
+
+                <c:choose>
+                    <c:when test="${sessionScope.member == null}">
+                        <a class="btn btn-link" href="goLoginForm">Login</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="btn btn-link" href="goLogOut">Logout</a>
+                    </c:otherwise>
+                </c:choose>
+
+
                 <a class="btn btn-link" href="service.html">Our Services</a>
             </div>
             <div class="col-lg-3 col-md-6">

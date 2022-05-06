@@ -29,6 +29,12 @@ public class MemberController {
         return "login";
     }
 
+    //회원가입페이지 이동
+    @GetMapping("/join")
+    public String join(){
+        return "join.html";
+    }
+
     //전체 회원 조회
     @RequestMapping("/findAll")
     public List<Member> findAll(){
@@ -41,6 +47,7 @@ public class MemberController {
         service.joinInsert(vo);
         return "redirect:/";
     }
+
 
     //로그인 기능
     @PostMapping("/login")
@@ -58,6 +65,17 @@ public class MemberController {
 
         return "redirect:/";
     }
+
+
+
+
+
+    @GetMapping("/goLogOut")
+    public String goLogOut(HttpSession session){
+        session.removeAttribute("member");
+        return "redirect:/";
+    }
+
 
 
 }

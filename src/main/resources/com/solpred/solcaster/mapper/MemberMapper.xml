@@ -7,7 +7,7 @@
     </select>
 
     <insert id="joinInsert" parameterType="com.solpred.solcaster.domain.Member">
-        insert into s_member values(#{mem_id}, #{mem_pw}, #{mem_name}, #{mem_addr}, #{mem_phone},'N','N',now())
+        insert into s_member values(#{mem_id}, #{mem_pw}, #{mem_name}, #{mem_addr}+#{mem_addrDetail}, #{mem_phone},'N','N',now())
     </insert>
 
     <select id="login" parameterType="com.solpred.solcaster.domain.Member" resultType="com.solpred.solcaster.domain.Member">

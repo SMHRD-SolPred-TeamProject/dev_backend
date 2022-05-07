@@ -1,4 +1,4 @@
-package com.solpred.solcaster.config;
+package com.solarpred.solcaster.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 
 @Configuration //설정파일
 @EnableTransactionManagement   //트랜잭션 관리
-@MapperScan(basePackages = "com.solpred.solcaster.mapper")
+@MapperScan(basePackages = "com.solarpred.solcaster.mapper")
 public class MybatisConfig {
 
     @Bean
@@ -41,7 +41,7 @@ public class MybatisConfig {
         SqlSessionFactoryBean sqlSession = new SqlSessionFactoryBean();
         sqlSession.setDataSource(batisDataSource);
         sqlSession.setConfigLocation(applicationContext.getResource("classpath:mybatis-config.xml")); //mybatis-config.xml의 경로
-        sqlSession.setMapperLocations(applicationContext.getResources("classpath:/com/solpred/solcaster/mapper/MemberMapper.xml")); //쿼리문을 관리하는 mapper파일의 경로
+        sqlSession.setMapperLocations(applicationContext.getResources("classpath:/com/solarpred/solcaster/mapper/MemberMapper.xml")); //쿼리문을 관리하는 mapper파일의 경로
 
         return sqlSession.getObject();
 

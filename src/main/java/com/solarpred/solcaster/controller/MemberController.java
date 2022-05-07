@@ -1,7 +1,7 @@
-package com.solpred.solcaster.controller;
+package com.solarpred.solcaster.controller;
 
-import com.solpred.solcaster.domain.Member;
-import com.solpred.solcaster.service.MemberService;
+import com.solarpred.solcaster.domain.Member;
+import com.solarpred.solcaster.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

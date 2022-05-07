@@ -1,4 +1,4 @@
-package com.solpred.solcaster.solcaster;
+package com.solarpred.solcaster.solcaster;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

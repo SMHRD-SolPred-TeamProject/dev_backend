@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solarpred.solcaster.mapper.MemberMapper">
+
+    <!--  회원 전체 조회  -->
+    <select id="findAll" resultType="com.solarpred.solcaster.domain.Member">
+        select mem_id from s_member
+    </select>
+
+    <!--  회원가입  -->
+    <insert id="joinInsert" parameterType="com.solarpred.solcaster.domain.Member">
+        insert into s_member values(#{mem_id}, #{mem_pw}, #{mem_name}, concat(#{mem_addr},#{mem_addrDetail}), #{mem_phone},'N','N',now())
+    </insert>
+
+    <!--  로그인  -->
+    <select id="login" parameterType="com.solarpred.solcaster.domain.Member" resultType="com.solarpred.solcaster.domain.Member">
+        select * from s_member where mem_id = #{mem_id} and mem_pw = #{mem_pw}
+    </select>
+
+    <!--  게시판 전체글 불러오기  -->
+    <select id="viewBoardList" resultType="com.solarpred.solcaster.domain.Board">
+        select * from s_qna
+    </select>
+
+</mapper>

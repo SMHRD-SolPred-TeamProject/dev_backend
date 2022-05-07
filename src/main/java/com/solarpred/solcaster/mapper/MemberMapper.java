@@ -1,7 +1,6 @@
-package com.solpred.solcaster.mapper;
+package com.solarpred.solcaster.mapper;
 
-import com.solpred.solcaster.domain.Member;
-import org.apache.ibatis.annotations.Select;
+import com.solarpred.solcaster.domain.Member;
 import org.mybatis.spring.annotation.MapperScan;
 
 import java.util.List;

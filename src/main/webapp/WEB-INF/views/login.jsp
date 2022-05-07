@@ -28,7 +28,7 @@
             </a>
 
             <!-- 폼에 method, action 채워야 함! -->
-            <form action="/solpred/login" class="validation-form" style="align-items: center" novalidate method="post">
+            <form action="/solarpred/login" class="validation-form" style="align-items: center" novalidate method="post">
                 <div class="col-md-8 mb-3 margin_center">
                     <div class="invalid-feedback">이름을 입력해주세요.</div>
                 </div>

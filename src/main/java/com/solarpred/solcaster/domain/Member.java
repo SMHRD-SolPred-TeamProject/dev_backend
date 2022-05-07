@@ -1,8 +1,10 @@
-package com.solpred.solcaster.domain;
+package com.solarpred.solcaster.domain;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Setter @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Member {
 
     private String mem_id;

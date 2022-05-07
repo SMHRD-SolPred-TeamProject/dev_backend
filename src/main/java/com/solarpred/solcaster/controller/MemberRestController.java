@@ -1,18 +1,13 @@
-package com.solpred.solcaster.controller;
+package com.solarpred.solcaster.controller;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.solpred.solcaster.domain.Member;
-import com.solpred.solcaster.service.MemberService;
+import com.solarpred.solcaster.domain.Member;
+import com.solarpred.solcaster.service.MemberService;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.xml.ws.Service;
-import java.util.List;
 
 
 @RestController

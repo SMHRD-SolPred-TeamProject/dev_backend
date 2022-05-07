@@ -1,7 +1,7 @@
-package com.solpred.solcaster.service;
+package com.solarpred.solcaster.service;
 
-import com.solpred.solcaster.domain.Member;
-import com.solpred.solcaster.mapper.MemberMapper;
+import com.solarpred.solcaster.domain.Member;
+import com.solarpred.solcaster.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

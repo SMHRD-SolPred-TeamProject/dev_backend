@@ -7,6 +7,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<%-- 문자열 자르는 함수 사용 --%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -171,8 +175,8 @@
 
         </ul>
 
-        <%-- 게시판 --%>
-        <form action="/solarpred/board" method="get">
+        <%-- 게시판 start --%>
+        <form action="/solarpred/boardList" method="get">
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -184,40 +188,57 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="i" items="${list}" >
-
+                <c:forEach var="list" items="${list}" >
+                    <tr>
+                        <td>${list.qna_seq}</td>
+                        <td><a href="#"><b>[${list.qna_cat}]</b> ${list.qna_title}</a></td>
+                        <td>${list.mem_id}</td>
+                        <td>
+                                ${fn:substring(list.qna_date,0,10)}
+                        </td>
+                        <td>${list.qna_cnt}</td>
+                    </tr>
                 </c:forEach>
-                <tr>
-                    <td>1</td>
-                    <td><a href="#">게시판 테스트를 해보자!</a></td>
-                    <td>전채원</td>
-                    <td>2022.05.06</td>
-                    <td>1000</td>
-                </tr>
                 </tbody>
             </table>
         </form>
+        <%-- 게시판 end --%>
 
         <button type="button" class="btn btn-write btn-outline-primary"  onClick="location.href='boardWrite.html'">글작성</button>
         <br><br>
+
+        <%-- 게시판하단 페이징 버튼 start --%>
         <nav aria-label="Page navigation example">
             <ul class="pagination btn-movepage justify-content-center">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
 
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
+                <%-- 이전 버튼 --%>
+                <c:if test="${paging.prev}">
+                    <li class="page-item">
+                        <a class="page-link" href="<c:url value="/boardList?page=${paging.startPage-1}"/>" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                </c:if>
+
+                <%-- 페이지 숫자 --%>
+                <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
+                    <li class="page-item"><a class="page-link" href="<c:url value="/boardList?page=${num}"/>">${num}</a></li>
+                </c:forEach>
+
+                <%-- 다음 버튼 --%>
+                <c:if test="${paging.next && paging.endPage>0}">
+                    <li class="page-item">
+                        <a class="page-link" href="<c:url value="/boardList?page=${paging.endPage+1}"/>" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </c:if>
+
             </ul>
         </nav>
+        <%-- 게시판하단 페이징 버튼 end --%>
+
     </div>
 </div>
 

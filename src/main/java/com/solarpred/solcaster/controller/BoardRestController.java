@@ -16,10 +16,11 @@ public class BoardRestController {
 
     /**
      * 게시글 전체 조회
-     */
+
     @GetMapping("/board")
     public List<Board> viewBoardList(){
         List<Board> list = service.viewBoardList();
         return list;
     }
+     */
 }

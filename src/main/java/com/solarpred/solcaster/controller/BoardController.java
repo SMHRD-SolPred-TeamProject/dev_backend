@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Map;
@@ -40,5 +42,33 @@ public class BoardController {
 
         return "boardList";
     }
+
+    /**
+     * 글 작성 페이지 이동
+     */
+    @GetMapping("/boardWrite")
+    public String boardWrite(){
+        return "boardWrite";
+    }
+
+    /**
+     * 글 작성 기능
+     */
+    @PostMapping("/boardWriteForm")
+    public String boardWriteForm(Board vo){
+        service.boardWriteForm(vo);
+        return "redirect:/boardList";
+    }
+
+    /**
+     * 특정 게시물 조회
+     */
+    @GetMapping("/boardView")
+    public String boardView(@RequestParam("seq")int seq, Model model){
+        Board vo = service.boardView(seq);
+        model.addAttribute("vo",vo);
+        return "boardView";
+    }
+
 
 }

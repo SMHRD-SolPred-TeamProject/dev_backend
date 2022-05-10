@@ -16,4 +16,10 @@ public interface BoardMapper {
     // 전체 게시물 개수 조회
     public int boardListCnt();
 
+    // 글 작성 기능
+    public void boardWriteForm(Board vo);
+
+    // 특정 게시물 조회
+    public Board boardView(int seq);
+
 }

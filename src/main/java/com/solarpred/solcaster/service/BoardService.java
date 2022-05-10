@@ -23,4 +23,14 @@ public class BoardService {
     // 전체 게시글 개수 조회
     public int boardListCnt(){return mapper.boardListCnt();}
 
+    // 글작성 기능
+    public void boardWriteForm(Board vo){
+        mapper.boardWriteForm(vo);
+    }
+
+    //특정 게시물 조회
+    public Board boardView(int seq){
+        return mapper.boardView(seq);
+    }
+
 }

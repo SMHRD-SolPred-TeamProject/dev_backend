@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solarpred.solcaster.mapper.ReplyMapper">
+
+    <!-- 댓글 조회 기능 -->
+    <select id="reply" resultType="com.solarpred.solcaster.domain.Reply" parameterType="com.solarpred.solcaster.domain.Reply">
+        select * from s_reply where qna_seq = #{qna_seq}
+    </select>
+
+    <!--  글 작성 기능  -->
+    <insert id="boardReply" parameterType="com.solarpred.solcaster.domain.Reply">
+        insert into s_reply values(null,#{qna_seq},#{reply_content},#{reply_id},now())
+    </insert>
+
+
+
+</mapper>

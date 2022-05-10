@@ -2,15 +2,11 @@
 <%--
   Created by IntelliJ IDEA.
   User: smhrd
-  Date: 2022-05-07
-  Time: 오후 4:40
+  Date: 2022-05-10
+  Time: 오전 8:51
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-<%-- 문자열 자르는 함수 사용 --%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -30,32 +26,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
             href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap"
-            rel="stylesheet"
-    />
+            rel="stylesheet" />
 
     <!-- Icon Font Stylesheet -->
-    <link
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-            rel="stylesheet"
-    />
-    <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-            rel="stylesheet"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
 
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet" />
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
-
     <!-- ScoreDream 폰트 -->
-    <link
-            href="css/font.css"
-            rel="stylesheet"
-    />
+    <link href="css/font.css" rel="stylesheet" />
 
 
 </head>
+
 <body>
 <!-- Topbar Start -->
 <div class="container-fluid bg-dark p-0">
@@ -76,24 +62,13 @@
                 <small>+10 1234 5678</small>
             </div>
             <div class="h-100 d-inline-flex align-items-center mx-n2">
-                <a
-                        class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary"
-                        href=""
-                ><i class="fab fa-facebook-f"></i
-                ></a>
-                <a
-                        class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary"
-                        href=""
-                ><i class="fab fa-twitter"></i
-                ></a>
-                <a
-                        class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary"
-                        href=""
-                ><i class="fab fa-linkedin-in"></i
-                ></a>
-                <a class="btn btn-square btn-link rounded-0" href=""
-                ><i class="fab fa-instagram"></i
-                ></a>
+                <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i
+                        class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i
+                        class="fab fa-twitter"></i></a>
+                <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-square btn-link rounded-0" href=""><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </div>
@@ -102,18 +77,10 @@
 
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
-    <a
-            href="index.html"
-            class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5"
-    >
+    <a href="index.html" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
         <img src="./img/logo.png" class="logo" />
     </a>
-    <button
-            type="button"
-            class="navbar-toggler me-4"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse"
-    >
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -130,133 +97,107 @@
                 </c:otherwise>
             </c:choose>
             <a href="about.html" class="nav-item nav-link">About</a>
-            <a href="/solarpred/boardList" class="nav-item nav-link">Service</a>
+            <a href="boardList.html" class="nav-item nav-link">Service</a>
             <div class="nav-item dropdown">
-                <a
-                        href="#"
-                        class="nav-link dropdown-toggle"
-                        data-bs-toggle="dropdown"
-                >Solution</a
-                >
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Solution</a>
                 <div class="dropdown-menu bg-light m-0">
                     <a href="smartEnergy.html" class="dropdown-item">Smart Energy</a>
                     <a href="smartFarm.html" class="dropdown-item">Smart Farm</a>
                     <a href="smartStation.html" class="dropdown-item">Smart Station</a>
                 </div>
             </div>
-            <a
-                    href="index.html"
-                    class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block"
-                    id="btn-home"
-            >HOME<i class="fa fa-arrow-right ms-3"></i
-            ></a>
+            <a href="index.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block" id="btn-home">HOME<i
+                    class="fa fa-arrow-right ms-3"></i></a>
         </div>
 </nav>
 <!-- Navbar End -->
-<div id="main">
 
-    <hr />
+<!-- Main start -->
+
+<div id="main" class="ScoreDream400">
+
     <br />
 
     <br /><br />
-    <div class="container ScoreDream400" id="board-list">
+    <div class="container" id="board-view">
         <h1>Customer Service</h1>
         <p>도움이 필요하신가요?</p>
         <br>
-        <div class="search-window">
-            <form action="">
-                <div class="search-wrap">
-                    <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
-                    <button type="submit" class="btn btn-primary">검색</button>
-                </div>
-            </form>
+
+        <!-- Write Main -->
+        <!-- Main -->
+        <div class="board-btn-group" role="group" aria-label="Basic outlined example">
+            <button type="button" class="btn btn-primary" onClick="location.href='boardList.html'">전체목록</button>
+
+            <!-- 이 수정 삭제 버튼은 관리자나 글쓴 사람한테만 보여야 할 것 같아요 -->
+            <button type="button" class="btn btn-outline-primary">수정</button>
+            <button type="button" class="btn btn-outline-primary">삭제</button>
+
         </div>
-        <br><br>
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">구매문의</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">기술문의</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">AS문의</a>
-            </li>
 
-        </ul>
+        <br>
+        <br>
+        <br>
+        <br>
 
-        <%-- 게시판 start --%>
-        <form action="/solarpred/boardList" method="get">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>글쓴이</th>
-                    <th>작성일</th>
-                    <th>조회</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="list" items="${list}" >
-                    <tr>
-                        <td>${list.qna_seq}</td>
-                        <td><a href="/solarpred/boardView?seq=${list.qna_seq}"><b>[${list.qna_cat}]</b> ${list.qna_title}</a></td>
-                        <td>${list.mem_id}</td>
-                        <td>
-                                ${fn:substring(list.qna_date,0,10)}
-                        </td>
-                        <td>${list.qna_cnt}</td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </form>
-        <%-- 게시판 end --%>
+        <%-- 글 부분 start --%>
+        <header class="major">
+            <h4 style="text-align: left">${vo.qna_title}</h4>
+            <br>
+            <h6 style="text-align: left; margin-bottom: 1%" class="content-writer ScoreDream500">${vo.mem_id}</h6>
+        </header>
+        <hr style="margin-top: 0" />
+        <p id="main-content">${vo.qna_content}</p>
+        <hr/>
+        </section>
+        <%-- 글 부분 end --%>
 
-        <button type="button" class="btn btn-write btn-outline-primary"  onClick="location.href='/solarpred/boardWrite'">글작성</button>
-        <br><br>
+        <section class="main accent2">
+            <header class="major" style="text-align: left">
+                <br>
+                <h4>답글</h4>
+                <p id="main-content">답글은 관리자 고유권한입니다.</p>
+            </header>
 
-        <%-- 게시판하단 페이징 버튼 start --%>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination btn-movepage justify-content-center">
 
-                <%-- 이전 버튼 --%>
-                <c:if test="${paging.prev}">
-                    <li class="page-item">
-                        <a class="page-link" href="<c:url value="/boardList?page=${paging.startPage-1}"/>" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-
-                </c:if>
-
-                <%-- 페이지 숫자 --%>
-                <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
-                    <li class="page-item"><a class="page-link" href="<c:url value="/boardList?page=${num}"/>">${num}</a></li>
-                </c:forEach>
-
-                <%-- 다음 버튼 --%>
-                <c:if test="${paging.next && paging.endPage>0}">
-                    <li class="page-item">
-                        <a class="page-link" href="<c:url value="/boardList?page=${paging.endPage+1}"/>" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </c:if>
-
-            </ul>
-        </nav>
-        <%-- 게시판하단 페이징 버튼 end --%>
+            <%-- 댓글 start --%>
+            <form method="get" action="/solarpred/reply" class="combined" style="width: auto">
+                <table>
+                    <c:forEach var="list" items="${list}">
+                        <tr>
+                            <td>${list.reply_content}</td>
+                            <td>${list.reply_date}</td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </form>
+            <form method="get" action="" class="combined" style="width: auto">
+                <c:choose>
+                    <c:when test="${sessionScope.member.mem_type.equals('Y')}">
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px"></textarea>
+                            <label for="floatingTextarea2">Comments</label>
+                        </div>
+                        <br>
+                        <button id="register" type="submit" class="btn btn-write btn-outline-primary" onclick="">등록</button>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="form-floating" style="display: none">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 200px"></textarea>
+                            <label for="floatingTextarea2">Comments</label>
+                        </div>
+                        <button id="register" type="submit" class="btn btn-write btn-outline-primary" onclick="" style="display: none">등록</button>
+                    </c:otherwise>
+                </c:choose>
+            </form>
+            <%-- 댓글 end --%>
+        </section>
 
     </div>
 </div>
 
 <!-- Footer Start -->
-<div
-        class="container-fluid bg-dark text-body footer mt-5 pt-5 wow fadeIn"
-        data-wow-delay="0.1s"
->
+<div class="container-fluid bg-dark text-body footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container py-5">
         <div class="row g-5">
             <div class="col-lg-3 col-md-6">
@@ -272,18 +213,10 @@
                     <i class="fa fa-envelope me-3"></i>chaewon6400@gmail.com
                 </p>
                 <div class="d-flex pt-2">
-                    <a class="btn btn-square btn-outline-light btn-social" href=""
-                    ><i class="fab fa-twitter"></i
-                    ></a>
-                    <a class="btn btn-square btn-outline-light btn-social" href=""
-                    ><i class="fab fa-facebook-f"></i
-                    ></a>
-                    <a class="btn btn-square btn-outline-light btn-social" href=""
-                    ><i class="fab fa-youtube"></i
-                    ></a>
-                    <a class="btn btn-square btn-outline-light btn-social" href=""
-                    ><i class="fab fa-linkedin-in"></i
-                    ></a>
+                    <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 quick-links">
@@ -324,29 +257,20 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 vertical-center">
-                <a
-                        href="index.html"
-                >
+                <a href="index.html">
                     <img src="./img/logo.png" class="footer-logo" />
                 </a>
             </div>
         </div>
     </div>
 </div>
-
 <!-- Footer End -->
+
 <!-- Back to Top -->
-<a
-        href="#"
-        class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"
-><i class="bi bi-arrow-up"></i
-></a>
+<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 <script src="./Document_files/jquery.min.js.다운로드"></script>
-<script
-        type="text/javascript"
-        src="./Document_files/bootstrap.js.다운로드"
-></script>
+<script type="text/javascript" src="./Document_files/bootstrap.js.다운로드"></script>
 
 </script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -361,6 +285,35 @@
 
 <!-- Template Javascript -->
 <script src="js/main.js"></script>
-</body>
-</html>
 
+<!-- 비동기 자바스크립트 -->
+<script>
+    function loadAdmin(){
+
+        function loadList() {
+            $.ajax({
+                url : "/solarpred/boardList",
+                type : "get",
+                dataType : "json",
+                success : htmlView,
+                error : function (){
+                    alert("error");
+                }
+            });
+        }
+
+        $.ajax({
+            url : "/solarpred/boardReply",
+            type : "post",
+            data : data,
+            success : loadList,
+            error : function(){
+                alert("error")
+            }
+        });
+    }
+</script>
+
+</body>
+
+</html>

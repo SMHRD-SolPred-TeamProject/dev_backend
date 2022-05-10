@@ -137,7 +137,7 @@
                 </c:otherwise>
             </c:choose>
             <a href="about.html" class="nav-item nav-link">About</a>
-            <a href="service.html" class="nav-item nav-link">Service</a>
+            <a href="/solarpred/boardList" class="nav-item nav-link">Service</a>
             <div class="nav-item dropdown">
                 <a
                         href="#"

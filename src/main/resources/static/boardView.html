@@ -1,129 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="../../assets_board/css/main_board.css" />
 
-    <!-- ScoreDream 폰트 -->
-    <link href="css/font.css" rel="stylesheet" />
-    <style>
-      form textarea {
-        border-radius: 0;
-        resize: none;
-        color: black !important;
-      }
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-      form div#reply {
-        display: flex;
-        margin-bottom: 3%;
-      }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>☀ SolCaster - Solar Power Monitoring System</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <meta content="" name="keywords" />
+  <meta content="" name="description" />
 
-      input[type="submit"]:not(#register),
-      input[type="button"] {
-        border-radius: 0;
-      }
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon" />
 
-      ul.actions li {
-        padding: 0 0 0 0.2em;
-      }
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap"
+    rel="stylesheet" />
 
-      p.content {
-        width: 63%;
-      }
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
 
-      p.writer {
-        width: 20%;
-        font-weight: bold;
-      }
-    </style>
-  </head>
-  <body class="is-preload">
-    <!-- Page Wrapper -->
-    <div id="page-wrapper">
-      <!-- Wrapper -->
-      <div class="wrapper">
-        <div class="inner">
-          <jsp:include page="/app/fix/header.html" />
+  <!-- Libraries Stylesheet -->
+  <link href="lib/animate/animate.min.css" rel="stylesheet" />
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+  <!-- ScoreDream 폰트 -->
+  <link href="css/font.css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+  <!-- Topbar Start -->
+  <div class="container-fluid bg-dark p-0">
+    <div class="row gx-0 d-none d-lg-flex">
+      <div class="col-lg-7 px-5 text-start">
+        <div class="h-100 d-inline-flex align-items-center me-4">
+          <small class="fa fa-map-marker-alt text-primary me-2"></small>
+          <small>Yesul-gil 31-15, Gwangju, KOREA</small>
+        </div>
+        <div class="h-100 d-inline-flex align-items-center">
+          <small class="far fa-clock text-primary me-2"></small>
+          <small>Mon - Fri : 09.00 AM - 18.00 PM</small>
         </div>
       </div>
-      <!-- Wrapper -->
-      <div class="wrapper">
-        <div class="inner">
-          <!-- Main -->
-          <section class="main">
-            <a href="#" class="image main"
-              ><img src="/images/boardView.png" alt=""
-            /></a>
-            <div class="col-12">
-              <ul
-                class="actions"
-                style="display: flex; justify-content: flex-end"
-              >
-                <li><input type="button" value="글쓰기" class="primary" /></li>
-                <li><input type="button" value="목록" class="primary" /></li>
-                <li>
-                  <input
-                    type="button"
-                    value="수정"
-                    onclick="location.href='/board/BoardModify.bo?boardNum=${board.getBoardNum()}'"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="button"
-                    value="삭제"
-                    onclick="location.href='/board/BoardDeleteOk.bo?boardNum=${board.getBoardNum()}'"
-                  />
-                </li>
-              </ul>
-            </div>
-            <header class="major">
-              <h2 style="text-align: left">제목</h2>
-              <p style="text-align: left; margin-bottom: 1%">작성자 :</p>
-            </header>
-            <hr style="margin-top: 0" />
-            <div>본문</div>
-            <hr />
-            <h3></h3>
-          </section>
-          <section class="main accent2" style="padding: 3%">
-            <header class="major" style="text-align: left">
-              <h2>댓글</h2>
-              <p>여러분의 소중한 댓글을 작성해주세요.</p>
-            </header>
-            <form method="post" action="#" class="combined" style="width: auto">
-              <textarea
-                name="content"
-                id="content"
-                placeholder="비속어를 사용하지 말아주세요."
-                class="invert"
-                rows="5"
-                style="border-radius: 0; resize: none"
-              ></textarea>
-              <input
-                id="register"
-                type="button"
-                class="primary"
-                value="등록"
-                onclick="comment()"
-              />
-            </form>
-            <form
-              id="replies"
-              class="combined"
-              style="flex-direction: column; margin: 0; display: contents"
-            ></form>
-          </section>
+      <div class="col-lg-5 px-5 text-end">
+        <div class="h-100 d-inline-flex align-items-center me-4">
+          <small class="fa fa-phone-alt text-primary me-2"></small>
+          <small>+10 1234 5678</small>
+        </div>
+        <div class="h-100 d-inline-flex align-items-center mx-n2">
+          <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i
+              class="fab fa-facebook-f"></i></a>
+          <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i
+              class="fab fa-twitter"></i></a>
+          <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i
+              class="fab fa-linkedin-in"></i></a>
+          <a class="btn btn-square btn-link rounded-0" href=""><i class="fab fa-instagram"></i></a>
         </div>
       </div>
     </div>
-  </body>
-  <script src="../../assets_board/js/jquery.min.js"></script>
-  <script src="../../assets_board/js/browser.min.js"></script>
-  <script src="../../assets_board/js/breakpoints.min.js"></script>
-  <script src="../../assets_board/js/util.js"></script>
-  <script src="../../assets_board/js/main.js"></script>
+  </div>
+  <!-- Topbar End -->
+
+  <!-- Navbar Start -->
+  <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+    <a href="index.html" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
+      <img src="./img/logo.png" class="logo" />
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ms-auto p-4 p-lg-0">
+        <a href="login.html" class="nav-item nav-link">LOGIN</a>
+        <a href="about.html" class="nav-item nav-link">About</a>
+        <a href="boardList.html" class="nav-item nav-link">Service</a>
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Solution</a>
+          <div class="dropdown-menu bg-light m-0">
+            <a href="smartEnergy.html" class="dropdown-item">Smart Energy</a>
+            <a href="smartFarm.html" class="dropdown-item">Smart Farm</a>
+            <a href="smartStation.html" class="dropdown-item">Smart Station</a>
+          </div>
+        </div>
+        <a href="index.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block" id="btn-home">HOME<i
+            class="fa fa-arrow-right ms-3"></i></a>
+      </div>
+  </nav>
+  <!-- Navbar End -->
+
+  <!-- Main start -->
+
+  <div id="main" class="ScoreDream400">
+
+    <br />
+
+    <br /><br />
+    <div class="container" id="board-view">
+      <h1>Customer Service</h1>
+      <p>도움이 필요하신가요?</p>
+      <br>
+
+      <!-- Write Main -->
+      <!-- Main -->
+      <div class="board-btn-group" role="group" aria-label="Basic outlined example">
+        <button type="button" class="btn btn-primary" onClick="location.href='boardList.html'">전체목록</button>
+
+        <!-- 이 수정 삭제 버튼은 관리자나 글쓴 사람한테만 보여야 할 것 같아요 -->
+        <button type="button" class="btn btn-outline-primary">수정</button>
+        <button type="button" class="btn btn-outline-primary">삭제</button>
+
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <header class="major">
+        <h4 style="text-align: left">게시판 테스트를 해보자! (글 제목을 불러오세요)</h4>
+        <br>
+        <h6 style="text-align: left; margin-bottom: 1%" class="content-writer ScoreDream500">chaewon6400 (여기 작성자 아이디를
+          불러오세요)
+        </h6>
+      </header>
+      <hr style="margin-top: 0" />
+      <p id="main-content">
+        <!-- 수정! -->
+        본문을 불러올 자리입니다. <br>
+        백엔드님들<br>
+        여기에 본문을 넣어주세요
+
+      </p>
+      <hr />
+
+      </section>
+
+      <section class="main accent2">
+        <header class="major" style="text-align: left">
+          <br>
+          <h4>답글</h4>
+          <p id="main-content">답글은 관리자 고유권한입니다.</p>
+        </header>
+        <form method="post" action="#" class="combined" style="width: auto">
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+              style="height: 200px"></textarea>
+            <label for="floatingTextarea2">Comments</label>
+          </div>
+          <br>
+          <button id="register" type="submit" class="btn btn-write btn-outline-primary" onclick="">
+            등록
+          </button>
+        </form>
+      </section>
+    </div>
+  </div>
+
+  <!-- Footer Start -->
+  <div class="container-fluid bg-dark text-body footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+      <div class="row g-5">
+        <div class="col-lg-3 col-md-6">
+          <h5 class="text-white mb-4">Address</h5>
+          <p class="mb-2">
+            <i class="fa fa-map-marker-alt me-3"></i>Yesul-gil 31-15, Gwangju,
+            KOREA
+          </p>
+          <p class="mb-2">
+            <i class="fa fa-phone-alt me-3"></i>+10 1234 5678
+          </p>
+          <p class="mb-2">
+            <i class="fa fa-envelope me-3"></i>chaewon6400@gmail.com
+          </p>
+          <div class="d-flex pt-2">
+            <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+            <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+            <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+            <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 quick-links">
+          <h5 class="text-white mb-4">Quick Links</h5>
+          <a class="btn btn-link" href="index.html">HOME</a>
+          <a class="btn btn-link" href="about.html">About Us</a>
+          <a class="btn btn-link" href="login.html">Login</a>
+          <a class="btn btn-link" href="service.html">Our Services</a>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="text-white mb-4">Project Gallery</h5>
+          <div class="row g-2">
+            <div class="col-4">
+              <img class="img-fluid rounded" src="img/gallery-1.jpg" alt="" />
+            </div>
+            <div class="col-4">
+              <img class="img-fluid rounded" src="img/gallery-2.jpg" alt="" />
+            </div>
+            <div class="col-4">
+              <img class="img-fluid rounded" src="img/gallery-3.jpg" alt="" />
+            </div>
+            <div class="col-4">
+              <img class="img-fluid rounded" src="img/gallery-4.jpg" alt="" />
+            </div>
+            <div class="col-4">
+              <img class="img-fluid rounded" src="img/gallery-5.jpg" alt="" />
+            </div>
+            <div class="col-4">
+              <img class="img-fluid rounded" src="img/gallery-6.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 vertical-center">
+          <a href="index.html">
+            <img src="./img/logo.png" class="footer-logo" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer End -->
+
+  <!-- Back to Top -->
+  <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+  <script src="./Document_files/jquery.min.js.다운로드"></script>
+  <script type="text/javascript" src="./Document_files/bootstrap.js.다운로드"></script>
+
+  </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+  <!-- Template Javascript -->
+  <script src="js/main.js"></script>
+</body>
+
 </html>

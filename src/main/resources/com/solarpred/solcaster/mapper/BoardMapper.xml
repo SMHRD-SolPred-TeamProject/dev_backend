@@ -17,5 +17,15 @@
         select count(*) from s_qna
     </select>
 
+    <!--  글 작성 기능  -->
+    <insert id="boardWriteForm" parameterType="com.solarpred.solcaster.domain.Board">
+        insert into s_qna values(null, #{qna_cat}, #{qna_title}, #{qna_content}, now(), " ", #{mem_id}, 0)
+    </insert>
+
+    <!--  특정 게시물 조회  -->
+    <select id="boardView" resultType="com.solarpred.solcaster.domain.Board" parameterType="int">
+        select * from s_qna where qna_seq = #{seq}
+    </select>
+
 
 </mapper>

@@ -3,15 +3,23 @@
 <mapper namespace="com.solarpred.solcaster.mapper.ReplyMapper">
 
     <!-- 댓글 조회 기능 -->
-    <select id="reply" resultType="com.solarpred.solcaster.domain.Reply" parameterType="com.solarpred.solcaster.domain.Reply">
-        select * from s_reply where qna_seq = #{qna_seq}
+    <select id="reply" resultType="com.solarpred.solcaster.domain.Reply" parameterType="int">
+        select * from s_reply where qna_seq = #{vo}
     </select>
 
-    <!--  글 작성 기능  -->
+    <!--  댓글 작성 기능  -->
     <insert id="boardReply" parameterType="com.solarpred.solcaster.domain.Reply">
         insert into s_reply values(null,#{qna_seq},#{reply_content},#{reply_id},now())
     </insert>
 
+    <!--  댓글 삭제 기능  -->
+    <delete id="replyDelete" parameterType="int">
+        delete from s_reply where reply_seq = #{reply_seq}
+    </delete>
 
+    <!--  댓글 수정 기능  -->
+    <update id="replyUpdate" parameterType="com.solarpred.solcaster.domain.Reply">
+        update s_reply set reply_content = #{reply_content} where reply_seq = #{reply_seq}
+    </update>
 
 </mapper>

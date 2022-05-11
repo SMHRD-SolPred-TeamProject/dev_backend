@@ -53,8 +53,6 @@
             href="css/font.css"
             rel="stylesheet"
     />
-
-
 </head>
 <body>
 <!-- Topbar Start -->
@@ -155,7 +153,6 @@
 <!-- Navbar End -->
 <div id="main">
 
-    <hr />
     <br />
 
     <br /><br />
@@ -174,13 +171,16 @@
         <br><br>
         <ul class="nav justify-content-end">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">구매문의</a>
+                <button class="nav-link active" type="button" onclick="loadBoardList()" style="outline: 0;border: 0;background: none;">전체보기</button>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">기술문의</a>
+                <button class="nav-link active" type="button" onclick="loadCategoryList('구매문의')" style="outline: 0;border: 0;background: none;">구매문의</button>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">AS문의</a>
+                <button class="nav-link active" type="button" onclick="loadCategoryList('기술문의')" style="outline: 0;border: 0;background: none;">기술문의</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link active" type="button" onclick="loadCategoryList('AS문의')" style="outline: 0;border: 0;background: none;">AS문의</button>
             </li>
 
         </ul>
@@ -197,7 +197,7 @@
                     <th>조회</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="tbodyBoardList">
                 <c:forEach var="list" items="${list}" >
                     <tr>
                         <td>${list.qna_seq}</td>
@@ -361,6 +361,71 @@
 
 <!-- Template Javascript -->
 <script src="js/main.js"></script>
+
+<%-- 비동기 --%>
+<script>
+
+    // 전체 게시글 불러오기
+    function loadBoardList(){
+        $.ajax({
+            url : "/solarpred/loadBoardList",
+            type : "get",
+            dataType : "json",
+            success : loadList,
+            error : function(){
+                alert("error")
+            }
+        });
+    }
+
+    // 선택된 카테고리 게시글 불러오기
+    function loadCategoryList(qna_cat){
+        $.ajax({
+            url : "/solarpred/category?category="+qna_cat,
+            type : "get",
+            dataType : "json",
+            success : loadList,
+            error : function(){
+                alert("error")
+            }
+        });
+    }
+
+    // 게시글 출력
+    function loadList(data){
+        let result = "";
+
+        $.each(data,(index,vo)=>{
+            console.log("vo.qna_seq : " + vo.qna_seq);
+            result += "<tr>";
+
+            result += "<td>";
+            result += vo.qna_seq;
+            result += "</td>";
+
+            result += "<td>";
+            result += '<a href="/solarpred/boardView?seq='+vo.qna_seq+'"><b>['+vo.qna_cat+']</b> '+vo.qna_title+'</a>';
+            result += "</td>";
+
+            result += "<td>";
+            result += vo.mem_id;
+            result += "</td>";
+
+            result += "<td>";
+            result += vo.qna_date;
+            result += "</td>";
+
+            result += "<td>";
+            result += vo.qna_cnt;
+            result += "</td>";
+
+            result += "</tr>";
+        });
+
+        $("#tbodyBoardList").html(result);
+    }
+
+</script>
 </body>
 </html>
 

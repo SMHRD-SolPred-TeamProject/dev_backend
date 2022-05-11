@@ -1,12 +1,12 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: smhrd
-  Date: 2022-05-10
-  Time: 오전 8:51
+  Date: 2022-05-09
+  Time: 오후 9:17
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -113,89 +113,91 @@
 </nav>
 <!-- Navbar End -->
 
-<!-- Main start -->
-
 <div id="main" class="ScoreDream400">
 
-    <br />
 
-    <br /><br />
-    <div class="container" id="board-view">
+    <br/>
+
+    <br/><br/>
+    <div class="container" id="board-list">
         <h1>Customer Service</h1>
         <p>도움이 필요하신가요?</p>
         <br>
 
         <!-- Write Main -->
-        <!-- Main -->
-        <div class="board-btn-group" role="group" aria-label="Basic outlined example">
-            <button type="button" class="btn btn-primary" onClick="location.href='/solarpred/boardList'">전체목록</button>
-            <!-- 이 수정 삭제 버튼은 관리자나 글쓴 사람한테만 보여야 할 것 같아요 -->
-            <c:if test="${vo.mem_id == sessionScope.member.mem_id}">
-                <button type="button" class="btn btn-outline-primary" onclick="location.href='/solarpred/boardUpdateForm?seq=${vo.qna_seq}'">수정</button>
-                <button type="button" class="btn btn-outline-primary" onclick="location.href='/solarpred/boardDelete?seq=${vo.qna_seq}'">삭제</button>
-            </c:if>
-        </div>
+        <section class="checkout spad">
+            <div class="container">
+                <div class="checkout__form">
 
-        <br>
-        <br>
-        <br>
-        <br>
+                    <%-- 글쓰기 폼 start --%>
+                    <form name="insertform" action="/solarpred/boardUpdate" method="post">
+                        <%-- <input type="hidden" name="command" value="qnaInsert">--%>
+                        <input type="hidden" name="mem_id" value="${sessionScope.member.mem_id}">
+                            <input type="hidden" name="qna_seq" value="${vo.qna_seq}">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6">
+                                <br><br>
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="checkout__input">
+                                            <h6>
+                                                제목
+                                                <span>
+                            *
+                          </span>
+                                            </h6>
 
-        <%-- 글 부분 start --%>
-        <header class="major">
-            <h4 style="text-align: left">제목 : ${vo.qna_title}</h4>
-            <br>
-            <h6 style="text-align: left; margin-bottom: 1%" class="content-writer ScoreDream500">작성자 : ${vo.mem_id}</h6>
-        </header>
-        <hr style="margin-top: 0" />
-        <p id="main-content">${vo.qna_content}</p>
-        <hr/>
-        </section>
-        <%-- 글 부분 end --%>
+                                            <input data-testid="input-box" id="inquiry-subject" name="qna_title" placeholder="제목을 입력해주세요"
+                                                   type="text" height="44" class="boardWrte-title" value="${vo.qna_title}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="checkout__input">
+                                            <h6>
+                                                카테고리
+                                                <span>
+                            *
+                          </span>
+                                            </h6>
+                                            <div>
+                                                <select class="form-select" aria-label="Default select example" name="qna_cat">
+                                                    <c:forEach var="list" items="${arr}">
+                                                        <option value="${list}"  <c:if test="${list eq  vo.qna_cat}">selected="selected"</c:if>>${list}</option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
 
-        <section class="main accent2">
-            <header class="major" style="text-align: left">
-                <br>
-                <h4>답글</h4>
-                <c:if test="${sessionScope.member.mem_type == 'N'}">
-                    <p id="main-content">답글은 관리자 고유권한입니다.</p>
-                </c:if>
-            </header>
-
-
-            <%-- 댓글 start --%>
-            <table id="list">
-                <c:forEach var="list" items="${list}">
-                    <tr>
-                        <td>${list.reply_content}</td>
-                        <td>${list.reply_date}</td>
-                    </tr>
-                </c:forEach>
-            </table>
-
-            <form method="post" id="frm" class="combined" style="width: auto">
-                <input type="hidden" name="reply_id" value="${sessionScope.member.mem_id}">
-                <input type="hidden" name="qna_seq" value="${vo.qna_seq}">
-                <c:choose>
-                    <c:when test="${sessionScope.member.mem_type.equals('Y')}">
-                        <div class="form-floating mt-3">
-                            <textarea id="reply_content" class="form-control" name="reply_content" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px"></textarea>
-                            <label for="floatingTextarea2">Comments</label>
+                                    <div class="input-div" style="padding: 50px 0px 0px 10px;">
+                                        <div class="checkout__input_2">
+                                            <h6>
+                                                글 내용
+                                                <span>
+                            *
+                          </span>
+                                            </h6>
+                                            <div class="form-floating">
+                          <textarea class="form-control" name="qna_content" placeholder="Leave a comment here" id="floatingTextarea2"
+                                    style="height: 250px">${vo.qna_content}</textarea>
+                                                <label for="floatingTextarea2">Comments</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <button type="submit" class="btn btn-write btn-outline-primary">
+                                    등록
+                                </button>
+                            </div>
                         </div>
-                        <br>
-                        <button id="register" type="button" class="btn btn-write btn-outline-primary" onclick="replyInsert()">등록</button>
-                    </c:when>
-                    <c:otherwise>
-                        <div class="form-floating" style="display: none">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 200px"></textarea>
-                            <label for="floatingTextarea2">Comments</label>
-                        </div>
-                        <button id="register" type="submit" class="btn btn-write btn-outline-primary" onclick="" style="display: none">등록</button>
-                    </c:otherwise>
-                </c:choose>
-            </form>
-            <%-- 댓글 end --%>
+                    </form>
+                    <%-- 글쓰기 폼 end --%>
+
+                </div>
+            </div>
         </section>
+
 
     </div>
 </div>
@@ -268,15 +270,15 @@
         </div>
     </div>
 </div>
-<!-- Footer End -->
 
+<!-- Footer End -->
 <!-- Back to Top -->
 <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 <script src="./Document_files/jquery.min.js.다운로드"></script>
 <script type="text/javascript" src="./Document_files/bootstrap.js.다운로드"></script>
 
-
+</script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="lib/wow/wow.min.js"></script>
@@ -289,124 +291,6 @@
 
 <!-- Template Javascript -->
 <script src="js/main.js"></script>
-
-<!-- 비동기 자바스크립트 -->
-<script>
-    $(function (){
-        loadReply();
-    });
-
-    //url 자르는 함수
-    function getURLParams(url) {
-        var result = {};
-        url.replace(/[?&]{1}([^=&#]+)=([^&#]*)/g, function(s, k, v) { result[k] = decodeURIComponent(v); });
-        return result;
-    }
-    //uri 파라미터 변수
-    let seq_uri = getURLParams(location.search)['seq'];
-
-
-    //댓글 불러오기
-    function loadReply(){
-        $.ajax({
-            url : "/solarpred/reply?seq="+seq_uri,
-            type : "get",
-            dataType : "json",
-            success : replyView,
-            error : function(){
-                alert("error")
-            }
-        });
-    }
-
-    //댓글 작성하기 함수
-    function replyInsert(){
-        const data = $("#frm").serialize();
-
-        $.ajax({
-            url : "/solarpred/boardReply",
-            type : "post",
-            data : data,
-            success : loadReply,
-            error : function(){
-                alert("error")
-            }
-        });
-
-        // 댓글 등록 후 댓글창 비우기
-        $("#reply_content").val("");
-
-    }
-
-    // 비동기방식으로 댓글 불러와서 출력
-    function replyView(data){
-        let result = "";
-        $.each(data,(index,vo)=>{
-            result += "<tr class='reply"+'${vo.qna_seq}'+"'><td id='content"+vo.reply_seq+"' class='pt-3'>";
-            result += data[index]['reply_content'];
-            result += "</td></tr>";
-            result += "<tr class='reply"+'${vo.qna_seq}'+"'><td>";
-            result += data[index]['reply_date'];
-            result += "</td>";
-            if(${sessionScope.member.mem_id eq vo.mem_id}){
-                result += "<td style='padding-left: 10px'>";
-                result += "<button id='btnE"+vo.reply_seq+"' class='btn btn-outline-primary btn-sm' type='button' onclick='replyUpdate("+vo.reply_seq+")'>수정</button>";
-                result += "<button id='btnD"+vo.reply_seq+"' class='btn btn-outline-primary btn-sm' type='button' onclick='replyDelete("+vo.reply_seq+")' style='margin-left:3px'>삭제</button>";
-                result += "</td>";
-            }
-            result += "</tr>";
-        });
-        $("#list").html(result);
-    }
-
-
-    // 댓글 삭제
-    function replyDelete(reply_seq){
-        $.ajax({
-            url : "/solarpred/replyDelete",
-            type : "get",
-            data : {"reply_seq":reply_seq},
-            success : loadReply,
-            error : function(){
-                alert("error");
-            }
-        });
-    }
-
-    // 댓글 수정 형태로 변경
-    function replyUpdate(reply_seq){
-        // 기본 댓글 내용을 변수에 담기
-        let content = $("#content"+reply_seq).text();
-
-        $("#btnE"+reply_seq).css("display","none");
-        $("#btnD"+reply_seq).css("display","none");
-
-        $("#content"+reply_seq).html("<input id='editInput"+reply_seq+"' class='form-control' name='reply_content' type='text' value='"+content+"'>" +
-            "<button class='btn btn-outline-primary btn-sm' type='button' onclick='replyUpdate1("+reply_seq+")'>등록</button>" +
-            "<button class='btn btn-outline-primary btn-sm' type='button' style='margin: 3px' onclick='loadReply()'>취소</button>");
-    }
-
-    // 댓글 수정 기능
-    function replyUpdate1(reply_seq){
-        let reply_content = $("#editInput"+reply_seq).val();
-        console.log(reply_content);
-        $.ajax({
-            url : "/solarpred/replyUpdate",
-            type : "post",
-            data : {"reply_seq":reply_seq, "reply_content":reply_content},
-            success : loadReply,
-            error : function(){
-                alert("error");
-            }
-        });
-    }
-
-
-
-
-
-</script>
-
 </body>
 
 </html>

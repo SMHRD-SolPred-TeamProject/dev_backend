@@ -27,5 +27,36 @@
         select * from s_qna where qna_seq = #{seq}
     </select>
 
+    <!--  게시물 수정  -->
+    <update id="boardUpdate" parameterType="com.solarpred.solcaster.domain.Board">
+        update s_qna set qna_cat = #{qna_cat}, qna_title = #{qna_title}, qna_content = #{qna_content} where qna_seq = #{qna_seq}
+    </update>
+
+    <!--  특정 게시물 삭제  -->
+    <delete id="boardDelete" parameterType="int">
+        delete from s_qna where qna_seq = #{seq}
+    </delete>
+
+    <!--  특정 게시물 댓글 모두 삭제  -->
+    <delete id="boardDeleteReply" parameterType="int">
+        delete from s_reply where qna_seq = #{seq}
+    </delete>
+
+    <!--  선택된 카테고리 게시글 보기  -->
+    <select id="category" resultType="hashmap" parameterType="hashmap">
+--         select * from s_qna where qna_cat = #{qna_cat}
+
+        <![CDATA[
+            select * from s_qna where qna_cat = #{qna_cat} order by qna_date desc limit #{pageStart}, #{perPageNum}
+        ]]>
+
+    </select>
+
+    <!--  카테고리 글 갯수 불러오기  -->
+    <select id="boardListCategoryCnt" resultType="int" parameterType="String">
+        select count(*) from s_qna where qna_cat = #{qna_cat}
+    </select>
+
+
 
 </mapper>

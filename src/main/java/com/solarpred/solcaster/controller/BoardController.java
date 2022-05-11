@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -68,6 +69,40 @@ public class BoardController {
         Board vo = service.boardView(seq);
         model.addAttribute("vo",vo);
         return "boardView";
+    }
+
+    /**
+     * 특정 게시물 수정페이지 이동
+     */
+    @GetMapping("/boardUpdateForm")
+    public String boardUpdateForm(@RequestParam("seq") int seq, Model model){
+        Board vo = service.boardView(seq);
+        String[] arr = {"구매문의","기술문의","AS문의"};
+        model.addAttribute("vo",vo);
+        model.addAttribute("arr",arr);
+        return "boardUpdate";
+    }
+
+    /**
+     * 특정 게시물 수정
+     */
+    @PostMapping("/boardUpdate")
+    public String boardUpdate(Board vo){
+        service.boardUpdate(vo);
+        return "redirect:/boardList";
+    }
+
+    /**
+     * 특정 게시물 삭제
+     */
+    @GetMapping("/boardDelete")
+    public String boardDelete(@RequestParam("seq") int seq){
+        // 댓글 모두 삭제
+        service.boardDeleteReply(seq);
+        
+        // 게시글 삭제
+        service.boardDelete(seq);
+        return "redirect:/boardList";
     }
 
 

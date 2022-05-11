@@ -44,8 +44,6 @@
 
     <!--  선택된 카테고리 게시글 보기  -->
     <select id="category" resultType="hashmap" parameterType="hashmap">
---         select * from s_qna where qna_cat = #{qna_cat}
-
         <![CDATA[
             select * from s_qna where qna_cat = #{qna_cat} order by qna_date desc limit #{pageStart}, #{perPageNum}
         ]]>

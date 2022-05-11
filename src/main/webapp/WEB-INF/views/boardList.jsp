@@ -394,7 +394,8 @@
     // 게시글 출력
     function loadList(data){
         let result = "";
-
+        console.log("data : " + data)
+        console.log()
         $.each(data,(index,vo)=>{
             console.log("vo.qna_seq : " + vo.qna_seq);
             result += "<tr>";

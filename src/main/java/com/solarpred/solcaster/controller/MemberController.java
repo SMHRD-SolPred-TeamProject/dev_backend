@@ -3,6 +3,7 @@ package com.solarpred.solcaster.controller;
 import com.solarpred.solcaster.domain.Member;
 import com.solarpred.solcaster.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 
 @org.springframework.stereotype.Controller
 public class MemberController {
@@ -89,8 +91,10 @@ public class MemberController {
     /**
      * 회원관리 페이지 이동
      */
-    @GetMapping("/manage")
-    public String manage(){
+    @GetMapping("/goManage")
+    public String goManage(Model model) {
+        List<Member> list =  service.findAll();
+        model.addAttribute("list",list);
         return "manage";
     }
 

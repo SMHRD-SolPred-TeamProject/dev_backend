@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: smhrd
@@ -6,6 +7,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%-- 문자열 자르는 함수 사용 --%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -342,116 +346,39 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>mem_1</td>
-                    <td class="name"> 마이클 헌찬</a></td>
-                    <td>호주 어딘가 </td>
-                    <td>010-0000-0000</td>
-                    <td>
-                        <div class="form-row align-items-center">
-                            <div class="col-auto my-1">
-                                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect"></label>
-                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                    <option selected>구매 여부</option>
-                                    <option value="1">구매</option>
-                                    <option value="2">미구매</option>
-                                </select>
-                            </div>
-                    </td>
+                <c:forEach var="list" items="${list}" >
+                    <tr>
+                        <td>${list.mem_id}</td>
+                        <td class="name">${list.mem_name}</td>
+                        <td>${list.mem_addr}</td>
+                        <td>${list.mem_phone}</td>
+                        <td>
+                            <div class="form-row align-items-center">
+                                <div class="col-auto my-1">
+                                    <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect"></label>
+                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                        <c:set var="mem_purchase" value="${list.mem_purchase}" />
+                                        <<c:choose>
+                                            <c:when test="${mem_purchase eq 'Y'}">
+                                                <option selected value="1">구매</option>
+                                                <option value="2">미구매</option>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <option value="1">구매</option>
+                                                <option selected value="2">미구매</option>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </select>
+                                </div>
+                        </td>
 
-                    <td>2011-05-24</td>
-                    <td>
-                        <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>mem_2</td>
-                    <td class="name"> 에드워드 헌찬</a></td>
-                    <td>워싱턴 어딘가</td>
-                    <td>010-0000-0000</td>
-                    <td>
-                        <div class="form-row align-items-center">
-                            <div class="col-auto my-1">
-                                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect"></label>
-                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                    <option selected>구매 여부</option>
-                                    <option value="1">구매</option>
-                                    <option value="2">미구매</option>
-                                </select>
-                            </div>
-                    </td>
-
-                    <td>2011-05-24</td>
-                    <td>
-                        <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>mem_3</td>
-                    <td class="name"> 윌리엄 헌찬</a></td>
-                    <td>런던 어딘가</td>
-                    <td>010-0000-0000</td>
-                    <td>
-                        <div class="form-row align-items-center">
-                            <div class="col-auto my-1">
-                                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect"></label>
-                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                    <option selected>구매 여부</option>
-                                    <option value="1">구매</option>
-                                    <option value="2">미구매</option>
-                                </select>
-                            </div>
-                    </td>
-
-                    <td>2011-05-24</td>
-                    <td>
-                        <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>mem_4</td>
-                    <td class="name"> 제이슨 헌찬</a></td>
-                    <td>킹스로드 어딘가</td>
-                    <td>010-0000-0000</td>
-                    <td>
-                        <div class="form-row align-items-center">
-                            <div class="col-auto my-1">
-                                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect"></label>
-                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                    <option selected>구매 여부</option>
-                                    <option value="1">구매</option>
-                                    <option value="2">미구매</option>
-                                </select>
-                            </div>
-                    </td>
-
-                    <td>2011-05-24</td>
-                    <td>
-                        <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>mem_5</td>
-                    <td class="name"> 나가모토 헌찬</a></td>
-                    <td>교토 어딘가</td>
-                    <td>010-0000-0000</td>
-                    <td>
-                        <div class="form-row align-items-center">
-                            <div class="col-auto my-1">
-                                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect"></label>
-                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                    <option selected>구매 여부</option>
-                                    <option value="1">구매</option>
-                                    <option value="2">미구매</option>
-                                </select>
-                            </div>
-                    </td>
-
-                    <td>2011-05-24</td>
-                    <td>
-                        <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                    </td>
-                </tr>
+                        <td>${fn:substring(list.mem_joindate,0,10)}</td>
+                        <td>
+                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                            <a href="#" class="update" title="Update" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                        </td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
             <div class="clearfix">

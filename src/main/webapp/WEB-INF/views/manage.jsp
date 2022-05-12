@@ -210,6 +210,13 @@
             margin-top: 10px;
             font-size: 13px;
         }
+
+         #update {
+             font-weight: bold;
+             color: #10c469;
+             display: inline-block;
+             text-decoration: none;
+         }
     </style>
 
 
@@ -375,8 +382,7 @@
                         <td>${fn:substring(list.mem_joindate,0,10)}</td>
                         <td>
                             <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                            <a href="#" class="update" title="Update" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                        </td>
+                            <a href="#" id="update" class="update" title="Update" data-toggle="tooltip"><i class="material-icons">&#xe876;</i></a>                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

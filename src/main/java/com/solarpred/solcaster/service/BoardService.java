@@ -60,8 +60,14 @@ public class BoardService {
     public int boardListCategoryCnt(String qna_cat){return mapper.boardListCategoryCnt(qna_cat);}
 
     // 검색된 게시글 개수 조회
-    //public int boardListSearchCnt(String search_text){return mapper.boardListCategoryCnt(qna_cat);}
+    public int boardListSearchCnt(String qna_title_search){return mapper.boardListSearchCnt(qna_title_search);}
 
+    // 검색된 게시글 조회
+    public List<Map<String, Object>> boardListSearch(CriteriaAdd cri){
+        return mapper.boardListSearch(cri);
+    }
 
+    // 조회수 증가
+    public void boardCntAdd(int qna_seq){mapper.boardCntAdd(qna_seq);}
 
 }

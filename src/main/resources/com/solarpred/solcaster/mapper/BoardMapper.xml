@@ -54,6 +54,21 @@
         select count(*) from s_qna where qna_cat = #{qna_cat}
     </select>
 
+    <!--  검색된 게시물 글 갯수 불러오기  -->
+    <select id="boardListSearchCnt" resultType="int" parameterType="String">
+        select count(*) from s_qna where qna_title like concat('%',#{qna_title},'%')
+    </select>
 
+    <!--  검색된 게시글 보기  -->
+    <select id="boardListSearch" resultType="hashmap" parameterType="hashmap">
+        <![CDATA[
+        select * from s_qna where qna_title like concat('%',#{qna_title},'%') order by qna_date desc limit #{pageStart}, #{perPageNum}
+        ]]>
+    </select>
+
+    <!--  조회수 증가  -->
+    <update id="boardCntAdd" parameterType="int">
+        update s_qna set qna_cnt = qna_cnt + 1  where qna_seq = #{qna_seq}
+    </update>
 
 </mapper>

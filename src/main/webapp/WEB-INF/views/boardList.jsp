@@ -149,6 +149,7 @@
             >HOME<i class="fa fa-arrow-right ms-3"></i
             ></a>
         </div>
+    </div>
 </nav>
 <!-- Navbar End -->
 <div id="main">
@@ -161,12 +162,16 @@
         <p>도움이 필요하신가요?</p>
         <br>
         <div class="search-window">
-            <form action="/solarpred/boardSearch">
+
+            <%-- 검색어 입력 폼 start --%>
+            <form id="searchForm" onsubmit="loadSearchList()">
                 <div class="search-wrap">
-                    <input id="search" type="search" name="search_text" placeholder="검색어를 입력해주세요.">
-                    <button type="submit" class="btn btn-primary">검색</button>
+                    <input id="search" type="search" name="qna_title" placeholder="검색어를 입력해주세요.">
+                    <button type="button" id="searchBtn" class="btn btn-primary">검색</button>
                 </div>
             </form>
+            <%-- 검색어 입력 폼 end --%>
+
         </div>
         <br><br>
         <ul class="nav justify-content-end">
@@ -201,7 +206,7 @@
                 <c:forEach var="list" items="${list}" >
                     <tr>
                         <td>${list.qna_seq}</td>
-                        <td><a href="/solarpred/boardView?seq=${list.qna_seq}"><b>[${list.qna_cat}]</b> ${list.qna_title}</a></td>
+                        <td><a href="/solarpred/boardView?seq=${list.qna_seq}&session_mem_id=${sessionScope.member.mem_id}"><b>[${list.qna_cat}]</b> ${list.qna_title}</a></td>
                         <td>${list.mem_id}</td>
                         <td>
                                 ${fn:substring(list.qna_date,0,10)}
@@ -392,6 +397,33 @@
         });
     }
 
+    // 검색버튼 클릭했을 때 이벤트 발생
+    $("#searchBtn").on("click",function (){
+        let qna_title = $("#search").val();
+
+        // 검색어없이 검색버튼을 클릭했을 때 아래 문구 alert창 출력
+        if(qna_title == ""){
+            alert("검색어를 입력해주세요!");
+            return false;
+        }
+
+        $("#search").val("");
+        loadSearchList(qna_title);
+    });
+
+    // 검색된 게시글 불러오기
+    function loadSearchList(qna_title){
+        $.ajax({
+            url : "/solarpred/boardSearch?qna_title="+qna_title,
+            type : "get",
+            dataType : "json",
+            success : loadList,
+            error : function(){
+                alert("error")
+            }
+        });
+    }
+
     // 게시글 출력
     function loadList(data){
         let result = "";
@@ -404,14 +436,11 @@
 
         // 페이징 데이터 변수
         let pagingData = data.pop();
-        console.log(pagingData['test'])
-
-
+        // console.log(pagingData['test'])
+        // console.log(data)
+        let valId = '<c:out value="${sessionScope.member.mem_id}"/>';
         // 게시글 반복 출력 부분
         $.each(data,(index,vo)=>{
-            result += `<tr>
-              <td>${vo.qna_seq}</td>
-            </tr>`
             // console.log("data type = " + typeof(data));
             // console.log("data type0 = " + typeof(data[0]));
             // console.log("data =" +data);
@@ -426,7 +455,7 @@
             result += "</td>";
 
             result += "<td>";
-            result += '<a href="/solarpred/boardView?seq='+vo.qna_seq+'"><b>['+vo.qna_cat+']</b> '+vo.qna_title+'</a>';
+            result += '<a href="/solarpred/boardView?seq='+vo.qna_seq+'&session_mem_id='+valId+'"><b>['+vo.qna_cat+']</b> '+vo.qna_title+'</a>';
             result += "</td>";
 
             result += "<td>";
@@ -434,8 +463,7 @@
             result += "</td>";
 
             result += "<td>";
-            //result += vo.qna_date.substring(0,10);
-            result += vo.qna_date;
+            result += vo.qna_date.substring(0,10);
             result += "</td>";
 
             result += "<td>";
@@ -445,8 +473,8 @@
             result += "</tr>";
         });
 
-        console.log(pagingData['test'].totalCount)
-        console.log(pagingData['test'].prev)
+        //console.log(pagingData['test'].totalCount)
+        //console.log(pagingData['test'].prev)
 
 
 
@@ -458,12 +486,16 @@
             pagingResult += '</li>';
         }
 
+        console.log("pagingData['test'].startPage = "+ pagingData['test'].startPage)
+        console.log("pagingData['test'].endPage = " + pagingData['test'].endPage)
+
         // 페이지 숫자 부분
-        pagingResult += `<c:forEach begin="${pagingData['test'].startPage}" end="${pagingData['test'].endPage}" var="num">`;
-        pagingResult += `<li class="page-item">`;
-        pagingResult += `<a class="page-link" href="<c:url value="/boardList?page=${num}"/>">${num+1}</a>`;
-        pagingResult += `</li>`;
-        pagingResult += `</c:forEach>`;
+        for(var num = pagingData['test'].startPage;num <= pagingData['test'].endPage;num++){
+            pagingResult += '<li class="page-item">';
+            pagingResult += '<a class="page-link" href="/solarpred/boardList?page='+num+'"/>">'+num+'</a>';
+            <%--pagingResult += `<a class="page-link" href="<c:url value="/boardList?page=${num}"/>${num+1}</a>`;--%>
+            pagingResult += '</li>';
+        }
 
         // 다음버튼 부분
         if(pagingData['test'].next){

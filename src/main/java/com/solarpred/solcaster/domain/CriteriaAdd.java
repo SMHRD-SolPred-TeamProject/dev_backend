@@ -13,6 +13,10 @@ public class CriteriaAdd {
     // 게시글 카테고리
     private String qna_cat;
 
+    // 검색어
+    private String qna_title;
+
+
     public int getPageStart() {
         // 특정 페이지의 범위를 정하는 구간, 현재 페이지의 게시글 시작 번호
         // 0 ~ 10 , 10 ~ 20 이런식으로
@@ -61,5 +65,13 @@ public class CriteriaAdd {
 
     public void setQna_cat(String qna_cat) {
         this.qna_cat = qna_cat;
+    }
+
+    public String getQna_title() {
+        return qna_title;
+    }
+
+    public void setQna_title(String qna_title) {
+        this.qna_title = qna_title;
     }
 }

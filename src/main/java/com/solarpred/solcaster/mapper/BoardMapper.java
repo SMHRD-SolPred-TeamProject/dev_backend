@@ -2,9 +2,11 @@ package com.solarpred.solcaster.mapper;
 
 import com.solarpred.solcaster.domain.Board;
 import com.solarpred.solcaster.domain.Criteria;
+import com.solarpred.solcaster.domain.CriteriaAdd;
 import org.apache.ibatis.annotations.Select;
 import org.mybatis.spring.annotation.MapperScan;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,8 +36,7 @@ public interface BoardMapper {
 
 
     // 선택된 카테고리 게시글 보기
-    //@Select("select * from s_qna where qna_cat = #{qna_cat} order by qna_date desc limit #{pageStart}, #{perPageNum}")
-    public List<Map<String, Object>> category(Criteria cri, String qna_cat);
+    public List<Map<String, Object>> category(CriteriaAdd cri);
 
     // 카테고리 게시글 개수 조회
     public int boardListCategoryCnt(String qna_cat);

@@ -2,11 +2,13 @@ package com.solarpred.solcaster.service;
 
 import com.solarpred.solcaster.domain.Board;
 import com.solarpred.solcaster.domain.Criteria;
+import com.solarpred.solcaster.domain.CriteriaAdd;
 import com.solarpred.solcaster.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -50,8 +52,8 @@ public class BoardService {
     }
 
     // 선택된 카테고리 게시글 보기
-    public List<Map<String, Object>> category(Criteria cri, String qna_cat){
-        return mapper.category(cri, qna_cat);
+    public List<Map<String, Object>> category(CriteriaAdd cri){
+        return mapper.category(cri);
     }
 
     // 카테고리 게시글 개수 조회

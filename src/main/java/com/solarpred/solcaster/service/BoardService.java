@@ -59,12 +59,8 @@ public class BoardService {
     // 카테고리 게시글 개수 조회
     public int boardListCategoryCnt(String qna_cat){return mapper.boardListCategoryCnt(qna_cat);}
 
-    // 전체 게시글 보기
-//    public List<Board> loadBoardList(){
-//        return mapper.loadBoardList();
-//    }
-
-
+    // 검색된 게시글 개수 조회
+    //public int boardListSearchCnt(String search_text){return mapper.boardListCategoryCnt(qna_cat);}
 
 
 

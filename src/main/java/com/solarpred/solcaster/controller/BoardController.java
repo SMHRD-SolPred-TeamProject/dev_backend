@@ -105,5 +105,29 @@ public class BoardController {
         return "redirect:/boardList";
     }
 
+    /**
+     * 검색된 단어 게시글 출력
+     */
+    @GetMapping("/boardSearch")
+    public String boardSearch(String search_text, Model model){
+
+        // 전체 글 개수
+        int boardListCnt = service.boardListCnt();
+
+        // 페이징 객체
+        Paging paging = new Paging();
+        paging.setCri(cri);
+        paging.setTotalCount(boardListCnt);
+
+        //List<Board> list =  service.viewBoardList();
+        List<Map<String, Object>> list =  service.boardList(cri);
+
+        model.addAttribute("list",list);
+        model.addAttribute("paging",paging);
+
+
+        return "redirect:/boardList";
+    }
+
 
 }

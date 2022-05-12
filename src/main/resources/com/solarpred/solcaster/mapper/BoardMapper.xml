@@ -47,7 +47,6 @@
         <![CDATA[
             select * from s_qna where qna_cat = #{qna_cat} order by qna_date desc limit #{pageStart}, #{perPageNum}
         ]]>
-
     </select>
 
     <!--  카테고리 글 갯수 불러오기  -->

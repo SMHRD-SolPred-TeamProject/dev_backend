@@ -161,9 +161,9 @@
         <p>도움이 필요하신가요?</p>
         <br>
         <div class="search-window">
-            <form action="">
+            <form action="/solarpred/boardSearch">
                 <div class="search-wrap">
-                    <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
+                    <input id="search" type="search" name="search_text" placeholder="검색어를 입력해주세요.">
                     <button type="submit" class="btn btn-primary">검색</button>
                 </div>
             </form>
@@ -219,7 +219,7 @@
 
         <%-- 게시판하단 페이징 버튼 start --%>
         <nav aria-label="Page navigation example">
-            <ul class="pagination btn-movepage justify-content-center">
+            <ul id="paging" class="pagination btn-movepage justify-content-center">
 
                 <%-- 이전 버튼 --%>
                 <c:if test="${paging.prev}">
@@ -372,9 +372,10 @@
             type : "get",
             dataType : "json",
             success : loadList,
-            error : function(){
-                alert("error")
+            error : function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
             }
+
         });
     }
 
@@ -394,10 +395,30 @@
     // 게시글 출력
     function loadList(data){
         let result = "";
-        console.log("data : " + data)
-        console.log()
+        let pagingResult = "";
+        let data2 = data;
+
+        // for (const x in data) {
+        //     console.log(data[x]);
+        // }
+
+        // 페이징 데이터 변수
+        let pagingData = data.pop();
+        console.log(pagingData['test'])
+
+
+        // 게시글 반복 출력 부분
         $.each(data,(index,vo)=>{
-            console.log("vo.qna_seq : " + vo.qna_seq);
+            result += `<tr>
+              <td>${vo.qna_seq}</td>
+            </tr>`
+            // console.log("data type = " + typeof(data));
+            // console.log("data type0 = " + typeof(data[0]));
+            // console.log("data =" +data);
+            // console.log("index = " + index);
+            // console.log("vo = " + vo);
+            // console.log("vo = " + vo.qna_title);
+            //console.log("Object.keys(data) = " + Object.keys(data));
             result += "<tr>";
 
             result += "<td>";
@@ -413,6 +434,7 @@
             result += "</td>";
 
             result += "<td>";
+            //result += vo.qna_date.substring(0,10);
             result += vo.qna_date;
             result += "</td>";
 
@@ -423,7 +445,39 @@
             result += "</tr>";
         });
 
+        console.log(pagingData['test'].totalCount)
+        console.log(pagingData['test'].prev)
+
+
+
+        // 하단 페이징 숫자 버튼 출력 부분
+        // 이전버튼 부분
+        if(pagingData['test'].prev){
+            pagingResult += '<li class="page-item">';
+            pagingResult += '<a class="page-link" href="<c:url value="/boardList?page=${paging2.startPage-1}"/>" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>';
+            pagingResult += '</li>';
+        }
+
+        // 페이지 숫자 부분
+        pagingResult += `<c:forEach begin="${pagingData['test'].startPage}" end="${pagingData['test'].endPage}" var="num">`;
+        pagingResult += `<li class="page-item">`;
+        pagingResult += `<a class="page-link" href="<c:url value="/boardList?page=${num}"/>">${num+1}</a>`;
+        pagingResult += `</li>`;
+        pagingResult += `</c:forEach>`;
+
+        // 다음버튼 부분
+        if(pagingData['test'].next){
+        <%--pagingResult += '<c:if test="${paging2.next && paging.endPage>0}">';--%>
+        pagingResult += '<li class="page-item">';
+        pagingResult += '<a class="page-link" href="<c:url value="/boardList?page=${paging2.endPage+1}"/>" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>';
+        pagingResult += '</li>';
+        <%--pagingResult += '</c:if>';--%>
+        }
+
+        // 게시글내용을 tbody태그에 추가
         $("#tbodyBoardList").html(result);
+        // 페이지 처리부분을 하단 ul태그에 추가
+        $("#paging").html(pagingResult);
     }
 
 </script>

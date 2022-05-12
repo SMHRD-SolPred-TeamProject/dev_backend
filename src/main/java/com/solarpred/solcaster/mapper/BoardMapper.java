@@ -34,7 +34,6 @@ public interface BoardMapper {
     // 특정 게시물 댓글 전부 삭제
     public void boardDeleteReply(int seq);
 
-
     // 선택된 카테고리 게시글 보기
     public List<Map<String, Object>> category(CriteriaAdd cri);
 

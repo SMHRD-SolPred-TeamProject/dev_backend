@@ -55,6 +55,9 @@
         select count(*) from s_qna where qna_cat = #{qna_cat}
     </select>
 
-
+    <!-- 특정 회원이 쓴 글 조회 -->
+    <select id="boardMemList" resultType="List" parameterType="String">
+        select qna_seq from s_qna where mem_id = #{mem_id}
+    </select>
 
 </mapper>

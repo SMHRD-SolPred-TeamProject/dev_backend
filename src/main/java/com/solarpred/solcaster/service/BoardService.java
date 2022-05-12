@@ -64,6 +64,11 @@ public class BoardService {
 //        return mapper.loadBoardList();
 //    }
 
+    // 특정 회원이 쓴 글 조회
+    public List<Integer> boardMemList(String mem_id) {
+        return mapper.boardMemList(mem_id);
+    }
+
 
 
 

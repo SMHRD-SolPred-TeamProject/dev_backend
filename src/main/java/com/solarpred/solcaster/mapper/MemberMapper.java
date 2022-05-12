@@ -17,4 +17,7 @@ public interface MemberMapper {
     //로그인
     public Member login(Member vo);
 
+    //회원삭제
+    public void memDelete(String mem_id);
+
 }

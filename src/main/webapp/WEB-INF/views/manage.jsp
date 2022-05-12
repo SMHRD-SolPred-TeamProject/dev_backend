@@ -367,12 +367,12 @@
                                         <c:set var="mem_purchase" value="${list.mem_purchase}" />
                                         <<c:choose>
                                             <c:when test="${mem_purchase eq 'Y'}">
-                                                <option selected value="1">구매</option>
-                                                <option value="2">미구매</option>
+                                                <option selected value="Y">구매</option>
+                                                <option value="N">미구매</option>
                                             </c:when>
                                             <c:otherwise>
-                                                <option value="1">구매</option>
-                                                <option selected value="2">미구매</option>
+                                                <option value="Y">구매</option>
+                                                <option selected value="N">미구매</option>
                                             </c:otherwise>
                                         </c:choose>
                                     </select>
@@ -381,8 +381,9 @@
 
                         <td>${fn:substring(list.mem_joindate,0,10)}</td>
                         <td>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                            <a href="#" id="update" class="update" title="Update" data-toggle="tooltip"><i class="material-icons">&#xe876;</i></a>                        </td>
+                            <a href="goMemDelete?mem_id=${list.mem_id}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                            <a onclick="getValue(${list.mem_id})" id="update" class="update" title="Update" data-toggle="tooltip"><i class="material-icons">&#xe876;</i></a>                        </td>
+<%--                            <a href="goPurchaseUpdate?mem_id=${list.mem_id}" id="update" class="update" title="Update" data-toggle="tooltip"><i class="material-icons">&#xe876;</i></a>                        </td>--%>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -500,6 +501,14 @@
 
 <!-- Template Javascript -->
 <script src="js/main.js"></script>
+<script>
+
+    function getValue(mem_id) {
+        console.log($("#inlineFormCustomSelect").val())
+        location.href=""
+    }
+</script>
+
 </body>
 
 </html>

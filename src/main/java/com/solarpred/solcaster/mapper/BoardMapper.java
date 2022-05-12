@@ -5,7 +5,6 @@ import com.solarpred.solcaster.domain.Criteria;
 import com.solarpred.solcaster.domain.CriteriaAdd;
 import org.apache.ibatis.annotations.Select;
 import org.mybatis.spring.annotation.MapperScan;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,4 +40,6 @@ public interface BoardMapper {
     // 카테고리 게시글 개수 조회
     public int boardListCategoryCnt(String qna_cat);
 
+    // 특정 회원이 쓴 글 조회
+    public List<Integer> boardMemList(String mem_id);
 }

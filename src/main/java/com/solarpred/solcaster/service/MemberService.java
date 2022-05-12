@@ -28,7 +28,10 @@ public class MemberService {
         return mapper.login(vo);
     }
 
-
+    // 회원 삭제
+    public void memDelete(String mem_id) {
+        mapper.memDelete(mem_id);
+    }
 
 
 

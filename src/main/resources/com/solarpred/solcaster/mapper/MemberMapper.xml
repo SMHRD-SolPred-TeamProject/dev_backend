@@ -17,9 +17,9 @@
         select * from s_member where mem_id = #{mem_id} and mem_pw = #{mem_pw}
     </select>
 
-    <!--  게시판 전체글 불러오기  -->
-    <select id="viewBoardList" resultType="com.solarpred.solcaster.domain.Board">
-        select * from s_qna
-    </select>
+    <!-- 회원삭제-->
+    <delete id="memDelete" parameterType="String">
+        delete from s_member where mem_id = #{mem_id}
+    </delete>
 
 </mapper>

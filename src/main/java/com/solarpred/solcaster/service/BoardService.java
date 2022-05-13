@@ -59,18 +59,20 @@ public class BoardService {
     // 카테고리 게시글 개수 조회
     public int boardListCategoryCnt(String qna_cat){return mapper.boardListCategoryCnt(qna_cat);}
 
-    // 전체 게시글 보기
-//    public List<Board> loadBoardList(){
-//        return mapper.loadBoardList();
-//    }
+    // 검색된 게시글 개수 조회
+    public int boardListSearchCnt(String qna_title_search){return mapper.boardListSearchCnt(qna_title_search);}
+
+    // 검색된 게시글 조회
+    public List<Map<String, Object>> boardListSearch(CriteriaAdd cri){
+        return mapper.boardListSearch(cri);
+    }
+
+    // 조회수 증가
+    public void boardCntAdd(int qna_seq){mapper.boardCntAdd(qna_seq);}
 
     // 특정 회원이 쓴 글 조회
     public List<Integer> boardMemList(String mem_id) {
         return mapper.boardMemList(mem_id);
     }
-
-
-
-
 
 }

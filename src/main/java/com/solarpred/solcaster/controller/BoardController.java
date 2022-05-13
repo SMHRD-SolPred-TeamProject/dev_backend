@@ -163,7 +163,4 @@ public class BoardController {
         service.boardDelete(seq);
         return "redirect:/boardList";
     }
-
-
-
 }

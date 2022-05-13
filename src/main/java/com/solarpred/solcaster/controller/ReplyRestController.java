@@ -18,6 +18,9 @@ public class ReplyRestController {
     @Autowired
     ReplyService service;
 
+    /**
+     * 댓글 전체 불러오는 기능
+     */
     @GetMapping("/reply")
     public List<Reply> reply(@RequestParam(value="seq")String seq, Model model){
         int vo = Integer.parseInt(seq);

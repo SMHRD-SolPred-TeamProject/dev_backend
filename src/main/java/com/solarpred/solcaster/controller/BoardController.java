@@ -2,6 +2,7 @@ package com.solarpred.solcaster.controller;
 
 import com.solarpred.solcaster.domain.Board;
 import com.solarpred.solcaster.domain.Criteria;
+import com.solarpred.solcaster.domain.CriteriaAdd;
 import com.solarpred.solcaster.domain.Paging;
 import com.solarpred.solcaster.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -65,11 +70,65 @@ public class BoardController {
      * 특정 게시물 조회
      */
     @GetMapping("/boardView")
-    public String boardView(@RequestParam("seq")int seq, Model model){
+    public String boardView(@RequestParam("seq")int seq, @RequestParam("session_mem_id")String session_mem_id , Model model, HttpServletRequest request, HttpServletResponse response){
+
+        // 쿠키 생성 및 조회수 메서드
+        createCookie(request, response, seq, session_mem_id);
+
         Board vo = service.boardView(seq);
         model.addAttribute("vo",vo);
         return "boardView";
     }
+
+    // 쿠키 생성 및 조회수 메서드
+    public void createCookie(HttpServletRequest request, HttpServletResponse response, int qna_seq, String session_mem_id){
+
+        // 선택된 게시물의 객체
+        Board vo = service.boardView(qna_seq);
+
+        // 과거 쿠키 불러와서 전부 삭제
+        Cookie[] oldCookies = request.getCookies(); // 모든 쿠키의 정보를 oldCookies 저장
+
+        if(oldCookies != null){ // 쿠키가 한개라도 있으면 실행
+            System.out.println("oldCookies.length = " + oldCookies.length);
+            for(int i=0; i< oldCookies.length; i++){
+                oldCookies[i].setMaxAge(0); // 유효시간을 0으로 설정
+                response.addCookie(oldCookies[i]); // 응답 헤더에 추가
+            }
+        }
+
+        // 새로운 쿠키 생성
+        Cookie[] cookies = request.getCookies();
+
+        Cookie newCookie = null;
+
+        // 쿠키가 있을 경우
+        if (cookies != null && cookies.length > 0) {
+            for (int i = 0; i < cookies.length; i++) {
+                // Cookie의 name이 cookie + seq 일치하는 쿠키를 newCookie 넣어줌
+                if (cookies[i].getName().equals("cookie"+qna_seq)) {
+                    System.out.println("처음 쿠키가 생성한 뒤 들어옴.");
+                    newCookie = cookies[i];
+                }
+            }//for
+        }//if
+
+
+        // 만일 viewCookie가 null일 경우 쿠키를 생성해서 조회수 증가 로직을 처리함.
+        if (newCookie == null && !(vo.getMem_id().equals(session_mem_id))) {
+
+            System.out.println("sessiontest = " + (vo.getMem_id() == session_mem_id));
+            // 쿠키 생성(이름, 값)
+            newCookie = new Cookie("cookie"+qna_seq, "|" + qna_seq + "|");
+
+            // 쿠키 추가
+            response.addCookie(newCookie);
+
+            // 쿠키를 추가 시키고 조회수 증가시킴
+            service.boardCntAdd(qna_seq);
+        }
+
+    }//end
 
     /**
      * 특정 게시물 수정페이지 이동
@@ -108,6 +167,7 @@ public class BoardController {
     /**
      * 특정 회원이 쓴 글 모두 조회
      */
+
 
 
 }

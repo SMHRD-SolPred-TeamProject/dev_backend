@@ -1,12 +1,14 @@
 package com.solarpred.solcaster.controller;
 
 import com.solarpred.solcaster.domain.Member;
+import com.solarpred.solcaster.service.BoardService;
 import com.solarpred.solcaster.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,6 +20,9 @@ public class MemberController {
 
     @Autowired
     private MemberService service;
+
+    @Autowired
+    private BoardService boardService;
 
     /**`
      * 메인페이지 이동
@@ -96,6 +101,27 @@ public class MemberController {
         List<Member> list =  service.findAll();
         model.addAttribute("list",list);
         return "manage";
+    }
+
+    /**
+     * 회원 삭제
+     */
+    @GetMapping("/goMemDelete")
+    public String goManage(@RequestParam("mem_id") String mem_id) {
+        System.out.print(mem_id);
+
+        // 회원이 남긴 게시글 조회
+        List<Integer> qna_list = boardService.boardMemList(mem_id);
+
+        // 게시글 삭제
+        for (int i=0; i<qna_list.size()-1; i++) {
+            boardService.boardDelete(qna_list.get(i));
+        }
+
+        // 회원 삭제
+        service.memDelete(mem_id);
+
+       return "redirect:/goManage";
     }
 
 }

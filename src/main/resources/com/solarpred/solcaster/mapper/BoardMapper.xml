@@ -71,4 +71,9 @@
         update s_qna set qna_cnt = qna_cnt + 1  where qna_seq = #{qna_seq}
     </update>
 
+    <!-- 특정 회원이 쓴 글 조회 -->
+    <select id="boardMemList" resultType="List" parameterType="String">
+        select qna_seq from s_qna where mem_id = #{mem_id}
+    </select>
+
 </mapper>

@@ -70,4 +70,9 @@ public class BoardService {
     // 조회수 증가
     public void boardCntAdd(int qna_seq){mapper.boardCntAdd(qna_seq);}
 
+    // 특정 회원이 쓴 글 조회
+    public List<Integer> boardMemList(String mem_id) {
+        return mapper.boardMemList(mem_id);
+    }
+
 }

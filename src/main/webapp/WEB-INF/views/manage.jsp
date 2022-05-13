@@ -217,6 +217,10 @@
              display: inline-block;
              text-decoration: none;
          }
+
+         .update_hover {
+             cursor: pointer;
+         }
     </style>
 
 
@@ -382,7 +386,7 @@
                         <td>${fn:substring(list.mem_joindate,0,10)}</td>
                         <td>
                             <a href="goMemDelete?mem_id=${list.mem_id}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                            <a onclick="getValue('${list.mem_id}')" id="update" class="update" title="Update" data-toggle="tooltip"><i class="material-icons">&#xe876;</i></a>                        </td>
+                            <a onclick="getValue('${list.mem_id}')" id="update" class="update update_hover" title="Update" data-toggle="tooltip"><i class="material-icons">&#xe876;</i></a>                        </td>
 <%--                            <a href="goPurchaseUpdate?mem_id=${list.mem_id}" id="update" class="update" title="Update" data-toggle="tooltip"><i class="material-icons">&#xe876;</i></a>                        </td>--%>
                     </tr>
                 </c:forEach>

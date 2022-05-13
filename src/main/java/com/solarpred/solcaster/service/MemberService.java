@@ -33,6 +33,10 @@ public class MemberService {
         mapper.memDelete(mem_id);
     }
 
+    // 회원 구매 정보 업데이트
+    public void purchaseUpdate(Member vo) {
+        mapper.purchaseUpdate(vo);
+    }
 
 
 }

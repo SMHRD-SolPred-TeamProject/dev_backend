@@ -217,6 +217,10 @@
              display: inline-block;
              text-decoration: none;
          }
+
+         .update_hover {
+             cursor: pointer;
+         }
     </style>
 
 
@@ -382,7 +386,7 @@
                         <td>${fn:substring(list.mem_joindate,0,10)}</td>
                         <td>
                             <a href="goMemDelete?mem_id=${list.mem_id}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                            <a onclick="getValue(${list.mem_id})" id="update" class="update" title="Update" data-toggle="tooltip"><i class="material-icons">&#xe876;</i></a>                        </td>
+                            <a onclick="getValue('${list.mem_id}')" id="update" class="update update_hover" title="Update" data-toggle="tooltip"><i class="material-icons">&#xe876;</i></a>                        </td>
 <%--                            <a href="goPurchaseUpdate?mem_id=${list.mem_id}" id="update" class="update" title="Update" data-toggle="tooltip"><i class="material-icons">&#xe876;</i></a>                        </td>--%>
                     </tr>
                 </c:forEach>
@@ -505,7 +509,21 @@
 
     function getValue(mem_id) {
         console.log($("#inlineFormCustomSelect").val())
-        location.href=""
+        let purchase_val = $("#inlineFormCustomSelect").val();
+        $.ajax({
+            url : "/solarpred/purchaseUpdate",
+            type : "get",
+            data : {"mem_id":mem_id, "mem_purchase":purchase_val},
+            success : function() {
+                location.reload();
+            },
+            error : function(){
+                alert("error");
+            }
+        });
+    }
+    function test(mem_id) {
+        console.log(mem_id)
     }
 </script>
 

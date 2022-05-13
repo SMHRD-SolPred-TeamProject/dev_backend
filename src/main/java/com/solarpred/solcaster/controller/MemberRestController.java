@@ -5,6 +5,7 @@ import com.solarpred.solcaster.service.MemberService;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,6 +54,14 @@ public class MemberRestController {
     @RequestMapping (value = "/api/join", produces = "application/json;charset=utf-8", method = RequestMethod.POST)
     public void apiJoin(Member vo){
         service.joinInsert(vo);
+    }
+
+    /**
+     * 회원 구매 정보 수정
+     */
+    @RequestMapping("/purchaseUpdate")
+    public void purchaseUpdate (Member vo) {
+        service.purchaseUpdate(vo);
     }
 
 

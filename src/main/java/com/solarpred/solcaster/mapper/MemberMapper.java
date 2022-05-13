@@ -20,4 +20,7 @@ public interface MemberMapper {
     //회원삭제
     public void memDelete(String mem_id);
 
+    //회원구매정보 업데이트
+    public void purchaseUpdate(Member vo);
+
 }

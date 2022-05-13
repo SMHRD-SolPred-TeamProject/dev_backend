@@ -17,9 +17,14 @@
         select * from s_member where mem_id = #{mem_id} and mem_pw = #{mem_pw}
     </select>
 
-    <!-- 회원삭제-->
+    <!-- 회원삭제 -->
     <delete id="memDelete" parameterType="String">
         delete from s_member where mem_id = #{mem_id}
     </delete>
+
+    <!-- 회원 구매정보 업데이트 -->
+    <update id="purchaseUpdate" parameterType="com.solarpred.solcaster.domain.Member">
+        update s_member set mem_purchase = #{mem_purchase}  where mem_id = #{mem_id}
+    </update>
 
 </mapper>

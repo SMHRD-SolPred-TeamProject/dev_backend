@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Solcaster login page</title>
 
-    <link rel="icon" type="image/png" href="/img/pagelogo.png">
+    <link rel="icon" type="image/png" href="./img/pagelogo.png" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"

@@ -16,8 +16,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-    <link rel="icon" type="image/png" href="/img/pagelogo.png">
+    <link rel="icon" type="image/png" href="./img/pagelogo.png" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

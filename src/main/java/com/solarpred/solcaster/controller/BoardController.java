@@ -73,7 +73,7 @@ public class BoardController {
     public String boardView(@RequestParam("seq")int seq, @RequestParam("session_mem_id")String session_mem_id , Model model, HttpServletRequest request, HttpServletResponse response){
 
         // 쿠키 생성 및 조회수 메서드
-        createCookie(request, response, seq, session_mem_id);
+        //createCookie(request, response, seq, session_mem_id);
 
         Board vo = service.boardView(seq);
         model.addAttribute("vo",vo);

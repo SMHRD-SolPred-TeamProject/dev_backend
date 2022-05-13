@@ -16,7 +16,8 @@
     <meta content="" name="description" />
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon" />
+<%--    <link href="img/favicon.ico" rel="icon" />--%>
+    <link rel="icon" type="image/png" href="./img/pagelogo.png" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -133,6 +134,7 @@
                     <c:if test="${sessionScope.member.getMem_type() eq 'Y'}">
                         <a href="goManage" class="nav-item nav-link">MANAGE</a>
                     </c:if>
+                    <a href="myprofile" class="nav-item nav-link">MY PROFILE</a>
                     <a href="goLogOut" class="nav-item nav-link">LOGOUT</a>
                 </c:otherwise>
             </c:choose>

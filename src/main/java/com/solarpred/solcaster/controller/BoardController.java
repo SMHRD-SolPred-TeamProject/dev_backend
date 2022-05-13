@@ -163,11 +163,4 @@ public class BoardController {
         service.boardDelete(seq);
         return "redirect:/boardList";
     }
-
-    /**
-     * 특정 회원이 쓴 글 모두 조회
-     */
-
-
-
 }

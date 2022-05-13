@@ -40,6 +40,15 @@ public interface BoardMapper {
     // 카테고리 게시글 개수 조회
     public int boardListCategoryCnt(String qna_cat);
 
+    // 검색된 게시글 개수 조회
+    public int boardListSearchCnt(String qna_title_search);
+
+    // 검색된 게시글 조회
+    public List<Map<String, Object>> boardListSearch(CriteriaAdd cri);
+
+    // 조회수 증가
+    public void boardCntAdd(int qna_seq);
+
     // 특정 회원이 쓴 글 조회
     public List<Integer> boardMemList(String mem_id);
 }

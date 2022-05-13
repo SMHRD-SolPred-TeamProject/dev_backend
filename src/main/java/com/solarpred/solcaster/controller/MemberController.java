@@ -45,7 +45,7 @@ public class MemberController {
      */
     @GetMapping("/join")
     public String join(){
-        return "join.html";
+        return "join";
     }
 
     /**`

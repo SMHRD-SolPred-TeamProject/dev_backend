@@ -67,7 +67,7 @@
                 <div class="btn-groups">
                     <button id="btnLogin" class="login loginBtn, btn btn-warning btn-lg" type="submit">로그인</button>
                     <button class="join-l joinBtn, btn btn-warning btn-lg" type="button"
-                            onClick="location.href='${pageContext.request.contextPath}/join'">가입하기
+                            onClick="location.href='/solarpred/join'">가입하기
                     </button>
                 </div>
             </form>

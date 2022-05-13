@@ -73,7 +73,7 @@ public class BoardController {
     public String boardView(@RequestParam("seq")int seq, @RequestParam("session_mem_id")String session_mem_id , Model model, HttpServletRequest request, HttpServletResponse response){
 
         // 쿠키 생성 및 조회수 메서드
-        //createCookie(request, response, seq, session_mem_id);
+        createCookie(request, response, seq, session_mem_id);
 
         Board vo = service.boardView(seq);
         model.addAttribute("vo",vo);
@@ -85,17 +85,6 @@ public class BoardController {
 
         // 선택된 게시물의 객체
         Board vo = service.boardView(qna_seq);
-
-        // 과거 쿠키 불러와서 전부 삭제
-        Cookie[] oldCookies = request.getCookies(); // 모든 쿠키의 정보를 oldCookies 저장
-
-        if(oldCookies != null){ // 쿠키가 한개라도 있으면 실행
-            System.out.println("oldCookies.length = " + oldCookies.length);
-            for(int i=0; i< oldCookies.length; i++){
-                oldCookies[i].setMaxAge(0); // 유효시간을 0으로 설정
-                response.addCookie(oldCookies[i]); // 응답 헤더에 추가
-            }
-        }
 
         // 새로운 쿠키 생성
         Cookie[] cookies = request.getCookies();

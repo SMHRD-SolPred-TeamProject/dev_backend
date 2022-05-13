@@ -1,0 +1,52 @@
+@import url("https://webfontworld.github.io/SCoreDream/SCoreDream.css");
+
+.ScoreDream900 {
+  font-family: "SCoreDream";
+  font-weight: 900;
+}
+.ScoreDream800 {
+  font-family: "SCoreDream";
+  font-weight: 800;
+}
+.ScoreDream700 {
+  font-family: "SCoreDream";
+  font-weight: 700;
+}
+.ScoreDream600 {
+  font-family: "SCoreDream";
+  font-weight: 600;
+}
+.ScoreDream500 {
+  font-family: "SCoreDream";
+  font-weight: 500;
+}
+.ScoreDream400 {
+  font-family: "SCoreDream";
+  font-weight: 400;
+}
+.ScoreDream300 {
+  font-family: "SCoreDream";
+  font-weight: 300;
+}
+.ScoreDream200 {
+  font-family: "SCoreDream";
+  font-weight: 200;
+}
+.ScoreDream100 {
+  font-family: "SCoreDream";
+  font-weight: 100;
+}
+
+/* icon */
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+}
+
+/* font-color */
+.font-white {
+  color: whitesmoke;
+}

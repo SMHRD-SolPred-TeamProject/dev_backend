@@ -493,7 +493,7 @@
         // 페이지 숫자 부분
         for(var num = pagingData['test'].startPage;num <= pagingData['test'].endPage;num++){
             pagingResult += '<li class="page-item">';
-            pagingResult += '<a class="page-link" href="/solarpred/boardList?page='+num+'"/>">'+num+'</a>';
+            pagingResult += '<a class="page-link" href="/solarpred/boardList?page='+num+'">'+num+'</a>';
             <%--pagingResult += `<a class="page-link" href="<c:url value="/boardList?page=${num}"/>${num+1}</a>`;--%>
             pagingResult += '</li>';
         }

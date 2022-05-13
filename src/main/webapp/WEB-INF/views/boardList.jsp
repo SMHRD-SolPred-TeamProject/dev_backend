@@ -101,7 +101,7 @@
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
     <a
-            href="index.html"
+            href="/solarpred/"
             class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5"
     >
         <img src="./img/logo.png" class="logo" />
@@ -127,7 +127,7 @@
                     <a href="goLogOut" class="nav-item nav-link">LOGOUT</a>
                 </c:otherwise>
             </c:choose>
-            <a href="about.html" class="nav-item nav-link">About</a>
+            <a href="about" class="nav-item nav-link">About</a>
             <a href="/solarpred/boardList" class="nav-item nav-link">Service</a>
             <div class="nav-item dropdown">
                 <a
@@ -137,13 +137,13 @@
                 >Solution</a
                 >
                 <div class="dropdown-menu bg-light m-0">
-                    <a href="smartEnergy.html" class="dropdown-item">Smart Energy</a>
-                    <a href="smartFarm.html" class="dropdown-item">Smart Farm</a>
-                    <a href="smartStation.html" class="dropdown-item">Smart Station</a>
+                    <a href="smartEnergy" class="dropdown-item">Smart Energy</a>
+                    <a href="smartFarm" class="dropdown-item">Smart Farm</a>
+                    <a href="smartStation" class="dropdown-item">Smart Station</a>
                 </div>
             </div>
             <a
-                    href="index.html"
+                    href="/solarpred/"
                     class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block"
                     id="btn-home"
             >HOME<i class="fa fa-arrow-right ms-3"></i
@@ -293,8 +293,8 @@
             </div>
             <div class="col-lg-3 col-md-6 quick-links">
                 <h5 class="text-white mb-4">Quick Links</h5>
-                <a class="btn btn-link" href="index.html">HOME</a>
-                <a class="btn btn-link" href="about.html">About Us</a>
+                <a class="btn btn-link" href="/solarpred/">HOME</a>
+                <a class="btn btn-link" href="about">About Us</a>
                 <c:choose>
                     <c:when test="${sessionScope.member == null}">
                         <a class="btn btn-link" href="goLoginForm">Login</a>
@@ -303,7 +303,7 @@
                         <a class="btn btn-link" href="goLogOut">Logout</a>
                     </c:otherwise>
                 </c:choose>
-                <a class="btn btn-link" href="service.html">Our Services</a>
+                <a class="btn btn-link" href="service">Our Services</a>
             </div>
             <div class="col-lg-3 col-md-6">
                 <h5 class="text-white mb-4">Project Gallery</h5>
@@ -330,7 +330,7 @@
             </div>
             <div class="col-lg-3 col-md-6 vertical-center">
                 <a
-                        href="index.html"
+                        href="/solarpred/"
                 >
                     <img src="./img/logo.png" class="footer-logo" />
                 </a>

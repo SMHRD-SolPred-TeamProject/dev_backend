@@ -8,22 +8,35 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>로그인</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solcaster login page</title>
+
+    <link rel="icon" type="image/png" href="/img/pagelogo.png">
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-            crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="./css/login_join.css"/>
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap"
+            rel="stylesheet" />
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/login_join.css" />
+
+    <!-- ScoreDream 폰트 -->
+    <link rel="stylesheet" href="css/font.css" />
 </head>
 <body>
 <div class="container">
     <div class="input-form-backgroud row">
         <div class="input-form col-md-12">
-            <a href="index.html">
+            <a href="/solarpred/">
                 <img src="./img/logo.png" class="logo"/>
             </a>
 
@@ -54,7 +67,7 @@
                 <div class="btn-groups">
                     <button id="btnLogin" class="login loginBtn, btn btn-warning btn-lg" type="submit">로그인</button>
                     <button class="join-l joinBtn, btn btn-warning btn-lg" type="button"
-                            onClick="location.href='${pageContext.request.contextPath}/join.html'">가입하기
+                            onClick="location.href='${pageContext.request.contextPath}/join'">가입하기
                     </button>
                 </div>
             </form>

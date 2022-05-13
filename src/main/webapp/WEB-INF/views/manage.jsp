@@ -339,7 +339,7 @@
                     </div>
                 </div>
             </div>
-            <table class="table table-striped table-hover">
+            <table class="table table-hover">
                 <thead>
                 <tr>
                     <th>아이디</th>

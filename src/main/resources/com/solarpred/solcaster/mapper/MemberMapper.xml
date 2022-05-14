@@ -9,7 +9,7 @@
 
     <!--  회원가입  -->
     <insert id="joinInsert" parameterType="com.solarpred.solcaster.domain.Member">
-        insert into s_member values(#{mem_id}, #{mem_pw}, #{mem_name}, concat(#{mem_addr},#{mem_addrDetail}), #{mem_phone},'N','N',now())
+        insert into s_member values(#{mem_id}, #{mem_pw}, #{mem_name}, #{mem_zipcode}, #{mem_addr}, #{mem_addrdetail}, #{mem_phone},'N','N',now())
     </insert>
 
     <!--  로그인  -->

@@ -41,12 +41,12 @@
             <form class="validation-form ScoreDream400" style="align-items: center" novalidate>
                 <div class="col-md-8 mb-3 margin_center">
                     <label for="name">이름</label>
-                    <input type="text" class="form-control" name="mem_name" id="mem_name" required maxlength="30/" disabled />
+                    <input type="text" class="form-control" name="mem_name" id="mem_name" required maxlength="30/" disabled value="${sessionScope.member.mem_name}"/>
 
                 </div>
                 <div class="col-md-8 mb-3 margin_center">
                     <label for="id">아이디</label>
-                    <input type="text" class="form-control" name="mem_id" id="id" required maxlength="30" disabled />
+                    <input type="text" class="form-control" name="mem_id" id="id" required maxlength="30" disabled value="${sessionScope.member.mem_id}"/>
                     <div class="invalid-feedback">아이디를 입력해주세요.</div>
                 </div>
                 <div class="col-md-8 mb-3 margin_center">
@@ -62,7 +62,7 @@
                 <div class="col-md-8 mb-3 margin_center">
                     <label for="tel">연락처</label>
                     <input type="text" class="form-control" name="mem_phone" id="tel"
-                           onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required maxlength="11" />
+                           onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required maxlength="11" value="${sessionScope.member.mem_phone}"/>
                     <div class="invalid-feedback">연락처를 입력해주세요.</div>
                 </div>
 
@@ -71,7 +71,7 @@
                     <input type="text" class="form-control , col-3" id="sample6_postcode" placeholder="우편번호"
                            style="margin-bottom: 10px" readonly />
                     <input type="text" class="form-control , col-12" id="sample6_address" placeholder="주소" readonly
-                           style="margin-bottom: 10px" />
+                           style="margin-bottom: 10px" value="${sessionScope.member.mem_addr}"/>
                     <input type="text" class="form-control , col-12" id="sample6_detailAddress" placeholder="상세주소"
                            style="margin-bottom: 10px" />
                     <div class="addr__container">
@@ -83,7 +83,7 @@
                     <button class="modify modifyBtn, btn btn-warning btn-lg" type="submit" style="margin: 0 auto">
                         정보수정
                     </button>
-                    <button class="reset resetBtn, btn btn-warning btn-lg" type="submit" style="margin: 0 auto">
+                    <button class="reset resetBtn, btn btn-warning btn-lg" type="button" onclick="resetInfo()" style="margin: 0 auto">
                         다시작성
                     </button>
                 </div>
@@ -152,8 +152,16 @@
             },
         }).open();
     }
+
+    function resetInfo() {
+        $("#pw").val("");
+        $("#pwcheck").val("");
+        $("#tel").val("");
+        $("#sample6_detailAddress").val("");
+    }
 </script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </body>
 
 </html>

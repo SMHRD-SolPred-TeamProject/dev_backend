@@ -124,7 +124,8 @@
         <img src="./img/logo.png" class="logo" />
       </a>
       <!-- 폼에 method, action 채워야 함! -->
-      <form action="" class="validation-form ScoreDream400" style="align-items: center" novalidate>
+      <form action="checkPW" method="post" class="validation-form ScoreDream400" style="align-items: center" novalidate>
+        <input name="mem_id" value="${sessionScope.member.mem_id}" type="hidden"/>
         <div class="col-md-8 mb-3 margin_center">
           <label for="pw">비밀번호</label>
           <input type="password" class="form-control" name="mem_pw" id="pw" required maxlength="30" />
@@ -135,7 +136,7 @@
 
         <div class="btn-groups">
           <button class="pwcheck pweBtn, btn btn-warning btn-lg" type="submit"
-                  style="font-family: Font Awesome 5 Free" ;>
+                  style="font-family: Font Awesome 5 Free" >
             비밀번호 확인
           </button>
 

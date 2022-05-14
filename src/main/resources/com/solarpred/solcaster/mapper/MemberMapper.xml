@@ -27,4 +27,9 @@
         update s_member set mem_purchase = #{mem_purchase}  where mem_id = #{mem_id}
     </update>
 
+    <!-- 회원 정보 수정 전 비밀번호 확인 -->
+    <select id="checkPW" parameterType="String" resultType="String">
+        select mem_pw from s_member where mem_id = #{mem_id}
+    </select>
+
 </mapper>

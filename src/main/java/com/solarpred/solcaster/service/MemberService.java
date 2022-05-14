@@ -38,5 +38,8 @@ public class MemberService {
         mapper.purchaseUpdate(vo);
     }
 
+    // 회원 정보 수정 전 비밀번호 확인
+    public String checkPW(String mem_id) { return mapper.checkPW(mem_id);}
+
 
 }

@@ -38,7 +38,7 @@
                 <img src="./img/logo.png" class="logo" />
             </a>
             <!-- 폼에 method, action 채워야 함! -->
-            <form class="validation-form ScoreDream400" style="align-items: center" novalidate>
+            <form class="validation-form ScoreDream400" style="align-items: center" action="joinInsert" method="post" novalidate>
                 <div class="col-md-8 mb-3 margin_center">
                     <label for="name">이름</label>
                     <input type="text" class="form-control" name="mem_name" id="mem_name" required maxlength="30/" />
@@ -68,11 +68,11 @@
 
                 <div class="col-md-8 mb-3 margin_center">
                     <label for="address">주소</label>
-                    <input type="text" class="form-control , col-3" id="sample6_postcode" placeholder="우편번호"
+                    <input type="text" class="form-control , col-3" id="sample6_postcode" name="mem_zipcode" placeholder="우편번호"
                            style="margin-bottom: 10px" readonly />
-                    <input type="text" class="form-control , col-12" id="sample6_address" placeholder="주소" readonly
+                    <input type="text" class="form-control , col-12" id="sample6_address" name="mem_addr" placeholder="주소" readonly
                            style="margin-bottom: 10px" />
-                    <input type="text" class="form-control , col-12" id="sample6_detailAddress" placeholder="상세주소"
+                    <input type="text" class="form-control , col-12" id="sample6_detailAddress" name="mem_addrdetail" placeholder="상세주소"
                            style="margin-bottom: 10px" />
                     <div class="addr__container">
                         <input type="button" class="daumBtn , btn btn-warning" value="우편번호 찾기" onclick="openDaumPostCode()" />

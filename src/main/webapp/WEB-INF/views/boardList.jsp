@@ -196,11 +196,11 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>글쓴이</th>
-                    <th>작성일</th>
-                    <th>조회</th>
+                    <th width="5%">번호</th>
+                    <th width="65%">제목</th>
+                    <th width="10%">글쓴이</th>
+                    <th width="15%">작성일</th>
+                    <th width="5%">조회</th>
                 </tr>
                 </thead>
                 <tbody id="tbodyBoardList">

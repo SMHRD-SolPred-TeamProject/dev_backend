@@ -35,5 +35,8 @@ public class Controller {
         return "predictDashboard";
     }
 
-
+    @GetMapping("/valuesTest")
+    public String valuesTest(){
+        return "valuesTest";
+    }
 }

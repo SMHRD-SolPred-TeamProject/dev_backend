@@ -23,4 +23,7 @@ public interface MemberMapper {
     //회원구매정보 업데이트
     public void purchaseUpdate(Member vo);
 
+    //회원정보 수정 전 비밀번호 확인
+    public String checkPW(String mem_id);
+
 }

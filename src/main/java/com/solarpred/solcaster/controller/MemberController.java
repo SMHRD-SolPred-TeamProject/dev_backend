@@ -131,4 +131,18 @@ public class MemberController {
         return "myProfilePwCheck";
     }
 
+    /**
+     * 회원 수정 비밀번호 체크
+     */
+    @PostMapping("/checkPW")
+    public String checkPW(String mem_id, String mem_pw) {
+        System.out.println("mem_id = " + mem_id);
+        System.out.println("mem_pw : " + mem_pw);
+        String real_mem_pw = service.checkPW(mem_id);
+        if (mem_pw.equals(real_mem_pw)) {
+            return "myProfileEditForm";
+        }
+        return "redirect:/myprofile";
+    }
+
 }

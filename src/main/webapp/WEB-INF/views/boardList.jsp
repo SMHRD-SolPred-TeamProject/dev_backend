@@ -8,6 +8,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="true" %>
 
 <%-- 문자열 자르는 함수 사용 --%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -23,7 +24,7 @@
     <meta content="" name="description" />
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon" />
+    <link rel="icon" type="image/png" href="./img/pagelogo.png" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -492,7 +493,7 @@
         // 페이지 숫자 부분
         for(var num = pagingData['test'].startPage;num <= pagingData['test'].endPage;num++){
             pagingResult += '<li class="page-item">';
-            pagingResult += '<a class="page-link" href="/solarpred/boardList?page='+num+'"/>">'+num+'</a>';
+            pagingResult += '<a class="page-link" href="/solarpred/boardList?page='+num+'">'+num+'</a>';
             <%--pagingResult += `<a class="page-link" href="<c:url value="/boardList?page=${num}"/>${num+1}</a>`;--%>
             pagingResult += '</li>';
         }

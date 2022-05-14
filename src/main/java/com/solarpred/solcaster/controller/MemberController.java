@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.Map;
 
 @org.springframework.stereotype.Controller
 public class MemberController {
@@ -45,7 +44,7 @@ public class MemberController {
      */
     @GetMapping("/join")
     public String join(){
-        return "join.html";
+        return "join";
     }
 
     /**`
@@ -122,6 +121,14 @@ public class MemberController {
         service.memDelete(mem_id);
 
        return "redirect:/goManage";
+    }
+
+    /**
+     * 회원 수정 페이지 이동
+     */
+    @GetMapping("/myprofile")
+    public String myprofile(){
+        return "myProfilePwCheck";
     }
 
 }

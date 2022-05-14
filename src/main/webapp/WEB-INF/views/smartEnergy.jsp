@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
     <meta charset="utf-8" />
     <title>SolCaster - Solar Power Monitoring System</title>
@@ -14,8 +15,7 @@
     <meta content="" name="description" />
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon" />
-    <link rel="icon" type="image/png" href="/img/pagelogo.png">
+    <link rel="icon" type="image/png" href="./img/pagelogo.png" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -92,7 +92,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="goLoginForm" class="nav-item nav-link">LOGIN</a>
+            <c:choose>
+                <c:when test="${sessionScope.member == null}">
+                    <a href="goLoginForm" class="nav-item nav-link">LOGIN</a>
+                </c:when>
+                <c:otherwise>
+                    <c:if test="${sessionScope.member.getMem_type() eq 'Y'}">
+                        <a href="goManage" class="nav-item nav-link">MANAGE</a>
+                    </c:if>
+                    <a href="goLogOut" class="nav-item nav-link">LOGOUT</a>
+                </c:otherwise>
+            </c:choose>
             <a href="about" class="nav-item nav-link">About</a>
             <a href="boardList" class="nav-item nav-link">Service</a>
             <div class="nav-item dropdown">
@@ -227,7 +237,14 @@
                 <h5 class="text-white mb-4">Quick Links</h5>
                 <a class="btn btn-link" href="/solarpred/">HOME</a>
                 <a class="btn btn-link" href="about">About Us</a>
-                <a class="btn btn-link" href="goLoginForm">Login</a>
+                <c:choose>
+                    <c:when test="${sessionScope.member == null}">
+                        <a class="btn btn-link" href="goLoginForm">Login</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="btn btn-link" href="goLogOut">Logout</a>
+                    </c:otherwise>
+                </c:choose>
                 <a class="btn btn-link" href="service">Our Services</a>
             </div>
             <div class="col-lg-3 col-md-6">

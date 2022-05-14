@@ -30,7 +30,10 @@ public class Controller {
         return "service";
     }
 
-
+    @GetMapping("/predictDashboard")
+    public String predictDashboard(){
+        return "predictDashboard";
+    }
 
 
 }

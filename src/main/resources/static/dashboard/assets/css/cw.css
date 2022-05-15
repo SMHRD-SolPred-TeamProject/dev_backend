@@ -1,0 +1,140 @@
+.highcharts-figure,
+.highcharts-data-table table {
+  min-width: 400px;
+  max-width: 2500px;
+  margin: 1em auto;
+}
+
+#container,
+#container2,
+#predContainer,
+#predContainer2 {
+  height: 500px;
+}
+
+.highcharts-data-table table {
+  font-family: Verdana, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid #ebebeb;
+  margin: 10px auto;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.highcharts-data-table caption {
+  padding: 1em 0;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.highcharts-data-table th {
+  font-weight: 600;
+  padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+  padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+  background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+  background: #f1f7ff;
+}
+
+/* 실시간발전량, 예측률 뭐 그런거 있는 네모네모 박스들 */
+.card-a {
+  width: 250px;
+}
+
+.card-b {
+  width: 300px;
+}
+
+.card-c {
+  width: 350px;
+}
+
+.marginleft15 {
+  margin-left: 15px;
+}
+
+.floatright {
+  float: right;
+}
+
+.inline {
+  display: inline;
+}
+
+/* 날씨 */
+.weather {
+  float: right;
+}
+
+.CurrIcon,
+.CurrTemp {
+  display: inline-block;
+}
+
+.City {
+  margin-left: 80px;
+  font-size: 1.5em;
+}
+
+.CurrIcon {
+  width: 120px;
+  height: 120px;
+}
+
+.placeright {
+  text-align: right !important;
+}
+
+/* 실시간발전량 그래프 */
+.AOD {
+  width: 4500px;
+}
+
+.marginbottom80 {
+  margin-bottom: 80px;
+}
+
+/* solution 페이지 */
+.solution-img {
+  border-radius: 7px;
+  -moz-border-radius: 7px;
+  -khtml-border-radius: 7px;
+  -webkit-border-radius: 7px;
+}
+
+.width80 {
+  width: 80%;
+}
+
+.bg-gradient-success {
+  text-align: center;
+}
+
+/* solution 페이지 -> 글씨타이핑효과*/
+.text_box {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.blink {
+  animation: blink 0.5s infinite;
+  font-size: 2.5rem;
+}
+
+@keyframes blink {
+  to {
+    opacity: 0;
+  }
+}

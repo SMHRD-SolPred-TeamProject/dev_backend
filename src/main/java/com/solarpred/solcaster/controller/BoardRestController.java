@@ -48,13 +48,13 @@ public class BoardRestController {
      * 전체 게시글 보기
      */
     @GetMapping("/loadBoardList")
-    public List<Map<String, Object>> loadBoardList(Criteria cri){
+    public List<Map<String, Object>> loadBoardList(CriteriaAdd cri){
 
         // 글 개수
         int boardListCnt = service.boardListCnt();
 
         // 페이징 객체
-        Paging paging = new Paging();
+        PagingAdd paging = new PagingAdd();
         paging.setCri(cri);
         paging.setTotalCount(boardListCnt);
 

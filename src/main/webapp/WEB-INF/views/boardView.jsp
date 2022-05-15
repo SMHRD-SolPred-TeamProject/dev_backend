@@ -7,6 +7,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<%-- 개행 문자 설정 --%>
+<% pageContext.setAttribute("replaceChar", "\n"); %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -143,12 +148,14 @@
 
         <%-- 글 부분 start --%>
         <header class="major">
-            <h4 style="text-align: left">제목 : ${vo.qna_title}</h4>
+            <h4 style="text-align: left">제목 : <c:out value="${vo.qna_title}" /></h4>
             <br>
-            <h6 style="text-align: left; margin-bottom: 1%" class="content-writer ScoreDream500">작성자 : ${vo.mem_id}</h6>
+            <h6 style="text-align: left; margin-bottom: 1%" class="content-writer ScoreDream500">작성자 : <c:out value="${vo.mem_id}" /></h6>
         </header>
         <hr style="margin-top: 0" />
-        <p id="main-content">${vo.qna_content}</p>
+        <p id="main-content">
+            <c:out value='${fn:replace(vo.qna_content, replaceChar, "<br/>")}' escapeXml="false"/>
+        </p>
         <hr/>
         </section>
         <%-- 글 부분 end --%>
@@ -167,7 +174,7 @@
             <table id="list">
                 <c:forEach var="list" items="${list}">
                     <tr>
-                        <td>${list.reply_content}</td>
+                        <td><c:out value='${fn:replace(list.reply_content, replaceChar, "<br/>")}' escapeXml="false"/></td>
                         <td>${list.reply_date}</td>
                     </tr>
                 </c:forEach>
@@ -343,7 +350,7 @@
         let result = "";
         $.each(data,(index,vo)=>{
             result += "<tr class='reply"+'${vo.qna_seq}'+"'><td id='content"+vo.reply_seq+"' class='pt-3'>";
-            result += data[index]['reply_content'];
+            result += data[index]['reply_content'].replace(/\n/g, '<br/>');
             result += "</td></tr>";
             result += "<tr class='reply"+'${vo.qna_seq}'+"'><td>";
             result += data[index]['reply_date'];

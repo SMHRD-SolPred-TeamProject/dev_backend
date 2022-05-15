@@ -145,4 +145,44 @@ public class MemberController {
         return "redirect:/myprofile";
     }
 
+    /**
+     * 대쉬보드 로그인 페이지 이동
+     */
+    @GetMapping("dashboardLoginPage")
+    public String dashboardLoginPage(HttpSession session){
+        // 이전 메인웹에서 로그인한 상태라면 세션정보 삭제
+        session.removeAttribute("member");
+
+        return  "dashboard/dashboardLogin";
+    }
+
+    /**
+     * 대쉬보드 로그인 기능
+     */
+    @PostMapping("dashboardLogin")
+    public String dashboardLogin(Member vo, HttpServletRequest request, Model model){
+
+        //세션 객체 생성
+        HttpSession session = request.getSession();
+
+        Member member = service.login(vo);
+        
+        // ID, PW가 일치 할 때
+        if(member != null){
+            model.addAttribute("member", member);
+
+            // 구매여부가 Y일 때
+            if(member.getMem_purchase().equals("Y")){
+                return "dashboard/todayDashboard";
+            }
+        }
+
+        return "dashboard/dashboardLogin";
+    }
+
+    @GetMapping("dashboard/todayDashboard")
+    public String todayDashboard(){
+        return "dashboard/todayDashboard";
+    }
+
 }

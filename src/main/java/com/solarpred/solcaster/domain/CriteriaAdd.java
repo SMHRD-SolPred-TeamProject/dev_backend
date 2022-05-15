@@ -7,7 +7,7 @@ import lombok.ToString;
 public class CriteriaAdd {
 
     // 특정 페이지 조회를 위한 클래스
-    private int page; // 현재 페이지 번호
+    private int page2; // 현재 페이지 번호
     private int perPageNum; // 페이지당 보여줄 게시글의 개수
 
     // 게시글 카테고리
@@ -20,26 +20,26 @@ public class CriteriaAdd {
     public int getPageStart() {
         // 특정 페이지의 범위를 정하는 구간, 현재 페이지의 게시글 시작 번호
         // 0 ~ 10 , 10 ~ 20 이런식으로
-        return (this.page -1) * perPageNum;
+        return (this.page2 -1) * perPageNum;
     }
 
     public CriteriaAdd() {
         // 기본 생성자 : 최초 게시판에 진입시 필요한 기본값
-        this.page = 1;
+        this.page2 = 1;
         this.perPageNum = 15;
     }
 
     // 현재 페이지 번호 page : getter, setter
     public int getPage() {
-        return page;
+        return page2;
     }
 
-    public void setPage(int page) {
-        if(page <= 0) {
-            this.page = 1;
+    public void setPage(int page22) {
+        if(page2 <= 0) {
+            this.page2 = 1;
 
         } else {
-            this.page = page;
+            this.page2 = page2;
         }
     }
 

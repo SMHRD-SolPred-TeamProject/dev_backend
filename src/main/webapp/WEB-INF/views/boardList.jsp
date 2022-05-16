@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: smhrd
@@ -7,11 +6,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="true" %>
 
 <%-- 문자열 자르는 함수 사용 --%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<%-- 개행 문자 설정 --%>
+<% pageContext.setAttribute("replaceChar", "\n"); %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -207,7 +210,7 @@
                 <c:forEach var="list" items="${list}" >
                     <tr>
                         <td>${list.qna_seq}</td>
-                        <td><a href="/solarpred/boardView?seq=${list.qna_seq}&session_mem_id=${sessionScope.member.mem_id}"><b>[${list.qna_cat}]</b> ${list.qna_title}</a></td>
+                        <td><a href="/solarpred/boardView?seq=${list.qna_seq}&qna_cat=${list.qna_cat}&session_mem_id=${sessionScope.member.mem_id}"><b>[${list.qna_cat}]</b> ${list.qna_title}</a></td>
                         <td>${list.mem_id}</td>
                         <td>
                                 ${fn:substring(list.qna_date,0,10)}
@@ -487,13 +490,15 @@
             pagingResult += '</li>';
         }
 
+        console.log("pagingData = "+ pagingData)
+        console.log("pagingData['test'] = "+ pagingData['test'])
         console.log("pagingData['test'].startPage = "+ pagingData['test'].startPage)
         console.log("pagingData['test'].endPage = " + pagingData['test'].endPage)
 
         // 페이지 숫자 부분
         for(var num = pagingData['test'].startPage;num <= pagingData['test'].endPage;num++){
             pagingResult += '<li class="page-item">';
-            pagingResult += '<a class="page-link" href="/solarpred/boardList?page='+num+'">'+num+'</a>';
+            pagingResult += '<a class="page-link" href="/solarpred/category2?page2='+num+'&qna_cat=구매문의">'+num+'</a>';
             <%--pagingResult += `<a class="page-link" href="<c:url value="/boardList?page=${num}"/>${num+1}</a>`;--%>
             pagingResult += '</li>';
         }

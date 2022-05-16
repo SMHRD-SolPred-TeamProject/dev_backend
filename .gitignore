@@ -39,4 +39,4 @@ out/
 ### eclipse ###
 /.metadata/
 /.recommenders/
-stdlog.log
+*.log

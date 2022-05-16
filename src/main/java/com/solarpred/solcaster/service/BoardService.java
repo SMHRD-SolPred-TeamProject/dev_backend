@@ -19,7 +19,7 @@ public class BoardService {
     BoardMapper mapper;
 
     // 게시글 전체 조회
-    public List<Map<String, Object>> boardList(Criteria cri){
+    public List<Map<String, Object>> boardList(CriteriaAdd cri){
         return mapper.boardList(cri);
     }
 

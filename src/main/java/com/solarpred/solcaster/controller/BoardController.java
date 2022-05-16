@@ -1,9 +1,6 @@
 package com.solarpred.solcaster.controller;
 
-import com.solarpred.solcaster.domain.Board;
-import com.solarpred.solcaster.domain.Criteria;
-import com.solarpred.solcaster.domain.CriteriaAdd;
-import com.solarpred.solcaster.domain.Paging;
+import com.solarpred.solcaster.domain.*;
 import com.solarpred.solcaster.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,13 +27,19 @@ public class BoardController {
      * 게시글 전체 조회
      */
     @GetMapping("/boardList")
-    public String boardList(Criteria cri, Model model){
+    public String boardList(CriteriaAdd cri, Model model){
+
+
+        System.out.println("model.getAttribute(list) = " + model.getAttribute("list"));
+
+
+
 
         // 전체 글 개수
         int boardListCnt = service.boardListCnt();
 
         // 페이징 객체
-        Paging paging = new Paging();
+        PagingAdd paging = new PagingAdd();
         paging.setCri(cri);
         paging.setTotalCount(boardListCnt);
 
@@ -152,4 +155,30 @@ public class BoardController {
         service.boardDelete(seq);
         return "redirect:/boardList";
     }
+
+    /**
+     * 선택된 카테고리 이동
+     */
+    @GetMapping("/category2")
+    public String category(CriteriaAdd cri,Model model){
+
+        int boardListCnt = service.boardListCategoryCnt(cri.getQna_cat());
+        System.out.println("boardListCnt = " + boardListCnt);
+
+        // 페이징 객체
+        PagingAdd paging = new PagingAdd();
+        paging.setCri(cri);
+        paging.setTotalCount(boardListCnt);
+
+        List<Map<String, Object>> list = service.category(cri);
+
+        System.out.println("list = " + list);
+
+        model.addAttribute("list",list);
+        model.addAttribute("paging",paging);
+
+        return "boardList";
+    }
+
+
 }

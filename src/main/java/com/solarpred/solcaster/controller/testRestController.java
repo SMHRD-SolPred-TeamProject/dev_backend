@@ -11,11 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+
 @RestController
 public class testRestController {
     @Autowired
     testService service;
 
+    /**
+     * 안드로이드 View 테스값 전달 메서드
+     */
     @CrossOrigin("*") // 모든 요청에 접근 허용
     @RequestMapping(value = "/api/test", method = RequestMethod.GET)
     public JSONObject apiLogin(){
@@ -45,6 +51,7 @@ public class testRestController {
         jsonMain.put("test", jArray);
         return jsonMain;
     }
+
 
 
 

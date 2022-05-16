@@ -30,9 +30,15 @@ public class Controller {
         return "service";
     }
 
+
     @GetMapping("/predictDashboard")
     public String predictDashboard(){
         return "predictDashboard";
+    }
+
+    @GetMapping("/todayDashboard")
+    public String todayDashboard(){
+        return "/dashboard/todayDashboard";
     }
 
     @GetMapping("/valuesTest")

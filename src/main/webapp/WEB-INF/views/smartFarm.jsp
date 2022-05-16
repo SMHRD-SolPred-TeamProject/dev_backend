@@ -94,15 +94,12 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <c:choose>
-                <c:when test="${sessionScope.member == null}">
-                    <a href="goLoginForm" class="nav-item nav-link">LOGIN</a>
-                </c:when>
-                <c:otherwise>
+                <c:when test="${sessionScope.member != null}">
                     <c:if test="${sessionScope.member.getMem_type() eq 'Y'}">
                         <a href="goManage" class="nav-item nav-link">MANAGE</a>
                     </c:if>
-                    <a href="goLogOut" class="nav-item nav-link">LOGOUT</a>
-                </c:otherwise>
+                    <a href="myprofile" class="nav-item nav-link">MY PROFILE</a>
+                </c:when>
             </c:choose>
             <a href="about" class="nav-item nav-link">About</a>
             <a href="boardList" class="nav-item nav-link">Service</a>
@@ -114,6 +111,14 @@
                     <a href="smartStation" class="dropdown-item">Smart Station</a>
                 </div>
             </div>
+            <c:choose>
+                <c:when test="${sessionScope.member == null}">
+                    <a href="goLoginForm" class="nav-item nav-link">LOGIN</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="goLogOut" class="nav-item nav-link">LOGOUT</a>
+                </c:otherwise>
+            </c:choose>
             <a href="/solarpred/" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block" id="btn-home">HOME<i
                     class="fa fa-arrow-right ms-3"></i></a>
         </div>
@@ -145,7 +150,7 @@
 <!-- Page Header End -->
 
 <!-- Quote Start -->
-<div class="container-fluid bg-light overflow-hidden px-lg-0" style="margin: 6rem 0">
+<div class="container-fluid bg-light overflow-hidden px-lg-0">
     <div class="container quote px-lg-0">
         <div class="row g-0 mx-lg-0">
             <div class="col-lg-6 ps-lg-0 wow fadeIn" data-wow-delay="0.1s" style="min-height: 400px">

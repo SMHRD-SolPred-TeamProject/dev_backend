@@ -132,7 +132,7 @@ public class MemberController {
     }
 
     /**
-     * 회원 수정 비밀번호 체크
+     * 회원 정보 수정 전 비밀번호 체크
      */
     @PostMapping("/checkPW")
     public String checkPW(String mem_id, String mem_pw) {
@@ -143,6 +143,14 @@ public class MemberController {
             return "myProfileEditForm";
         }
         return "redirect:/myprofile";
+    }
+
+    /**
+     * 회원 정보 수정
+     */
+    @PostMapping("/goUpdateInfo")
+    public String goUpdateInfo() {
+
     }
 
 }

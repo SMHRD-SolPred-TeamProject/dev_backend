@@ -33,6 +33,13 @@
 
     <!-- ScoreDream 폰트 -->
     <link href="dashboard/assets/css/font.css" rel="stylesheet" />
+
+    <style>
+        <%-- 스크롤바 숨기기 --%>
+        body{-ms-overflow-style:none; }
+        body::-webkit-scrollbar { display:none; }
+    </style>
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">

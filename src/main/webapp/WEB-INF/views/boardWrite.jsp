@@ -39,6 +39,11 @@
     <!-- ScoreDream 폰트 -->
     <link href="css/font.css" rel="stylesheet" />
 
+    <style>
+        <%-- 스크롤바 숨기기 --%>
+        body{-ms-overflow-style:none; }
+        body::-webkit-scrollbar { display:none; }
+    </style>
 
 </head>
 

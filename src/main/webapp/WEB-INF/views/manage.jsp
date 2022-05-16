@@ -42,15 +42,15 @@
     <link href="css/style.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<%--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">--%>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<%--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">--%>
 
     <!-- ScoreDream 폰트 -->
     <link href="css/font.css" rel="stylesheet" />
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<%--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>--%>
 
 
     <style>
@@ -60,9 +60,8 @@
 
         body {
             color: #566787;
+            font-family: "Open Sans", sans-serif;
             background: #f5f5f5;
-            font-family: 'Varela Round', sans-serif;
-            font-size: 13px;
         }
         .table-responsive {
             margin: 30px 0;
@@ -235,10 +234,11 @@
     </script>
 </head>
 
-<body style="font-family: 'Open Sans', sans-serif">
+<body>
 <!-- Spinner Start -->
-<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+<div id="spinner"
+     class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
         <span class="sr-only">Loading...</span>
     </div>
 </div>
@@ -332,7 +332,6 @@
                     <a href="goLogOut" class="nav-item nav-link">LOGOUT</a>
                 </c:otherwise>
             </c:choose>
-            </c:choose>f
             <a
                     href="/solarpred/"
                     class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block"

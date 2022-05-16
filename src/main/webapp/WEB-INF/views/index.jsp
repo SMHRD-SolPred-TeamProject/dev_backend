@@ -98,16 +98,12 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <c:choose>
-                <c:when test="${sessionScope.member == null}">
-                    <a href="goLoginForm" class="nav-item nav-link">LOGIN</a>
-                </c:when>
-                <c:otherwise>
+                <c:when test="${sessionScope.member != null}">
                     <c:if test="${sessionScope.member.getMem_type() eq 'Y'}">
                         <a href="goManage" class="nav-item nav-link">MANAGE</a>
                     </c:if>
-                    <a href="myprofile" class="nav-item nav-link">MY PROFILE</a>
-                    <a href="goLogOut" class="nav-item nav-link">LOGOUT</a>
-                </c:otherwise>
+                        <a href="myprofile" class="nav-item nav-link">MY PROFILE</a>
+                </c:when>
             </c:choose>
             <a href="about" class="nav-item nav-link">About</a>
             <a href="boardList" class="nav-item nav-link">Service</a>
@@ -119,6 +115,15 @@
                     <a href="smartStation" class="dropdown-item">Smart Station</a>
                 </div>
             </div>
+            <c:choose>
+                <c:when test="${sessionScope.member == null}">
+                    <a href="goLoginForm" class="nav-item nav-link">LOGIN</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="goLogOut" class="nav-item nav-link">LOGOUT</a>
+                </c:otherwise>
+            </c:choose>
+
             <a href="/solarpred/" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block" id="btn-home">HOME<i
                     class="fa fa-arrow-right ms-3"></i></a>
         </div>

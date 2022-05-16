@@ -38,7 +38,7 @@
                 <img src="./img/logo.png" class="logo" />
             </a>
             <!-- 폼에 method, action 채워야 함! -->
-            <form class="validation-form ScoreDream400" style="align-items: center" novalidate>
+            <form action="goUpdateInfo" action="post" class="validation-form ScoreDream400" style="align-items: center" novalidate>
                 <div class="col-md-8 mb-3 margin_center">
                     <label for="name">이름</label>
                     <input type="text" class="form-control" name="mem_name" id="mem_name" required maxlength="30/" disabled value="${sessionScope.member.mem_name}"/>
@@ -56,7 +56,7 @@
 
                 <div class="col-md-8 mb-3 margin_center">
                     <label for="pwcheck">비밀번호 확인</label>
-                    <input type="password" class="form-control" name="pwcheck" id="pwcheck" required maxlength="30" />
+                    <input type="password" class="form-control" name="pwcheck" id="pwcheck" required maxlength="30" oninput="passwordCheck()"/>
                     <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
                 </div>
                 <div class="col-md-8 mb-3 margin_center">
@@ -158,6 +158,9 @@
         $("#pwcheck").val("");
         $("#tel").val("");
         $("#sample6_detailAddress").val("");
+    }
+
+    function passwordCheck() {
     }
 </script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

@@ -150,7 +150,7 @@ public class MemberController {
      */
     @PostMapping("/goUpdateInfo")
     public String goUpdateInfo() {
-
+        return "";
     }
 
 }

@@ -5,6 +5,10 @@
     <select id="getTemp_weather" parameterType="String" resultType="com.solarpred.solcaster.domain.Temp_weather">
         select * from temp_weather where date_time like #{parsingTime}
     </select>
+    
+    <select id="DashBoardSelect" resultType="com.solarpred.solcaster.domain.DashBoard">
+        select * from s_real_data order by r_date desc limit 1
+    </select>
 
 
 </mapper>

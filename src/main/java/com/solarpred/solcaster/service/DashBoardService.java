@@ -17,7 +17,7 @@ public class DashBoardService {
     DashBoardMapper mapper;
 
     /**
-     * 대시보드에서 20개의 발전량 값 져오기
+     * 대시보드에서 20개의 현재 발전량 값 져오기
      */
     public List<DashBoard> getAOD(String parsingTime){
         return mapper.getAOD(parsingTime);
@@ -29,7 +29,21 @@ public class DashBoardService {
     public DashBoard currentGetAOD(String parsingTime){
         return mapper.currentGetAOD(parsingTime);
     }
-    
+
+    /**
+     * 대시보드에서 20개의 예측 발전량 값 져오기
+     */
+    public List<Prediction> getPreAOD(String parsingTime){
+        return mapper.getPreAOD(parsingTime);
+    }
+
+    /**
+     * 1시간 후 발전량 가져오기
+     */
+    public Prediction preGetAOD(String parsingTime){
+        return mapper.preGetAOD(parsingTime);
+    }
+
     public List<DashBoard> DashBoardSelect(String parsingTime) {
     	return mapper.DashBoardSelect(parsingTime);
     }

@@ -25,7 +25,7 @@ public class DashBoardRestController {
     DashBoardService service;
 
     /**
-     * 대시보드에서 20개의 발전량 값 져오기
+     * 대시보드에서 20개의 현재 발전량 값 져오기
      */
     @CrossOrigin("*") // 모든 요청에 접근 허용
     @RequestMapping(value = "/api/getAOD", method = RequestMethod.GET)
@@ -89,67 +89,71 @@ public class DashBoardRestController {
         return jsonMain;
     }
 
-    //현재 시간 % 형식에 맞춰 출력 메서드
-    public String currentTime(){
-        //시간구하기
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        //시간형식 맞출 객체 생성
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    /**
+     * 대시보드에서 20개의 예측 발전량 값 져오기
+     */
+    @CrossOrigin("*") // 모든 요청에 접근 허용
+    @RequestMapping(value = "/api/getPreAOD", method = RequestMethod.GET)
+    public JSONObject getPreAOD(){
 
-        //현재 시간 변수
-        String current_time = sdf.format(timestamp);
+        // 현재시간 SQL문에 알맞는 형식으로 불러오기
+        String parsingTime = currentTimeAddOneHour();
 
-        //sql문에 들어갈 현재시간 변수에 '%' 합치기 (2022-05-05 00:00:0% 이런 형식)
-        //SELECT * FROM temp_weather WHERE date_time LIKE '2022-05-05 00:00:0%' ;
-        String substring_date = current_time.substring(0,18)+"%";
-        return substring_date;
+        // json-simple 라이브러리 추가 필요(JSON 객체 생성)
+        JSONObject jsonMain = new JSONObject(); // json 객체
+
+        List<Prediction> list = service.getPreAOD(parsingTime);
+        JSONArray jArray = new JSONArray(); // json배열
+
+        for(int i=0; i<list.size(); i++){
+            Prediction items = list.get(i);
+            JSONObject row = new JSONObject();
+
+            // json객체.put("변수명",값)
+            row.put("pred_aod", items.getPred_aod());
+            row.put("pred_time", items.getPred_time());
+
+            // 배열에 추가
+            // json배열.add(인덱스,json객체)
+            //jArray.add(i,row);
+            jArray.add(i,row);
+        }
+
+        // json객체에 배열을 넣음
+        jsonMain.put("pred_aod", jArray);
+
+        return jsonMain;
     }
-    
-  //현재 시간 % 형식에 맞춰 출력 메서드 (날짜까지)
-    public String currentTime2(){
-        //시간구하기
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        //시간형식 맞출 객체 생성
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-        //현재 시간 변수
-        String current_time = sdf.format(timestamp);
+    /**
+     * 1시간 후 발전량 가져오기
+     */
+    @CrossOrigin("*") // 모든 요청에 접근 허용
+    @RequestMapping(value = "/api/preGetAOD", method = RequestMethod.GET)
+    public JSONObject preGetAOD(){
 
-        //sql문에 들어갈 현재시간 변수에 '%' 합치기 (2022-05-05 00:00:0% 이런 형식)
-        //SELECT * FROM temp_weather WHERE date_time LIKE '2022-05-05 00:00:0%' ;
-        String substring_date = current_time.substring(0,10)+"%";
-        return substring_date;
+        // 현재시간 SQL문에 알맞는 형식으로 불러오기
+        String parsingTime = currentTimeAddOneHour();
+
+        // json-simple 라이브러리 추가 필요(JSON 객체 생성)
+        JSONObject jsonMain = new JSONObject(); // json 객체
+
+        Prediction item = service.preGetAOD(parsingTime);
+        JSONArray jArray = new JSONArray(); // json배열
+        JSONObject row = new JSONObject();
+
+        // json객체.put("변수명",값)
+        row.put("pred_aod", item.getPred_aod());
+
+        // 배열에 추가 json배열.add(인덱스,json객체)
+        jArray.add(0,row);
+
+        // json객체에 배열을 넣음
+        jsonMain.put("pred_aod", jArray);
+
+        return jsonMain;
     }
-    
-    //한시간 후 시간 %형식에 맞춰 출력 메서드
-    public String preTotal(){
-        //시간구하기
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        //시간형식 맞출 객체 생성
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-        //현재 시간 변수
-        String current_time = sdf.format(timestamp);
-        
-        Calendar cal = Calendar.getInstance();
-        try {
-			Date date = sdf.parse(current_time);
-			cal.setTime(date);
-			cal.add(Calendar.HOUR, 1);
-			
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        
-        String afterHour = sdf.format(cal.getTime());
-
-        //sql문에 들어갈 현재시간 변수에 '%' 합치기 (2022-05-05 00:00:0% 이런 형식)
-        //SELECT * FROM temp_weather WHERE date_time LIKE '2022-05-05 00:00:0%' ;
-        String substring_date = afterHour.substring(0,10)+"%";
-        return substring_date;
-    }
-    
     @CrossOrigin("*") // 모든 요청에 접근 허용
     @RequestMapping(value = "/api/dash", method = RequestMethod.GET)
     public JSONObject apiDash(){
@@ -221,4 +225,80 @@ public class DashBoardRestController {
         return jsonMain;
     }
 
+    // 현재 시간 % 형식에 맞춰 출력 메서드
+    public String currentTime(){
+        //시간구하기
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        //시간형식 맞출 객체 생성
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        //현재 시간 변수
+        String current_time = sdf.format(timestamp);
+
+        //sql문에 들어갈 현재시간 변수에 '%' 합치기 (2022-05-05 00:00:0% 이런 형식)
+        //SELECT * FROM temp_weather WHERE date_time LIKE '2022-05-05 00:00:0%' ;
+        String substring_date = current_time.substring(0,18)+"%";
+        return substring_date;
+    }
+
+    // 한시간 후 % 형식에 맞춰 출력
+    public String currentTimeAddOneHour(){
+        //시간구하기
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis()+3600000);
+        //시간형식 맞출 객체 생성
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        //현재 시간 변수
+        String current_time = sdf.format(timestamp);
+
+        //sql문에 들어갈 현재시간 변수에 '%' 합치기 (2022-05-05 00:00:0% 이런 형식)
+        //SELECT * FROM temp_weather WHERE date_time LIKE '2022-05-05 00:00:0%' ;
+        String substring_date = current_time.substring(0,18)+"%";
+        return substring_date;
+    }
+
+    // 현재 시간 % 형식에 맞춰 출력 메서드 (날짜까지)
+    public String currentTime2(){
+        //시간구하기
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        //시간형식 맞출 객체 생성
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        //현재 시간 변수
+        String current_time = sdf.format(timestamp);
+
+        //sql문에 들어갈 현재시간 변수에 '%' 합치기 (2022-05-05 00:00:0% 이런 형식)
+        //SELECT * FROM temp_weather WHERE date_time LIKE '2022-05-05 00:00:0%' ;
+        String substring_date = current_time.substring(0,10)+"%";
+        return substring_date;
+    }
+
+    // 한시간 후 시간 %형식에 맞춰 출력 메서드
+    public String preTotal(){
+        //시간구하기
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        //시간형식 맞출 객체 생성
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        //현재 시간 변수
+        String current_time = sdf.format(timestamp);
+
+        Calendar cal = Calendar.getInstance();
+        try {
+            Date date = sdf.parse(current_time);
+            cal.setTime(date);
+            cal.add(Calendar.HOUR, 1);
+
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        String afterHour = sdf.format(cal.getTime());
+
+        //sql문에 들어갈 현재시간 변수에 '%' 합치기 (2022-05-05 00:00:0% 이런 형식)
+        //SELECT * FROM temp_weather WHERE date_time LIKE '2022-05-05 00:00:0%' ;
+        String substring_date = afterHour.substring(0,10)+"%";
+        return substring_date;
+    }
 }

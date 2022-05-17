@@ -6,7 +6,6 @@ import lombok.Setter;
 
 @Setter @Getter
 @AllArgsConstructor
-
 public class Prediction {
 	
 	private int pred_seq;

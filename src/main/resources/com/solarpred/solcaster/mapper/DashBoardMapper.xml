@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.solarpred.solcaster.mapper.DashBoardMapper">
 
-    <!-- 발전량 20개 가져오기  -->
+    <!-- 현재 발전량 20개 가져오기  -->
     <select id="getAOD" parameterType="String" resultType="com.solarpred.solcaster.domain.DashBoard">
         <![CDATA[
         select * from s_real_data where r_date <= (select r_date from s_real_data where r_date like #{parsingTime}) order by r_date desc limit 20
@@ -12,6 +12,18 @@
     <!--  현재시간 발전량 가져오기  -->
     <select id="currentGetAOD" parameterType="String" resultType="com.solarpred.solcaster.domain.DashBoard">
         select * from s_real_data where r_date like #{parsingTime}
+    </select>
+
+    <!-- 예측 발전량 20개 가져오기  -->
+    <select id="getPreAOD" parameterType="String" resultType="com.solarpred.solcaster.domain.Prediction">
+        <![CDATA[
+        select * from s_prediction where pred_time <= (select pred_time from s_prediction where pred_time like #{parsingTime}) order by pred_time desc limit 20
+        ]]>
+    </select>
+
+    <!--  1시간 후 발전량 가져오기  -->
+    <select id="preGetAOD" parameterType="String" resultType="com.solarpred.solcaster.domain.Prediction">
+        select * from s_prediction where pred_time like #{parsingTime}
     </select>
 
     <select id="DashBoardSelect" parameterType="String" resultType="com.solarpred.solcaster.domain.DashBoard">

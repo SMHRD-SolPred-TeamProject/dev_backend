@@ -82,7 +82,9 @@ public class DashBoardRestController {
     @CrossOrigin("*") // 모든 요청에 접근 허용
     @RequestMapping(value = "/api/dash", method = RequestMethod.GET)
     public JSONObject apiLogin(){
-
+    	
+    	// 현재시간 SQL문에 알맞는 형식으로 불러오기
+        String parsingTime = currentTime();
         //DashBoard dash = service.DashBoardSelect();
 
         // json-simple 라이브러리 추가 필요(JSON 객체 생성)
@@ -90,7 +92,7 @@ public class DashBoardRestController {
 
         // {변수명:값, 변수명:값}
         // {sendData:[{변수명:값},{변수명:값},...]}
-        List<DashBoard> items = service.DashBoardSelect();
+        List<DashBoard> items = service.DashBoardSelect(parsingTime);
         JSONArray jArray = new JSONArray(); // json배열
 
         for(int i=0; i<items.size(); i++){
@@ -100,8 +102,8 @@ public class DashBoardRestController {
         row.put("aod", dto.getR_aod());
         // 배열에 추가
         // json배열.add(인덱스,json객체)
-        jArray.add(i,row);
-        //jArray.add(0,row);
+        //jArray.add(i,row);
+        jArray.add(0,row);
         }
 
         // json객체에 배열을 넣음

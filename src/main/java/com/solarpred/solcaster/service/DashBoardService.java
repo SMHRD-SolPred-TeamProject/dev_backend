@@ -22,8 +22,8 @@ public class DashBoardService {
         return mapper.getTemp_weather(parsingTime);
     }
     
-    public List<DashBoard> DashBoardSelect() {
-    	return mapper.DashBoardSelect();
+    public List<DashBoard> DashBoardSelect(String parsingTime) {
+    	return mapper.DashBoardSelect(parsingTime);
     }
 
 

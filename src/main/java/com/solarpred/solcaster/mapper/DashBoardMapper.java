@@ -12,6 +12,6 @@ public interface DashBoardMapper {
 
     public Temp_weather getTemp_weather(String parsingTime);
     
-    public List<DashBoard> DashBoardSelect();
+    public List<DashBoard> DashBoardSelect(String parsingTime);
 
 }

@@ -26,4 +26,7 @@ public interface MemberMapper {
     //회원정보 수정 전 비밀번호 확인
     public String checkPW(String mem_id);
 
+    //회원정보수정
+    public void goUpdateInfo(Member vo);
+
 }

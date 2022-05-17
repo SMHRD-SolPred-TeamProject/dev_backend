@@ -45,7 +45,7 @@
                 <img src="./img/logo.png" class="logo" />
             </a>
             <!-- 폼에 method, action 채워야 함! -->
-            <form action="goUpdateInfo" action="post" class="validation-form ScoreDream400" style="align-items: center" novalidate>
+            <form action="goUpdateInfo" method="post" class="validation-form ScoreDream400" style="align-items: center" novalidate>
                 <div class="col-md-8 mb-3 margin_center">
                     <label for="name">이름</label>
                     <input type="text" class="form-control" name="mem_name" id="mem_name" required maxlength="30/" disabled value="${sessionScope.member.mem_name}"/>
@@ -53,7 +53,8 @@
                 </div>
                 <div class="col-md-8 mb-3 margin_center">
                     <label for="id">아이디</label>
-                    <input type="text" class="form-control" name="mem_id" id="id" required maxlength="30" disabled value="${sessionScope.member.mem_id}"/>
+                    <input type="hidden" name="mem_id" value="${sessionScope.member.mem_id}"/>
+                    <input type="text" class="form-control" id="id" required maxlength="30" disabled value="${sessionScope.member.mem_id}"/>
                     <div class="invalid-feedback">아이디를 입력해주세요.</div>
                 </div>
                 <div class="col-md-8 mb-3 margin_center">
@@ -65,6 +66,7 @@
                     <label for="pwcheck">비밀번호 확인</label>
                     <input type="password" class="form-control" name="pwcheck" id="pwcheck" required maxlength="30" oninput="passwordCheck()"/>
                     <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
+                    <p id="ment" style="padding-top: 5px; font-size: 12px"></p>
                 </div>
                 <div class="col-md-8 mb-3 margin_center">
                     <label for="tel">연락처</label>
@@ -76,11 +78,12 @@
                 <div class="col-md-8 mb-3 margin_center">
                     <label for="address">주소</label>
                     <input type="text" class="form-control , col-3" id="sample6_postcode" placeholder="우편번호"
-                           style="margin-bottom: 10px" readonly />
+                           style="margin-bottom: 10px" readonly name="mem_zipcode" />
                     <input type="text" class="form-control , col-12" id="sample6_address" placeholder="주소" readonly
-                           style="margin-bottom: 10px" value="${sessionScope.member.mem_addr}"/>
-                    <input type="text" class="form-control , col-12" id="sample6_detailAddress" placeholder="상세주소"
-                           style="margin-bottom: 10px" />
+                           style="margin-bottom: 10px" value="${sessionScope.member.mem_addr}" name="mem_addr"/>
+                    <input type="text" class="form-control , col-12" id="sample6_detailAddress" placeholder="상세주소" value="${sessionScope.member.mem_addrdetail}"
+                           style="margin-bottom: 10px" name="mem_addrdetail"/>
+                    <div class="invalid-feedback">주소를 입력해주세요.</div>
                     <div class="addr__container">
                         <input type="button" class="daumBtn , btn btn-warning" value="우편번호 찾기" onclick="openDaumPostCode()" />
                     </div>
@@ -125,6 +128,9 @@
     );
 </script>
 <script>
+    $(document).ready(function () {
+
+    });
     function openDaumPostCode() {
         new daum.Postcode({
             oncomplete: function (data) {
@@ -168,7 +174,18 @@
     }
 
     function passwordCheck() {
+        let pw = $("#pw").val();
+        if ($("#pwcheck").val() != pw) {
+            $("#ment").css("color", "red")
+            $("#ment").html("비밀번호가 일치하지 않습니다.");
+        } else {
+            $("#ment").css("color", "green")
+            $("#ment").html("비밀번호가 일치합니다.");
+        }
 
+        if ($("#pwcheck").val() == "") {
+            $("#ment").html("");
+        }
     }
 </script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

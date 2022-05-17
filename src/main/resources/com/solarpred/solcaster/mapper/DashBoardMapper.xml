@@ -14,9 +14,23 @@
         select * from s_real_data where r_date like #{parsingTime}
     </select>
 
-
     <select id="DashBoardSelect" resultType="com.solarpred.solcaster.domain.DashBoard">
         select * from s_real_data order by r_date desc limit 1
+
+    <select id="DashBoardSelect" parameterType="String" resultType="com.solarpred.solcaster.domain.DashBoard">
+        select * from s_real_data where r_date like #{parsingTime} order by r_date desc limit 1
+    </select>
+
+    <select id="PredictionSelect"  resultType="com.solarpred.solcaster.domain.Prediction">
+        select * from s_prediction order by pred_time desc limit 1
+    </select>
+
+    <select id="PreTotalSelect" parameterType="String" resultType="double">
+        select sum(pred_aod)/1000 from s_prediction where pred_time like #{parsingTime}
+    </select>
+
+    <select id="realTotalSelect" parameterType="map" resultType="int">
+        select sum(r_aod)/1000 from s_real_data where r_date between #{parsingTime2} and #{parsingTime}
     </select>
 
 

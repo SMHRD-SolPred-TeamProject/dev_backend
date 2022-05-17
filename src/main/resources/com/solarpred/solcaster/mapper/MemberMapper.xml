@@ -32,4 +32,8 @@
         select mem_pw from s_member where mem_id = #{mem_id}
     </select>
 
+    <update id="goUpdateInfo" parameterType="com.solarpred.solcaster.domain.Member">
+        update s_member set mem_pw=#{mem_pw}, mem_phone=#{mem_phone}, mem_addr=#{mem_addr}, mem_addrdetail=#{mem_addrdetail}, mem_zipcode=#{mem_zipcode} where mem_id = #{mem_id}
+    </update>
+
 </mapper>

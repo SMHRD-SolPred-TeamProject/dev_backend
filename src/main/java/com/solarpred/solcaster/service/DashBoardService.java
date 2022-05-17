@@ -1,6 +1,7 @@
 package com.solarpred.solcaster.service;
 
 import com.solarpred.solcaster.domain.DashBoard;
+import com.solarpred.solcaster.domain.Prediction;
 import com.solarpred.solcaster.mapper.DashBoardMapper;
 
 import java.util.List;
@@ -30,8 +31,20 @@ public class DashBoardService {
         return mapper.currentGetAOD(parsingTime);
     }
     
-    public List<DashBoard> DashBoardSelect() {
-    	return mapper.DashBoardSelect();
+    public List<DashBoard> DashBoardSelect(String parsingTime) {
+    	return mapper.DashBoardSelect(parsingTime);
+    }
+
+    public List<Prediction> PredictionSelect(){
+    	return mapper.PredictionSelect();
+    }
+
+    public Double PreTotalSelect(String parsingTime){
+    	return mapper.PreTotalSelect(parsingTime);
+    }
+
+    public int realTotalSelect(String parsingTime, String parsingTime2) {
+    	return mapper.realTotalSelect(parsingTime, parsingTime2);
     }
 
 

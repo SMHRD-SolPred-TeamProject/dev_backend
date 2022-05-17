@@ -2,7 +2,6 @@ package com.solarpred.solcaster.mapper;
 
 import com.solarpred.solcaster.domain.DashBoard;
 import com.solarpred.solcaster.domain.Prediction;
-import com.solarpred.solcaster.domain.Temp_weather;
 
 import java.util.List;
 
@@ -17,8 +16,6 @@ public interface DashBoardMapper {
 
     // 현재시간 발전량 가져오기
     public DashBoard currentGetAOD(String parsingTime);
-
-    public List<DashBoard> DashBoardSelect();
 
     public List<DashBoard> DashBoardSelect(String parsingTime);
     

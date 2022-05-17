@@ -40,7 +40,11 @@
 
     window.onload = () => {
         if(${member.mem_purchase eq "N"}){
-            alert("구매하지 않았습니다.");
+            console.log('${member.mem_purchase eq "N"}' + ${member.mem_purchase eq "N"})
+            alert("구매 후 이용해주시기 바랍니다!");
+        }else if (${member.mem_purchase eq "F"}){
+            console.log('${member.mem_purchase eq "F"}'+${member.mem_purchase eq "F"})
+            alert("비밀번호가 올바르지 않습니다!");
         }
     }
 

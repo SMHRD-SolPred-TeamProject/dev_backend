@@ -30,6 +30,9 @@ public class Controller {
         return "service";
     }
 
+    /**
+     * 대쉬보드 페이지 이동
+     */
     @GetMapping("/dashboardLoginPage")
     public String dashboardLoginPage(){
         return "/dashboard/dashboardLogin";

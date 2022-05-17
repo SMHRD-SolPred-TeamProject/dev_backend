@@ -83,7 +83,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link text-white " href="dashboardLoginPage">
+                <a class="nav-link text-white " href="dashboardLogOut">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">login</i>
                     </div>
@@ -123,7 +123,7 @@
                 </div>
                 <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item d-flex align-items-center">
-                        <a href="dashboardLoginPage" class="nav-link text-body font-weight-bold px-0">
+                        <a href="dashboardLogOut" class="nav-link text-body font-weight-bold px-0">
                             <i class="fa fa-sign-out me-sm-1"></i>
                             <span class="d-sm-inline d-none">Logout</span>
                         </a>

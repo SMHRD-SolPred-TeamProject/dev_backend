@@ -5,7 +5,7 @@
     <!-- 발전량 20개 가져오기  -->
     <select id="getAOD" parameterType="String" resultType="com.solarpred.solcaster.domain.DashBoard">
         <![CDATA[
-        select * from s_real_data where r_date <= (select r_date from s_real_data where r_date like #{parsingTime}) order by r_date desc limit 20;
+        select * from s_real_data where r_date <= (select r_date from s_real_data where r_date like #{parsingTime}) order by r_date desc limit 20
         ]]>
     </select>
 
@@ -13,9 +13,6 @@
     <select id="currentGetAOD" parameterType="String" resultType="com.solarpred.solcaster.domain.DashBoard">
         select * from s_real_data where r_date like #{parsingTime}
     </select>
-
-    <select id="DashBoardSelect" resultType="com.solarpred.solcaster.domain.DashBoard">
-        select * from s_real_data order by r_date desc limit 1
 
     <select id="DashBoardSelect" parameterType="String" resultType="com.solarpred.solcaster.domain.DashBoard">
         select * from s_real_data where r_date like #{parsingTime} order by r_date desc limit 1

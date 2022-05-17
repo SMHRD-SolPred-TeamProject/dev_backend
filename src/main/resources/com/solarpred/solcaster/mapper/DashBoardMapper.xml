@@ -3,7 +3,7 @@
 <mapper namespace="com.solarpred.solcaster.mapper.DashBoardMapper">
 
     <select id="getTemp_weather" parameterType="String" resultType="com.solarpred.solcaster.domain.Temp_weather">
-        select * from temp_weather where date_time like #{parsingTime}
+        select * from s_real_data where date_time > (select date_time from s_real_data where date_time like #{parsingTime}) limit 20;
     </select>
 
 

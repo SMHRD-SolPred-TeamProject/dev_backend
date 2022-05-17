@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 @RestController
 public class DashBoardRestController {
@@ -30,14 +31,26 @@ public class DashBoardRestController {
         // 현재시간 SQL문에 알맞는 형식으로 불러오기
         String parsingTime = currentTime();
 
-        Temp_weather tw = service.getTemp_weather(parsingTime);
-        System.out.println("tw 출력 성공!!!!!!!!!!!");
-
         // json-simple 라이브러리 추가 필요(JSON 객체 생성)
         JSONObject jsonMain = new JSONObject(); // json 객체
+
+        List<Temp_weather> list = service.getTemp_weather(parsingTime);
         JSONArray jArray = new JSONArray(); // json배열
-        JSONObject row = new JSONObject(); // json배열에 담을 json 객체
-        
+
+        for(int i=0; i<list.size(); i++){
+            Temp_weather items = list.get(i);
+            JSONObject row = new JSONObject();
+
+            // json객체.put("변수명",값)
+            row.put("mem_id", items.getMem_id());
+            row.put("mem_pw", items.getMem_pw());
+
+            // 배열에 추가
+            // json배열.add(인덱스,json객체)
+            //jArray.add(i,row);
+            jArray.add(0,row);
+        }
+
         // json객체.put("변수명",값)
         row.put("date_time", tw.getDate_time());
         row.put("temperature", tw.getTemperature());
@@ -60,7 +73,6 @@ public class DashBoardRestController {
 
         return jsonMain;
     }
-
 
     //현재 시간 % 형식에 맞춰 출력 메서드
     public String currentTime(){

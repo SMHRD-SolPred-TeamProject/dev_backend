@@ -30,6 +30,10 @@ public class Controller {
         return "service";
     }
 
+    @GetMapping("/dashboardLoginPage")
+    public String dashboardLoginPage(){
+        return "/dashboard/dashboardLogin";
+    }
 
     @GetMapping("/predictDashboard")
     public String predictDashboard(){

@@ -491,12 +491,13 @@
             dataType: "json",
             type: "GET",
             success: function (data) {
-                var $Icon = (data.weather[0]['icon']);
+                var Icon = data.weather[0]['icon'];
+                console.log(Icon)
                 var $Temp = Math.floor(data.main.temp) + "°C";
                 var $city = data.name;
 
                 //$(".CurrIcon").append("http://openweathermap.org/img/wn/" + $Icon + "@2x.png");
-                $(".CurrIcon").attr("src", `http://openweathermap.org/img/wn/${$Icon}@2x.png`)
+                $(".CurrIcon").attr("src", "http://openweathermap.org/img/wn/"+Icon+"@2x.png");
 
                 $(".CurrTemp").prepend($Temp);
                 $(".City").append($city);

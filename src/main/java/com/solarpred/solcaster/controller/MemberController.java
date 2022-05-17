@@ -142,15 +142,20 @@ public class MemberController {
         if (mem_pw.equals(real_mem_pw)) {
             return "myProfileEditForm";
         }
-        return "redirect:/myprofile";
+        return "alertPW";
     }
 
     /**
      * 회원 정보 수정
      */
     @PostMapping("/goUpdateInfo")
-    public String goUpdateInfo() {
-        return "";
+    public String goUpdateInfo(Member vo, String pwcheck) {
+        if (!vo.getMem_pw().equals(pwcheck)) {
+            return "alertPW";
+        }
+
+        service.goUpdateInfo(vo);
+        return "redirect:/";
     }
 
 }

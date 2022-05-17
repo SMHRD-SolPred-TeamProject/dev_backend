@@ -1,7 +1,6 @@
 package com.solarpred.solcaster.service;
 
 import com.solarpred.solcaster.domain.DashBoard;
-import com.solarpred.solcaster.domain.Temp_weather;
 import com.solarpred.solcaster.mapper.DashBoardMapper;
 
 import java.util.List;
@@ -18,10 +17,17 @@ public class DashBoardService {
     DashBoardMapper mapper;
 
     /**
-     * temp_weather에서 현재시간과 같은 값 가져오기
+     * 대시보드에서 20개의 발전량 값 져오기
      */
-    public List<Temp_weather> getTemp_weather(String parsingTime){
-        return mapper.getTemp_weather(parsingTime);
+    public List<DashBoard> getAOD(String parsingTime){
+        return mapper.getAOD(parsingTime);
+    }
+
+    /**
+     * 현재 시간 발전량 가져오기
+     */
+    public DashBoard currentGetAOD(String parsingTime){
+        return mapper.currentGetAOD(parsingTime);
     }
     
     public List<DashBoard> DashBoardSelect() {

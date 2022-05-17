@@ -37,12 +37,17 @@ public class Controller {
 
     @GetMapping("/predictDashboard")
     public String predictDashboard(){
-        return "predictDashboard";
+        return "/dashboard/predictDashboard";
     }
 
     @GetMapping("/todayDashboard")
     public String todayDashboard(){
         return "/dashboard/todayDashboard";
+    }
+
+    @GetMapping("/solution")
+    public String solution(){
+        return "/dashboard/solution";
     }
 
     @GetMapping("/valuesTest")

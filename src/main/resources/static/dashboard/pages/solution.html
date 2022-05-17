@@ -131,11 +131,7 @@
                 </div>
               </a>
             </li>
-            <li class="nav-item px-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0">
-                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-              </a>
-            </li>
+
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
 
               <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
@@ -230,12 +226,15 @@
               <div class="text-end pt-1">
                 <h5 class="text-m mb-0 text-capitalize ScoreDream500">실시간 누적발전량</h5>
                 <h3 id="integratedAOD2" class="mb-0 ScoreDream500 inline">0</h3><span
-                  class="text-success text-m font-weight-bolder">ㅤKW</span>
+                  class="text-secondary text-m font-weight-bolder">ㅤKW</span>
               </div>
             </div>
             <hr class="dark horizontal my-0">
             <div class="card-footer p-3 ScoreDream400">
-              <p class="mb-0"><span class="text-dark text-sm font-weight-bolder">+55% </span>than lask week</p>
+              <p class="mb-0 text-sm ScoreDream400"><span
+                  class="text-secondary text-md font-weight-bolder ScoreDream400">솔캐스터
+                </span>가 응용솔루션을
+                제안해드립니다</p>
             </div>
           </div>
         </div>
@@ -339,25 +338,60 @@
   <script src="https://code.highcharts.com/modules/export-data.js"></script>
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-  <script src="/assets/js/core/solution.js"></script>
-
 
   <script>
-    // 여기 '0'자리에 대신 데이터 넣으세요!
+    // solarEnergy = 실시간 누적발전량
+    // content = 출력문구
     var solarEnergy = 0;
+    // var content = "ㅤ태양광패널이 열심히 전력을 생산하고 있습니다.ㅤ";
+    var content = "ㅤㅤ";
+    const text = document.querySelector(".text");
+
+    // 한 자씩 타이핑하듯이 문구 나오게 하는 코드 start
+    let i = 0;
+
+    function typing() {
+      if (i < content.length) {
+        let txt = content.charAt(i);
+        text.innerHTML += txt;
+        i++;
+      }
+    }
+    setInterval(typing, 100);
+    // end
+
     if (solarEnergy <= 3) {
       solutionImg = "/assets/img/solution/ing.png";
+      content = "ㅤ태양광패널이 열심히 전력을 생산하고 있습니다.ㅤ";
     } else if (solarEnergy <= 6) {
       document.querySelector(".solution-img").src = "/assets/img/solution/1_1280x835.jpg"
+      content = "ㅤ따끈따끈 전기밥솥을 5시간 사용할 수 있는 전력량이 생산됐어요ㅤ";
     } else if (solarEnergy <= 9) {
       document.querySelector(".solution-img").src = "/assets/img/solution/2_1280x835.jpg"
+      content = "ㅤ우리집을 남극으로!🐧 에어컨을 5시간 사용할 수 있는 전력량이 생산됐어요ㅤ";
     } else if (solarEnergy <= 12) {
       document.querySelector(".solution-img").src = "/assets/img/solution/3_1280x835.jpg"
+      content = "ㅤ뽀득뽀득 식기세척기를 5시간 사용할 수 있는 전력량이 생산됐어요ㅤ";
     } else if (solarEnergy <= 15) {
       document.querySelector(".solution-img").src = "/assets/img/solution/4_1280x835.jpg"
+      content = "ㅤ편리한 인덕션을 5시간 사용할 수 있는 전력량이 생산됐어요ㅤ";
+    } else if (solarEnergy >= 77 && solarEnergy <= 100) {
+      document.querySelector(".solution-img").src = "/assets/img/solution/5_1280.jpg"
+      content = "ㅤ1인 가구가 한 달간 사용할 수 있는 전력량이 생산됐어요ㅤ";
+    } else if (solarEnergy >= 100 && solarEnergy <= 150) {
+      document.querySelector(".solution-img").src = "/assets/img/solution/6_1280.png"
+      content = "ㅤ전기차를 완충할 수 있는 전력량이 생산됐어요ㅤ";
+    } else if (solarEnergy >= 150 && solarEnergy <= 300) {
+      document.querySelector(".solution-img").src = "/assets/img/solution/7_1280.jpg"
+      content = "ㅤ2인 가구의 한 달 전력량이 생산됐어요ㅤ";
+    } else if (solarEnergy >= 300 && solarEnergy <= 900) {
+      document.querySelector(".solution-img").src = "/assets/img/solution/8_1280.jpg"
+      content = "ㅤ4인 가구의 한 달 전력량이 생산됐어요ㅤ";
+    } else if (solarEnergy >= 900) {
+      document.querySelector(".solution-img").src = "/assets/img/solution/8_1280.jpg"
+      content = "ㅤ4인 가구의 세 달 전력량이 생산됐어요ㅤ";
     }
 
-    // 
   </script>
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->

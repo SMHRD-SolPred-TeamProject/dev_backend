@@ -134,11 +134,7 @@
                 </div>
               </a>
             </li>
-            <li class="nav-item px-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0">
-                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-              </a>
-            </li>
+
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
 
               <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
@@ -235,7 +231,7 @@
                   <i class="material-icons opacity-10">battery_charging_full</i>
                 </div>
                 <div class="text-end pt-1">
-                  <h4 class="text-sm mb-0 text-capitalize ScoreDream600">실시간 발전량</h4>
+                  <h4 class="text-lg mb-0 text-capitalize ScoreDream500">실시간 발전량</h4>
 
                   <div>
                     <h3 id="realtimeAOD" class="mb-0 ScoreDream500 inline">0</h3> <span
@@ -246,7 +242,9 @@
               </div>
               <hr class="dark horizontal my-0">
               <div class="card-footer p-3">
-                <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than lask week</p>
+                <p class="mb-0 ScoreDream400">Compared to <span
+                    class="text-success text-md font-weight-bolder ScoreDream500">10
+                    seconds </span>ago</p>
               </div>
             </div>
           </div>
@@ -261,14 +259,16 @@
                   <i class="material-icons opacity-10">battery_charging_full</i>
                 </div>
                 <div class="text-end pt-1">
-                  <h4 class="text-sm mb-0 text-capitalize ScoreDream600">실시간 누적발전량</h4>
+                  <h4 class="text-lg mb-0 text-capitalize ScoreDream500">실시간 누적발전량</h4>
                   <h3 id="integratedAOD" class="mb-0 ScoreDream500 inline">0</h3> <span
                     class="text-success text-m font-weight-bolder">ㅤKW</span>
                 </div>
               </div>
               <hr class="dark horizontal my-0">
               <div class="card-footer p-3">
-                <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than lask week</p>
+                <p class="mb-0 ScoreDream400">Compared to <span
+                    class="text-success text-md font-weight-bolder ScoreDream500">10
+                    seconds </span>ago</p>
               </div>
             </div>
           </div>
@@ -284,18 +284,18 @@
                   <i class="material-icons opacity-10">equalizer</i>
                 </div>
                 <div class="text-end pt-1">
-                  <h4 class="text-sm mb-0 text-capitalize ScoreDream600">예측률</h4>
+                  <h4 class="text-lg mb-0 text-capitalize ScoreDream500">예측률</h4>
 
                   <!-- 여기 예측률이 나와야함! -->
-                  <h3 class="mb-0 ScoreDream500">97.3<span class="text-success text-sm font-weight-bolder">ㅤ%</span>
+                  <h3 class="mb-0 ScoreDream500">97.3<span class="text-success text-md font-weight-bolder">ㅤ%</span>
                   </h3>
                 </div>
               </div>
               <hr class="dark horizontal my-0">
               <div class="card-footer p-3">
                 <!-- 22.05.12 -> 이거 날짜에 전날 날짜 불러오면 돼요! -->
-                <p class="mb-0 ScoreDream400"><span
-                    class="text-success text-sm font-weight-bolder ScoreDream400">22.05.12
+                <p class="text-sm mb-0 ScoreDream400"><span
+                    class="text-success text-md font-weight-bolder ScoreDream400" id="pre_date">
                   </span>기준
                   계산된 예측률입니다.
                 </p>
@@ -309,10 +309,10 @@
             <div class="card-header p-3 pt-2">
               <div
                 class="icon icon-lg icon-shape bg-gradient-info shadow-sucbg-gradient-info text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">filter_drama</i>
+                <i class="material-icons opacity-10">wb_sunny</i>
               </div>
               <div class="text-end pt-1">
-                <h6 class="text-m mb-0 text-capitalize ScoreDream600">now weather</h6>
+                <h6 class="text-lg mb-0 text-capitalize ScoreDream500">now weather</h6>
                 <div class="weather">
                   <div class="CurrIcon">
                     <img class="CurrIcon" src="" alt="weatherIcon">
@@ -344,9 +344,6 @@
                 <!-- 그래프 -->
                 <figure class="highcharts-figure">
                   <div id="container"></div>
-                  <p class="highcharts-description ScoreDream500 font-white">
-                    ㅤ실시간 발전량 차트는 10초 단위로 생성되며, 이 전 데이터는 그래프에서 삭제됩니다.
-                  </p>
                 </figure>
                 <!-- 그래프 end -->
               </div>
@@ -356,10 +353,10 @@
 
           <div class="card-body">
             <h4 class="mb-0 ScoreDream500">실시간 발전량</h4>
-
             <div class="d-flex ">
-              <i class="material-icons text-sm my-auto me-1">schedule</i>
-              <p class="mb-0 text-sm ScoreDream400"> 혹시 뭔가 넣을 말이 있을까봐 남겨놓음 </p>
+              <i class="material-icons text-m my-auto me-1">schedule</i>
+
+              <p class="mb-0 text-m ScoreDream500"> 실시간 발전량 차트는 10초 단위로 생성되며, 이 전 데이터는 그래프에서 삭제됩니다. </p>
             </div>
           </div>
         </div>
@@ -378,9 +375,7 @@
                 <!-- 여기 넣자! -->
                 <figure class="highcharts-figure">
                   <div id="container2"></div>
-                  <p class="highcharts-description ScoreDream500 font-white">
-                    ㅤ실시간 누적 발전량 차트는 10초 단위로 생성되며, 어쩌고 저쩌고~~~
-                  </p>
+
                 </figure>
               </div>
             </div>
@@ -391,8 +386,8 @@
             <h4 class="mb-0 ScoreDream500">실시간 누적발전량</h4>
 
             <div class="d-flex ">
-              <i class="material-icons text-sm my-auto me-1">schedule</i>
-              <p class="mb-0 text-sm ScoreDream400"> 혹시 뭔가 넣을 말이 있을까봐 남겨놓음 </p>
+              <i class="material-icons text-m my-auto me-1">schedule</i>
+              <p class="mb-0 text-m ScoreDream500">실시간 누적발전량 차트는 10초 단위로 생성되며, 이 전 데이터는 그래프에서 삭제됩니다. </p>
             </div>
           </div>
         </div>
@@ -478,6 +473,23 @@
 
   <script>
 
+    // 네모박스에 하루 전 날짜 계산
+    var today = new Date();
+    var yesterday = new Date(today.setDate(today.getDate() - 1));
+    year = yesterday.getFullYear();
+    month = yesterday.getMonth() + 1;
+    day = yesterday.getDate();
+    document.getElementById("pre_date").innerHTML = year + ". " + month + ". " + day + " ";
+
+
+
+
+
+
+
+
+
+
     $(document).ready(function () {
 
       $.ajax({
@@ -489,7 +501,7 @@
           var $Temp = Math.floor(data.main.temp) + "°C";
           var $city = data.name;
 
-          //$(".CurrIcon").append("http://openweathermap.org/img/wn/" + $Icon + "@2x.png");
+          // $(".CurrIcon").append("http://openweathermap.org/img/wn/" + $Icon + "@2x.png");
           $(".CurrIcon").attr("src", `http://openweathermap.org/img/wn/${$Icon}@2x.png`)
 
           $(".CurrTemp").prepend($Temp);
@@ -500,281 +512,6 @@
       })
     })
 
-    // if (weatherObj.getString("main").equals("Thunderstorm")) {
-    //   weather = "번개";
-    //   imgWeather.setImageResource(R.drawable.ic_storm);
-    // } else if (weatherObj.getString("main").equals("Drizzle")) {
-    //   weather = "이슬비";
-    //   imgWeather.setImageResource(R.drawable.ic_drizzel);
-    // } else if (weatherObj.getString("main").equals("Rain")) {
-    //   weather = "비";
-    //   imgWeather.setImageResource(R.drawable.ic_rain);
-    // } else if (weatherObj.getString("main").equals("Snow")) {
-    //   weather = "눈";
-    //   imgWeather.setImageResource(R.drawable.ic_snow);
-    // } else if (weatherObj.getString("main").equals("Atmosphere")) {
-    //   weather = "안개";
-    //   imgWeather.setImageResource(R.drawable.ic_fog);
-    // } else if (weatherObj.getString("main").equals("Clear")) {
-    //   weather = "맑음";
-    //   imgWeather.setImageResource(R.drawable.ic_clear);
-    // } else if (weatherObj.getString("main").equals("Clouds")) {
-    //   weather = "구름";
-    //   imgWeather.setImageResource(R.drawable.ic_cloud);
-    // }
-
-
-    //                 JSONObject tempk = new JSONObject(obj.getString("main"));
-    //                 double tempDo = (Math.round((tempk.getDouble("temp") - 273.15) * 100) / 100.0);
-
-    //                 JSONObject wind = new JSONObject(obj.getString("wind"));
-    //                 double windSpeed = wind.getDouble("speed");
-
-    // var ctx = document.getElementById("chart-bars").getContext("2d");
-
-    // new Chart(ctx, {
-    //   type: "bar",
-    //   data: {
-    //     labels: ["M", "T", "W", "T", "F", "S", "S"],
-    //     datasets: [{
-    //       label: "Sales",
-    //       tension: 0.4,
-    //       borderWidth: 0,
-    //       borderRadius: 4,
-    //       borderSkipped: false,
-    //       backgroundColor: "rgba(255, 255, 255, .8)",
-    //       data: [50, 20, 10, 22, 50, 10, 40],
-    //       maxBarThickness: 6
-    //     },],
-    //   },
-    //   options: {
-    //     responsive: true,
-    //     maintainAspectRatio: false,
-    //     plugins: {
-    //       legend: {
-    //         display: false,
-    //       }
-    //     },
-    //     interaction: {
-    //       intersect: false,
-    //       mode: 'index',
-    //     },
-    //     scales: {
-    //       y: {
-    //         grid: {
-    //           drawBorder: false,
-    //           display: true,
-    //           drawOnChartArea: true,
-    //           drawTicks: false,
-    //           borderDash: [5, 5],
-    //           color: 'rgba(255, 255, 255, .2)'
-    //         },
-    //         ticks: {
-    //           suggestedMin: 0,
-    //           suggestedMax: 500,
-    //           beginAtZero: true,
-    //           padding: 10,
-    //           font: {
-    //             size: 14,
-    //             weight: 300,
-    //             family: "Roboto",
-    //             style: 'normal',
-    //             lineHeight: 2
-    //           },
-    //           color: "#fff"
-    //         },
-    //       },
-    //       x: {
-    //         grid: {
-    //           drawBorder: false,
-    //           display: true,
-    //           drawOnChartArea: true,
-    //           drawTicks: false,
-    //           borderDash: [5, 5],
-    //           color: 'rgba(255, 255, 255, .2)'
-    //         },
-    //         ticks: {
-    //           display: true,
-    //           color: '#f8f9fa',
-    //           padding: 10,
-    //           font: {
-    //             size: 14,
-    //             weight: 300,
-    //             family: "Roboto",
-    //             style: 'normal',
-    //             lineHeight: 2
-    //           },
-    //         }
-    //       },
-    //     },
-    //   },
-    // });
-
-
-    // var ctx2 = document.getElementById("chart-line").getContext("2d");
-
-    // new Chart(ctx2, {
-    //   type: "line",
-    //   data: {
-    //     labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    //     datasets: [{
-    //       label: "Mobile apps",
-    //       tension: 0,
-    //       borderWidth: 0,
-    //       pointRadius: 5,
-    //       pointBackgroundColor: "rgba(255, 255, 255, .8)",
-    //       pointBorderColor: "transparent",
-    //       borderColor: "rgba(255, 255, 255, .8)",
-    //       borderColor: "rgba(255, 255, 255, .8)",
-    //       borderWidth: 4,
-    //       backgroundColor: "transparent",
-    //       fill: true,
-    //       data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
-    //       maxBarThickness: 6
-
-    //     }],
-    //   },
-    //   options: {
-    //     responsive: true,
-    //     maintainAspectRatio: false,
-    //     plugins: {
-    //       legend: {
-    //         display: false,
-    //       }
-    //     },
-    //     interaction: {
-    //       intersect: false,
-    //       mode: 'index',
-    //     },
-    //     scales: {
-    //       y: {
-    //         grid: {
-    //           drawBorder: false,
-    //           display: true,
-    //           drawOnChartArea: true,
-    //           drawTicks: false,
-    //           borderDash: [5, 5],
-    //           color: 'rgba(255, 255, 255, .2)'
-    //         },
-    //         ticks: {
-    //           display: true,
-    //           color: '#f8f9fa',
-    //           padding: 10,
-    //           font: {
-    //             size: 14,
-    //             weight: 300,
-    //             family: "Roboto",
-    //             style: 'normal',
-    //             lineHeight: 2
-    //           },
-    //         }
-    //       },
-    //       x: {
-    //         grid: {
-    //           drawBorder: false,
-    //           display: false,
-    //           drawOnChartArea: false,
-    //           drawTicks: false,
-    //           borderDash: [5, 5]
-    //         },
-    //         ticks: {
-    //           display: true,
-    //           color: '#f8f9fa',
-    //           padding: 10,
-    //           font: {
-    //             size: 14,
-    //             weight: 300,
-    //             family: "Roboto",
-    //             style: 'normal',
-    //             lineHeight: 2
-    //           },
-    //         }
-    //       },
-    //     },
-    //   },
-    // });
-
-    // var ctx3 = document.getElementById("chart-line-tasks").getContext("2d");
-
-    // new Chart(ctx3, {
-    //   type: "line",
-    //   data: {
-    //     labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    //     datasets: [{
-    //       label: "Mobile apps",
-    //       tension: 0,
-    //       borderWidth: 0,
-    //       pointRadius: 5,
-    //       pointBackgroundColor: "rgba(255, 255, 255, .8)",
-    //       pointBorderColor: "transparent",
-    //       borderColor: "rgba(255, 255, 255, .8)",
-    //       borderWidth: 4,
-    //       backgroundColor: "transparent",
-    //       fill: true,
-    //       data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-    //       maxBarThickness: 6
-
-    //     }],
-    //   },
-    //   options: {
-    //     responsive: true,
-    //     maintainAspectRatio: false,
-    //     plugins: {
-    //       legend: {
-    //         display: false,
-    //       }
-    //     },
-    //     interaction: {
-    //       intersect: false,
-    //       mode: 'index',
-    //     },
-    //     scales: {
-    //       y: {
-    //         grid: {
-    //           drawBorder: false,
-    //           display: true,
-    //           drawOnChartArea: true,
-    //           drawTicks: false,
-    //           borderDash: [5, 5],
-    //           color: 'rgba(255, 255, 255, .2)'
-    //         },
-    //         ticks: {
-    //           display: true,
-    //           padding: 10,
-    //           color: '#f8f9fa',
-    //           font: {
-    //             size: 14,
-    //             weight: 300,
-    //             family: "Roboto",
-    //             style: 'normal',
-    //             lineHeight: 2
-    //           },
-    //         }
-    //       },
-    //       x: {
-    //         grid: {
-    //           drawBorder: false,
-    //           display: false,
-    //           drawOnChartArea: false,
-    //           drawTicks: false,
-    //           borderDash: [5, 5]
-    //         },
-    //         ticks: {
-    //           display: true,
-    //           color: '#f8f9fa',
-    //           padding: 10,
-    //           font: {
-    //             size: 14,
-    //             weight: 300,
-    //             family: "Roboto",
-    //             style: 'normal',
-    //             lineHeight: 2
-    //           },
-    //         }
-    //       },
-    //     },
-    //   },
-    // });
   </script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: smhrd
-  Date: 2022-05-15
-  Time: 오후 2:35
+  Date: 2022-05-17
+  Time: 오후 6:26
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -60,6 +60,7 @@
                 </a>
             </li>
 
+
             <li class="nav-item">
                 <a class="nav-link text-white" href="predictDashboard">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -68,7 +69,6 @@
                     <span class="nav-link-text ms-1">+1 Hours dashboard</span>
                 </a>
             </li>
-
             <li class="nav-item">
                 <a class="nav-link text-white" href="solution">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -107,13 +107,11 @@
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                     <li class="fa fa-home breadcrumb-item text-sm"><a class="opacity-5 text-dark ScoreDream400"
                                                                       href="javascript:;">ㅤHOME</a></li>
-
-
-
-                    <li class="breadcrumb-item text-sm text-dark active ScoreDream400" aria-current="page">Dashboard</li>
+                    <li class="breadcrumb-item text-sm text-dark active ScoreDream400" aria-current="page">Solution</li>
                 </ol>
                 <br>
-                <h1 class="font-weight-bolder mb-0 ScoreDream500">Today</h1>
+                <h1 class="font-weight-bolder mb-0 ScoreDream500">Solution
+                </h1>
                 <br>
             </nav>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
@@ -130,7 +128,6 @@
                             <span class="d-sm-inline d-none">Logout</span>
                         </a>
                     </li>
-
                     <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                             <div class="sidenav-toggler-inner">
@@ -223,182 +220,59 @@
         </div>
     </nav>
     <!-- End Navbar -->
-
-    <!-- 백엔드야 여기로와! start -->
     <div class="container-fluid py-4">
-        <div style="width: 1440px; display: flex; justify-content: space-between;">
-            <div style="display: flex; width: 45%; justify-content: space-between;">
-                <!-- card - 실시간 발전량 -->
-                <div>
-                    <div class="card card-a">
-                        <div class="card-header p-3 pt-2">
-                            <div
-                                    class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                                <i class="material-icons opacity-10">battery_charging_full</i>
-                            </div>
-                            <div class="text-end pt-1">
-                                <h4 class="text-lg mb-0 text-capitalize ScoreDream500">실시간 발전량</h4>
-
-                                <div>
-                                    <h3 id="realtimeAOD" class="mb-0 ScoreDream500 inline">0</h3> <span
-                                        class="text-success text-m font-weight-bolder">ㅤKW</span>
-                                </div>
-
-                            </div>
-                        </div>
-                        <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3">
-                            <p class="mb-0 ScoreDream400">Compared to <span
-                                    class="text-success text-md font-weight-bolder ScoreDream500">10
-                    seconds </span>ago</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- card - 실시간 발전량 끝 -->
-
-                <!-- card - 실시간 누적 발전량 -->
-                <div>
-                    <div class="card card-a marginleft15">
-                        <div class="card-header p-3 pt-2">
-                            <div
-                                    class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                                <i class="material-icons opacity-10">battery_charging_full</i>
-                            </div>
-                            <div class="text-end pt-1">
-                                <h4 class="text-lg mb-0 text-capitalize ScoreDream500">실시간 누적발전량</h4>
-                                <h3 id="integratedAOD" class="mb-0 ScoreDream500 inline">0</h3> <span
-                                    class="text-success text-m font-weight-bolder">ㅤKW</span>
-                            </div>
-                        </div>
-                        <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3">
-                            <p class="mb-0 ScoreDream400">Compared to <span
-                                    class="text-success text-md font-weight-bolder ScoreDream500">10
-                    seconds </span>ago</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- card - 실시간 누적 발전량 끝 -->
-
-                <!-- card - 예측률 -->
-                <div>
-                    <div class="card card-b marginleft15">
-                        <div class="card-header p-3 pt-2">
-                            <div
-                                    class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-                                <i class="material-icons opacity-10">equalizer</i>
-                            </div>
-                            <div class="text-end pt-1">
-                                <h4 class="text-lg mb-0 text-capitalize ScoreDream500">예측률</h4>
-
-                                <!-- 여기 예측률이 나와야함! -->
-                                <h3 class="mb-0 ScoreDream500">97.3<span class="text-success text-md font-weight-bolder">ㅤ%</span>
-                                </h3>
-                            </div>
-                        </div>
-                        <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3">
-                            <!-- 22.05.12 -> 이거 날짜에 전날 날짜 불러오면 돼요! -->
-                            <p class="text-sm mb-0 ScoreDream400"><span
-                                    class="text-success text-md font-weight-bolder ScoreDream400" id="pre_date">
-                  </span>기준
-                                계산된 예측률입니다.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- weather api -->
-            <div>
-                <div class="card">
+        <div class="row">
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                <div class="card card-c">
                     <div class="card-header p-3 pt-2">
                         <div
-                                class="icon icon-lg icon-shape bg-gradient-info shadow-sucbg-gradient-info text-center border-radius-xl mt-n4 position-absolute">
-                            <i class="material-icons opacity-10">wb_sunny</i>
+                                class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                            <i class="material-icons opacity-10">battery_charging_full</i>
                         </div>
                         <div class="text-end pt-1">
-                            <h6 class="text-lg mb-0 text-capitalize ScoreDream500">now weather</h6>
-                            <div class="weather">
-                                <div class="CurrIcon">
-                                    <img class="CurrIcon" src="" alt="weatherIcon">
-                                </div>
-                                <h2 class="CurrTemp ScoreDream600"></h2>
-                            </div>
+                            <h5 class="text-m mb-0 text-capitalize ScoreDream500">실시간 누적발전량</h5>
+                            <h3 id="integratedAOD2" class="mb-0 ScoreDream500 inline">0</h3><span
+                                class="text-secondary text-m font-weight-bolder">ㅤKW</span>
                         </div>
                     </div>
-                    <div class="card-footer p-3 placeright">
-                        <!-- <h5 class="City ScoreDream600"></h5> -->
-
-                        <p class="mb-0 ScoreDream400"><span class="City text-info text-m font-weight-bolder ScoreDream600">
-                </span>ㅤ의 현재 날씨데이터입니다.
-                        </p>
-
+                    <hr class="dark horizontal my-0">
+                    <div class="card-footer p-3 ScoreDream400">
+                        <p class="mb-0 text-sm ScoreDream400"><span
+                                class="text-secondary text-md font-weight-bolder ScoreDream400">솔캐스터
+                </span>가 응용솔루션을
+                            제안해드립니다</p>
                     </div>
                 </div>
             </div>
-            <!-- weather api 끝! -->
         </div>
     </div>
+
+
     <div class="row mt-4 AOD">
         <div class="col-lg-4 col-md-6 mt-4 mb-4">
-            <!-- **실시간 발전량 그래프 start** -->
-            <div class="card z-index-2 ">
+            <div class="card z-index-2 solution-card width80 marginbottom80">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                    <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
-                        <div class="chart">
-                            <!-- 그래프 -->
-                            <figure class="highcharts-figure">
-                                <div id="container"></div>
-                            </figure>
-                            <!-- 그래프 end -->
+                    <div class="bg-gradient-success shadow-success border-radius-lg py-3 pe-1">
+                        <!-- 여기를! if문에 넣고 돌리면 될 듯! (여기서부터)-->
+                        <img src="./dashboard/assets/img/solution/ing.png" class="solution-img">
+
+
+                        <div class="text_box">
+                            <br>
+                            <span class="text ScoreDream400 font-white"></span><span class="blink ScoreDream400 font-white">|</span>
                         </div>
                     </div>
                 </div>
-                <!-- **실시간 발전량 그래프 end** -->
-
                 <div class="card-body">
-                    <h4 class="mb-0 ScoreDream500">실시간 발전량</h4>
-                    <div class="d-flex ">
-                        <i class="material-icons text-m my-auto me-1">schedule</i>
-
-                        <p class="mb-0 text-m ScoreDream500"> 실시간 발전량 차트는 10초 단위로 생성되며, 이 전 데이터는 그래프에서 삭제됩니다. </p>
-                    </div>
+                    <h5 class="mb-0 ScoreDream500"> <i class="material-icons text-m my-auto me-1">autorenew</i>ㅤ모아진 전력을 이렇게
+                        활용해보세요 ⚡</h5>
                 </div>
             </div>
+
             <!-- card end -->
         </div>
     </div>
-    <div class="row mt-4 AOD">
-        <div class="col-lg-4 col-md-6 mt-4 mb-4">
 
-            <!-- **누적 발전량 그래프 start** -->
-            <div class="card z-index-2 ">
-                <!-- 실시간 발전량 그래프 start -->
-                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                    <div class="bg-gradient-secondary shadow-secondary border-radius-lg py-3 pe-1">
-                        <div class="chart">
-                            <!-- 여기 넣자! -->
-                            <figure class="highcharts-figure">
-                                <div id="container2"></div>
-
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-                <!-- **누적 발전량 그래프 end** -->
-
-                <div class="card-body">
-                    <h4 class="mb-0 ScoreDream500">실시간 누적발전량</h4>
-
-                    <div class="d-flex ">
-                        <i class="material-icons text-m my-auto me-1">schedule</i>
-                        <p class="mb-0 text-m ScoreDream500">실시간 누적발전량 차트는 10초 단위로 생성되며, 이 전 데이터는 그래프에서 삭제됩니다. </p>
-                    </div>
-                </div>
-            </div>
-            <!-- card end -->
-        </div>
-    </div>
 
 </main>
 <div class="fixed-plugin">
@@ -459,6 +333,7 @@
 <!--   Core JS Files   -->
 <script src="./dashboard/assets/js/core/popper.min.js"></script>
 <script src="./dashboard/assets/js/core/bootstrap.min.js"></script>
+<script src="./dashboard/assets/js/todayDashboard.js"></script>
 <script src="./dashboard/assets/js/plugins/perfect-scrollbar.min.js"></script>
 <script src="./dashboard/assets/js/plugins/smooth-scrollbar.min.js"></script>
 <script src="./dashboard/assets/js/plugins/chartjs.min.js"></script>
@@ -469,55 +344,61 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-<script src="./dashboard/assets/js/todayDashboard.js"></script>
-<script src="./dashboard/assets/js/core/weather.js"></script>
-
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
 
 <script>
+    // solarEnergy = 실시간 누적발전량
+    // content = 출력문구
+    var solarEnergy = 0;
+    // var content = "ㅤ태양광패널이 열심히 전력을 생산하고 있습니다.ㅤ";
+    var content = "ㅤㅤ";
+    const text = document.querySelector(".text");
 
-    // 네모박스에 하루 전 날짜 계산
-    var today = new Date();
-    var yesterday = new Date(today.setDate(today.getDate() - 1));
-    year = yesterday.getFullYear();
-    month = yesterday.getMonth() + 1;
-    day = yesterday.getDate();
-    document.getElementById("pre_date").innerHTML = year + ". " + month + ". " + day + " ";
+    // 한 자씩 타이핑하듯이 문구 나오게 하는 코드 start
+    let i = 0;
 
-    $(document).ready(function () {
-
-        $.ajax({
-            url: "http://api.openweathermap.org/data/2.5/weather?q=Gumi&appid=b33f6dac8f31aae2893ad33278ed55f5&units=metric",
-            dataType: "json",
-            type: "GET",
-            success: function (data) {
-                var $Icon = (data.weather[0]['icon']);
-                var $Temp = Math.floor(data.main.temp) + "°C";
-                var $city = data.name;
-
-                $(".CurrIcon").attr("src", "http://openweathermap.org/img/wn/"+$Icon+"@2x.png");
-
-                $(".CurrTemp").prepend($Temp);
-                $(".City").append($city);
-            }, error: function () {
-                alert("error")
-            }
-        })
-    })
-
-</script>
-<script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-        var options = {
-            damping: '0.5'
+    function typing() {
+        if (i < content.length) {
+            let txt = content.charAt(i);
+            text.innerHTML += txt;
+            i++;
         }
-        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
+    setInterval(typing, 100);
+    // end
+
+    if (solarEnergy <= 3) {
+        solutionImg = "./dashboard/assets/img/solution/ing.png";
+        content = "ㅤ태양광패널이 열심히 전력을 생산하고 있습니다.ㅤ";
+    } else if (solarEnergy <= 6) {
+        document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/1_1280x835.jpg"
+        content = "ㅤ따끈따끈 전기밥솥을 5시간 사용할 수 있는 전력량이 생산됐어요ㅤ";
+    } else if (solarEnergy <= 9) {
+        document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/2_1280x835.jpg"
+        content = "ㅤ우리집을 남극으로!🐧 에어컨을 5시간 사용할 수 있는 전력량이 생산됐어요ㅤ";
+    } else if (solarEnergy <= 12) {
+        document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/3_1280x835.jpg"
+        content = "ㅤ뽀득뽀득 식기세척기를 5시간 사용할 수 있는 전력량이 생산됐어요ㅤ";
+    } else if (solarEnergy <= 15) {
+        document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/4_1280x835.jpg"
+        content = "ㅤ편리한 인덕션을 5시간 사용할 수 있는 전력량이 생산됐어요ㅤ";
+    } else if (solarEnergy >= 77 && solarEnergy <= 100) {
+        document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/5_1280.jpg"
+        content = "ㅤ1인 가구가 한 달간 사용할 수 있는 전력량이 생산됐어요ㅤ";
+    } else if (solarEnergy >= 100 && solarEnergy <= 150) {
+        document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/6_1280.png"
+        content = "ㅤ전기차를 완충할 수 있는 전력량이 생산됐어요ㅤ";
+    } else if (solarEnergy >= 150 && solarEnergy <= 300) {
+        document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/7_1280.jpg"
+        content = "ㅤ2인 가구의 한 달 전력량이 생산됐어요ㅤ";
+    } else if (solarEnergy >= 300 && solarEnergy <= 900) {
+        document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/8_1280.jpg"
+        content = "ㅤ4인 가구의 한 달 전력량이 생산됐어요ㅤ";
+    } else if (solarEnergy >= 900) {
+        document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/8_1280.jpg"
+        content = "ㅤ4인 가구의 세 달 전력량이 생산됐어요ㅤ";
+    }
+
 </script>
-<!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="./dashboard/assets/js/material-dashboard.min.js?v=3.0.0"></script>

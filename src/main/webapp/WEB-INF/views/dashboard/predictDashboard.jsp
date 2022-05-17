@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: smhrd
-  Date: 2022-05-15
-  Time: 오후 2:35
+  Date: 2022-05-17
+  Time: 오후 6:24
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -68,7 +68,6 @@
                     <span class="nav-link-text ms-1">+1 Hours dashboard</span>
                 </a>
             </li>
-
             <li class="nav-item">
                 <a class="nav-link text-white" href="solution">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -107,13 +106,12 @@
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                     <li class="fa fa-home breadcrumb-item text-sm"><a class="opacity-5 text-dark ScoreDream400"
                                                                       href="javascript:;">ㅤHOME</a></li>
-
-
-
                     <li class="breadcrumb-item text-sm text-dark active ScoreDream400" aria-current="page">Dashboard</li>
                 </ol>
                 <br>
-                <h1 class="font-weight-bolder mb-0 ScoreDream500">Today</h1>
+                <h1 class="font-weight-bolder mb-0 ScoreDream500">
+                    +1 Hours
+                </h1>
                 <br>
             </nav>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
@@ -130,7 +128,6 @@
                             <span class="d-sm-inline d-none">Logout</span>
                         </a>
                     </li>
-
                     <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                             <div class="sidenav-toggler-inner">
@@ -228,116 +225,42 @@
     <div class="container-fluid py-4">
         <div style="width: 1440px; display: flex; justify-content: space-between;">
             <div style="display: flex; width: 45%; justify-content: space-between;">
-                <!-- card - 실시간 발전량 -->
                 <div>
-                    <div class="card card-a">
+
+
+
+                    <div class="card card-c">
+
                         <div class="card-header p-3 pt-2">
                             <div
                                     class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                                <i class="material-icons opacity-10">battery_charging_full</i>
+                                <i class="material-icons opacity-10">library_add</i>
                             </div>
                             <div class="text-end pt-1">
-                                <h4 class="text-lg mb-0 text-capitalize ScoreDream500">실시간 발전량</h4>
-
-                                <div>
-                                    <h3 id="realtimeAOD" class="mb-0 ScoreDream500 inline">0</h3> <span
-                                        class="text-success text-m font-weight-bolder">ㅤKW</span>
-                                </div>
-
+                                <h5 class="text-m mb-0 text-capitalize ScoreDream500">실시간 예측 발전량</h5>
+                                <h3 id="realtimeAOD" class="mb-0 ScoreDream500 inline">0</h3><span
+                                    class="text-primary text-md font-weight-bolder">ㅤKW</span>
                             </div>
                         </div>
+
                         <hr class="dark horizontal my-0">
                         <div class="card-footer p-3">
-                            <p class="mb-0 ScoreDream400">Compared to <span
-                                    class="text-success text-md font-weight-bolder ScoreDream500">10
-                    seconds </span>ago</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- card - 실시간 발전량 끝 -->
-
-                <!-- card - 실시간 누적 발전량 -->
-                <div>
-                    <div class="card card-a marginleft15">
-                        <div class="card-header p-3 pt-2">
-                            <div
-                                    class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                                <i class="material-icons opacity-10">battery_charging_full</i>
-                            </div>
-                            <div class="text-end pt-1">
-                                <h4 class="text-lg mb-0 text-capitalize ScoreDream500">실시간 누적발전량</h4>
-                                <h3 id="integratedAOD" class="mb-0 ScoreDream500 inline">0</h3> <span
-                                    class="text-success text-m font-weight-bolder">ㅤKW</span>
-                            </div>
-                        </div>
-                        <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3">
-                            <p class="mb-0 ScoreDream400">Compared to <span
-                                    class="text-success text-md font-weight-bolder ScoreDream500">10
-                    seconds </span>ago</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- card - 실시간 누적 발전량 끝 -->
-
-                <!-- card - 예측률 -->
-                <div>
-                    <div class="card card-b marginleft15">
-                        <div class="card-header p-3 pt-2">
-                            <div
-                                    class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-                                <i class="material-icons opacity-10">equalizer</i>
-                            </div>
-                            <div class="text-end pt-1">
-                                <h4 class="text-lg mb-0 text-capitalize ScoreDream500">예측률</h4>
-
-                                <!-- 여기 예측률이 나와야함! -->
-                                <h3 class="mb-0 ScoreDream500">97.3<span class="text-success text-md font-weight-bolder">ㅤ%</span>
-                                </h3>
-                            </div>
-                        </div>
-                        <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3">
-                            <!-- 22.05.12 -> 이거 날짜에 전날 날짜 불러오면 돼요! -->
-                            <p class="text-sm mb-0 ScoreDream400"><span
-                                    class="text-success text-md font-weight-bolder ScoreDream400" id="pre_date">
-                  </span>기준
-                                계산된 예측률입니다.
+                            <p class="mb-0 text-sm ScoreDream400"><span
+                                    class="text-primary font-weight-bolder text-md ScoreDream400">솔캐스터
+                  </span>는 1시간 뒤의 발전량을 예측합니다.
                             </p>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <!-- weather api -->
-            <div>
-                <div class="card">
-                    <div class="card-header p-3 pt-2">
-                        <div
-                                class="icon icon-lg icon-shape bg-gradient-info shadow-sucbg-gradient-info text-center border-radius-xl mt-n4 position-absolute">
-                            <i class="material-icons opacity-10">wb_sunny</i>
-                        </div>
-                        <div class="text-end pt-1">
-                            <h6 class="text-lg mb-0 text-capitalize ScoreDream500">now weather</h6>
-                            <div class="weather">
-                                <div class="CurrIcon">
-                                    <img class="CurrIcon" src="" alt="weatherIcon">
-                                </div>
-                                <h2 class="CurrTemp ScoreDream600"></h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer p-3 placeright">
-                        <!-- <h5 class="City ScoreDream600"></h5> -->
-
-                        <p class="mb-0 ScoreDream400"><span class="City text-info text-m font-weight-bolder ScoreDream600">
-                </span>ㅤ의 현재 날씨데이터입니다.
-                        </p>
 
                     </div>
+
+
+
                 </div>
+
             </div>
-            <!-- weather api 끝! -->
         </div>
+
+    </div>
     </div>
     <div class="row mt-4 AOD">
         <div class="col-lg-4 col-md-6 mt-4 mb-4">
@@ -348,7 +271,8 @@
                         <div class="chart">
                             <!-- 그래프 -->
                             <figure class="highcharts-figure">
-                                <div id="container"></div>
+                                <div id="predContainer"></div>
+
                             </figure>
                             <!-- 그래프 end -->
                         </div>
@@ -357,16 +281,18 @@
                 <!-- **실시간 발전량 그래프 end** -->
 
                 <div class="card-body">
-                    <h4 class="mb-0 ScoreDream500">실시간 발전량</h4>
-                    <div class="d-flex ">
-                        <i class="material-icons text-m my-auto me-1">schedule</i>
+                    <h4 class="mb-0 ScoreDream500">실시간 예측 발전량</h4>
 
-                        <p class="mb-0 text-m ScoreDream500"> 실시간 발전량 차트는 10초 단위로 생성되며, 이 전 데이터는 그래프에서 삭제됩니다. </p>
+                    <div class="d-flex ">
+                        <i class="material-icons text-sm my-auto me-1">schedule</i>
+                        <p class="mb-0 text-m ScoreDream500"> 실시간 예측 발전량 차트는 10초 단위로 생성되며, 이 전 데이터는 그래프에서 삭제됩니다. </p>
                     </div>
                 </div>
             </div>
             <!-- card end -->
+
         </div>
+
     </div>
     <div class="row mt-4 AOD">
         <div class="col-lg-4 col-md-6 mt-4 mb-4">
@@ -379,7 +305,7 @@
                         <div class="chart">
                             <!-- 여기 넣자! -->
                             <figure class="highcharts-figure">
-                                <div id="container2"></div>
+                                <div id="predContainer2"></div>
 
                             </figure>
                         </div>
@@ -388,11 +314,11 @@
                 <!-- **누적 발전량 그래프 end** -->
 
                 <div class="card-body">
-                    <h4 class="mb-0 ScoreDream500">실시간 누적발전량</h4>
+                    <h4 class="mb-0 ScoreDream500">실시간 예측 누적발전량</h4>
 
                     <div class="d-flex ">
-                        <i class="material-icons text-m my-auto me-1">schedule</i>
-                        <p class="mb-0 text-m ScoreDream500">실시간 누적발전량 차트는 10초 단위로 생성되며, 이 전 데이터는 그래프에서 삭제됩니다. </p>
+                        <i class="material-icons text-sm my-auto me-1">schedule</i>
+                        <p class="mb-0 text-m ScoreDream500"> 실시간 누적 발전량 차트는 10초 단위로 생성되며, 이 전 데이터는 그래프에서 삭제됩니다. </p>
                     </div>
                 </div>
             </div>
@@ -469,44 +395,254 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-<script src="./dashboard/assets/js/todayDashboard.js"></script>
-<script src="./dashboard/assets/js/core/weather.js"></script>
-
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
+<script src="./dashboard/assets/js/predictDashboard.js"></script>
 
 <script>
+    var ctx = document.getElementById("chart-bars").getContext("2d");
 
-    // 네모박스에 하루 전 날짜 계산
-    var today = new Date();
-    var yesterday = new Date(today.setDate(today.getDate() - 1));
-    year = yesterday.getFullYear();
-    month = yesterday.getMonth() + 1;
-    day = yesterday.getDate();
-    document.getElementById("pre_date").innerHTML = year + ". " + month + ". " + day + " ";
+    new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: ["M", "T", "W", "T", "F", "S", "S"],
+            datasets: [{
+                label: "Sales",
+                tension: 0.4,
+                borderWidth: 0,
+                borderRadius: 4,
+                borderSkipped: false,
+                backgroundColor: "rgba(255, 255, 255, .8)",
+                data: [50, 20, 10, 22, 50, 10, 40],
+                maxBarThickness: 6
+            },],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false,
+                }
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index',
+            },
+            scales: {
+                y: {
+                    grid: {
+                        drawBorder: false,
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: false,
+                        borderDash: [5, 5],
+                        color: 'rgba(255, 255, 255, .2)'
+                    },
+                    ticks: {
+                        suggestedMin: 0,
+                        suggestedMax: 500,
+                        beginAtZero: true,
+                        padding: 10,
+                        font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
+                        },
+                        color: "#fff"
+                    },
+                },
+                x: {
+                    grid: {
+                        drawBorder: false,
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: false,
+                        borderDash: [5, 5],
+                        color: 'rgba(255, 255, 255, .2)'
+                    },
+                    ticks: {
+                        display: true,
+                        color: '#f8f9fa',
+                        padding: 10,
+                        font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
+                        },
+                    }
+                },
+            },
+        },
+    });
 
-    $(document).ready(function () {
 
-        $.ajax({
-            url: "http://api.openweathermap.org/data/2.5/weather?q=Gumi&appid=b33f6dac8f31aae2893ad33278ed55f5&units=metric",
-            dataType: "json",
-            type: "GET",
-            success: function (data) {
-                var $Icon = (data.weather[0]['icon']);
-                var $Temp = Math.floor(data.main.temp) + "°C";
-                var $city = data.name;
+    var ctx2 = document.getElementById("chart-line").getContext("2d");
 
-                $(".CurrIcon").attr("src", "http://openweathermap.org/img/wn/"+$Icon+"@2x.png");
+    new Chart(ctx2, {
+        type: "line",
+        data: {
+            labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            datasets: [{
+                label: "Mobile apps",
+                tension: 0,
+                borderWidth: 0,
+                pointRadius: 5,
+                pointBackgroundColor: "rgba(255, 255, 255, .8)",
+                pointBorderColor: "transparent",
+                borderColor: "rgba(255, 255, 255, .8)",
+                borderColor: "rgba(255, 255, 255, .8)",
+                borderWidth: 4,
+                backgroundColor: "transparent",
+                fill: true,
+                data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
+                maxBarThickness: 6
 
-                $(".CurrTemp").prepend($Temp);
-                $(".City").append($city);
-            }, error: function () {
-                alert("error")
-            }
-        })
-    })
+            }],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false,
+                }
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index',
+            },
+            scales: {
+                y: {
+                    grid: {
+                        drawBorder: false,
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: false,
+                        borderDash: [5, 5],
+                        color: 'rgba(255, 255, 255, .2)'
+                    },
+                    ticks: {
+                        display: true,
+                        color: '#f8f9fa',
+                        padding: 10,
+                        font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
+                        },
+                    }
+                },
+                x: {
+                    grid: {
+                        drawBorder: false,
+                        display: false,
+                        drawOnChartArea: false,
+                        drawTicks: false,
+                        borderDash: [5, 5]
+                    },
+                    ticks: {
+                        display: true,
+                        color: '#f8f9fa',
+                        padding: 10,
+                        font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
+                        },
+                    }
+                },
+            },
+        },
+    });
 
+    var ctx3 = document.getElementById("chart-line-tasks").getContext("2d");
+
+    new Chart(ctx3, {
+        type: "line",
+        data: {
+            labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            datasets: [{
+                label: "Mobile apps",
+                tension: 0,
+                borderWidth: 0,
+                pointRadius: 5,
+                pointBackgroundColor: "rgba(255, 255, 255, .8)",
+                pointBorderColor: "transparent",
+                borderColor: "rgba(255, 255, 255, .8)",
+                borderWidth: 4,
+                backgroundColor: "transparent",
+                fill: true,
+                data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                maxBarThickness: 6
+
+            }],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false,
+                }
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index',
+            },
+            scales: {
+                y: {
+                    grid: {
+                        drawBorder: false,
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: false,
+                        borderDash: [5, 5],
+                        color: 'rgba(255, 255, 255, .2)'
+                    },
+                    ticks: {
+                        display: true,
+                        padding: 10,
+                        color: '#f8f9fa',
+                        font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
+                        },
+                    }
+                },
+                x: {
+                    grid: {
+                        drawBorder: false,
+                        display: false,
+                        drawOnChartArea: false,
+                        drawTicks: false,
+                        borderDash: [5, 5]
+                    },
+                    ticks: {
+                        display: true,
+                        color: '#f8f9fa',
+                        padding: 10,
+                        font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
+                        },
+                    }
+                },
+            },
+        },
+    });
 </script>
 <script>
     var win = navigator.platform.indexOf('Win') > -1;

@@ -1,6 +1,7 @@
 package com.solarpred.solcaster.service;
 
 import com.solarpred.solcaster.domain.DashBoard;
+import com.solarpred.solcaster.domain.Prediction;
 import com.solarpred.solcaster.domain.Temp_weather;
 import com.solarpred.solcaster.mapper.DashBoardMapper;
 
@@ -24,6 +25,18 @@ public class DashBoardService {
     
     public List<DashBoard> DashBoardSelect(String parsingTime) {
     	return mapper.DashBoardSelect(parsingTime);
+    }
+    
+    public List<Prediction> PredictionSelect(){
+    	return mapper.PredictionSelect();
+    }
+    
+    public Double PreTotalSelect(String parsingTime){
+    	return mapper.PreTotalSelect(parsingTime);
+    }
+    
+    public int realTotalSelect(String parsingTime, String parsingTime2) {
+    	return mapper.realTotalSelect(parsingTime, parsingTime2);
     }
 
 

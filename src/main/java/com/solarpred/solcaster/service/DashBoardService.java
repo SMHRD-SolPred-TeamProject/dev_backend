@@ -1,7 +1,11 @@
 package com.solarpred.solcaster.service;
 
+import com.solarpred.solcaster.domain.DashBoard;
 import com.solarpred.solcaster.domain.Temp_weather;
 import com.solarpred.solcaster.mapper.DashBoardMapper;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +22,10 @@ public class DashBoardService {
      */
     public List<Temp_weather> getTemp_weather(String parsingTime){
         return mapper.getTemp_weather(parsingTime);
+    }
+    
+    public List<DashBoard> DashBoardSelect() {
+    	return mapper.DashBoardSelect();
     }
 
 

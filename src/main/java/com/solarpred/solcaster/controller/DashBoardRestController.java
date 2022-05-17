@@ -1,5 +1,6 @@
 package com.solarpred.solcaster.controller;
 
+import com.solarpred.solcaster.domain.DashBoard;
 import com.solarpred.solcaster.domain.Temp_weather;
 import com.solarpred.solcaster.domain.test;
 import com.solarpred.solcaster.service.DashBoardService;
@@ -89,4 +90,35 @@ public class DashBoardRestController {
         String substring_date = current_time.substring(0,18)+"%";
         return substring_date;
     }
+    @CrossOrigin("*") // 모든 요청에 접근 허용
+    @RequestMapping(value = "/api/dash", method = RequestMethod.GET)
+    public JSONObject apiLogin(){
+
+        //DashBoard dash = service.DashBoardSelect();
+
+        // json-simple 라이브러리 추가 필요(JSON 객체 생성)
+        JSONObject jsonMain = new JSONObject(); // json 객체
+
+        // {변수명:값, 변수명:값}
+        // {sendData:[{변수명:값},{변수명:값},...]}
+        List<DashBoard> items = service.DashBoardSelect();
+        JSONArray jArray = new JSONArray(); // json배열
+
+        for(int i=0; i<items.size(); i++){
+        DashBoard dto = items.get(i);
+        JSONObject row = new JSONObject();
+        // json객체.put("변수명",값)
+        row.put("aod", dto.getR_aod());
+        // 배열에 추가
+        // json배열.add(인덱스,json객체)
+        jArray.add(i,row);
+        //jArray.add(0,row);
+        }
+
+        // json객체에 배열을 넣음
+        jsonMain.put("dash", jArray);
+        return jsonMain;
+    }
+    
+    
 }

@@ -301,6 +301,16 @@
 
 <!-- Template Javascript -->
 <script src="js/main.js"></script>
+
+<script>
+    window.onload = () => {
+        if(${sessionScope.member eq null}){
+            alert("로그인 후 이용해주세요");
+            history.back();
+        }
+    }
+</script>
+
 </body>
 
 </html>

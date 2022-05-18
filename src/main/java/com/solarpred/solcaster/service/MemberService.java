@@ -1,11 +1,14 @@
 package com.solarpred.solcaster.service;
 
+import com.solarpred.solcaster.domain.Criteria;
+import com.solarpred.solcaster.domain.CriteriaAdd;
 import com.solarpred.solcaster.domain.Member;
 import com.solarpred.solcaster.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class MemberService {
@@ -13,17 +16,25 @@ public class MemberService {
     @Autowired
     MemberMapper mapper;
 
-    //전체회원조회
+    // 전체 회원 조회
     public List<Member> findAll(){
         return mapper.findAll();
     }
 
-    //회원가입
+    // 페이징 처리를 위한 전체 회원 불러오기
+    public List<Map<String, Object>> memberList(Criteria cri){
+        return mapper.memberList(cri);
+    }
+
+    // 전체 회원 수 조회
+    public int memberListCnt(){return mapper.memberListCnt();}
+
+    // 회원가입
     public void joinInsert(Member vo){
         mapper.joinInsert(vo);
     }
 
-    //로그인
+    // 로그인
     public Member login(Member vo){
         return mapper.login(vo);
     }

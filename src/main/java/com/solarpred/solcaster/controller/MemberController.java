@@ -1,6 +1,6 @@
 package com.solarpred.solcaster.controller;
 
-import com.solarpred.solcaster.domain.Member;
+import com.solarpred.solcaster.domain.*;
 import com.solarpred.solcaster.service.BoardService;
 import com.solarpred.solcaster.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 
 @org.springframework.stereotype.Controller
 public class MemberController {
@@ -68,13 +69,20 @@ public class MemberController {
      * 로그인 기능
      */
     @PostMapping("/login")
-    public String login(Member vo, HttpServletRequest request) throws Exception{
+    public String login(Member vo, HttpServletRequest request, Model model) throws Exception{
         HttpSession session = request.getSession();
         Member member = service.login(vo);
 
-        if(member == null){
-            session.setAttribute("member",null);
-            System.out.println("세션생성실패!");
+        if(vo.getMem_id().equals("") && vo.getMem_pw().equals("")){
+            Member member2 = new Member();
+            member2.setMem_id("nullnull");
+            model.addAttribute("member2",member2);
+            return "login";
+        }else if(member == null){
+            Member member2 = new Member();
+            member2.setMem_id("null");
+            model.addAttribute("member2",member2);
+            return "login";
         }else{
             session.setAttribute("member",member);
             System.out.println("세션생성성공!");
@@ -96,9 +104,21 @@ public class MemberController {
      * 회원관리 페이지 이동
      */
     @GetMapping("/goManage")
-    public String goManage(Model model) {
-        List<Member> list =  service.findAll();
+    public String goManage(Criteria cri, Model model) {
+
+        // 전체 회원 수
+        int memberListCnt = service.memberListCnt();
+
+        // 페이징 객체
+        Paging paging = new Paging();
+        paging.setCri(cri);
+        paging.setTotalCount(memberListCnt);
+
+        List<Map<String, Object>> list =  service.memberList(cri);
+
         model.addAttribute("list",list);
+        model.addAttribute("paging",paging);
+
         return "manage";
     }
 

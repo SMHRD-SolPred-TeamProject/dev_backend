@@ -29,19 +29,6 @@ public interface DashBoardMapper {
     // 누적된 예측 발전량 값 몇개 중에서 -1 된 값들 가져오기
     public List remainPreValues(@Param("parsingTime")String parsingTime, @Param("cnt")int cnt);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     // 20개 예측 발전량 값 가져오기
     public List<Prediction> getPreAOD(String parsingTime);
 

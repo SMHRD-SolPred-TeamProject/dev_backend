@@ -84,31 +84,41 @@
 </div>
 <script src="assets/js/join.js"></script>
 
-<%--
+
 <script>
-    window.addEventListener(
-        "load",
-        () => {
-            const forms = document.getElementsByClassName("validation-form");
-
-            Array.prototype.filter.call(forms, (form) => {
-                form.addEventListener(
-                    "submit",
-                    function (event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-
-                        form.classList.add("was-validated");
-                    },
-                    false
-                );
-            });
-        },
-        false
-    );
+    window.onload = () => {
+        if(${member2.mem_id eq "null"}){
+            alert("일치하는 정보가 없습니다.");
+        }else if(${member2.mem_id eq "nullnull"}){
+            alert("아이디 또는 비밀번호를 입력해주세요.");
+        }
+    }
 </script>
---%>
+
+<%--<script>--%>
+<%--    window.addEventListener(--%>
+<%--        "load",--%>
+<%--        () => {--%>
+<%--            const forms = document.getElementsByClassName("validation-form");--%>
+
+<%--            Array.prototype.filter.call(forms, (form) => {--%>
+<%--                form.addEventListener(--%>
+<%--                    "submit",--%>
+<%--                    function (event) {--%>
+<%--                        if (form.checkValidity() === false) {--%>
+<%--                            event.preventDefault();--%>
+<%--                            event.stopPropagation();--%>
+<%--                        }--%>
+
+<%--                        form.classList.add("was-validated");--%>
+<%--                    },--%>
+<%--                    false--%>
+<%--                );--%>
+<%--            });--%>
+<%--        },--%>
+<%--        false--%>
+<%--    );--%>
+<%--</script>--%>
+
 </body>
 </html>

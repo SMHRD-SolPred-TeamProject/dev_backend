@@ -73,6 +73,7 @@ public class DashBoardService {
         return mapper.preGetAOD(parsingTime);
     }
 
+
     public List<DashBoard> DashBoardSelect(String parsingTime) {
     	return mapper.DashBoardSelect(parsingTime);
     }

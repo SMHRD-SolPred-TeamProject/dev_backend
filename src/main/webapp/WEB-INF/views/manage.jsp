@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: smhrd
@@ -339,6 +338,7 @@
             >HOME<i class="fa fa-arrow-right ms-3"></i
             ></a>
         </div>
+    </div>
 </nav>
 <!-- Navbar End -->
 
@@ -407,15 +407,40 @@
                 </tbody>
             </table>
             <div class="clearfix">
-                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                <%-- 좌측 페이지 숫자와 현재 페이지 표시 --%>
+                <c:choose>
+                    <c:when test="${param.page eq null}">
+                        <div class="hint-text">Showing <b>1</b> out of <b>${paging.endPage}</b> entries</div>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="hint-text">Showing <b>${param.page}</b> out of <b>${paging.endPage}</b> entries</div>
+                    </c:otherwise>
+                </c:choose>
+
                 <ul class="pagination">
-                    <li class="page-item disabled"><a href="#">Previous</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                    <%-- 이전 버튼 --%>
+                    <c:if test="${paging.prev}">
+                        <li class="page-item">
+                            <a class="page-link" href="#"/>" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </c:if>
+
+                    <%-- 페이지 숫자 --%>
+                    <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
+                        <li class="page-item"><a class="page-link" href="<c:url value="/goManage?page=${num}"/>">${num}</a></li>
+                    </c:forEach>
+
+                    <%-- 다음 버튼 --%>
+                    <c:if test="${paging.next && paging.endPage>0}">
+                        <li class="page-item">
+                            <a class="page-link" href="#"/>" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </c:if>
+
                 </ul>
             </div>
         </div>

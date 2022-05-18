@@ -7,6 +7,18 @@
         select * from s_member
     </select>
 
+    <!--  페이징 처리를 위한 전체 회원 불러오기  -->
+    <select id="memberList" resultType="hashmap" parameterType="hashmap">
+        <![CDATA[
+        select * from s_member order by mem_joindate desc limit #{pageStart}, #{perPageNum}
+        ]]>
+    </select>
+
+    <!--  전체 회원 수 불러오기  -->
+    <select id="memberListCnt" resultType="int">
+        select count(*) from s_member
+    </select>
+
     <!--  회원가입  -->
     <insert id="joinInsert" parameterType="com.solarpred.solcaster.domain.Member">
         insert into s_member values(#{mem_id}, #{mem_pw}, #{mem_name}, #{mem_zipcode}, #{mem_addr}, #{mem_addrdetail}, #{mem_phone},'N','N',now())

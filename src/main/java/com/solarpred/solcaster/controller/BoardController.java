@@ -29,12 +29,6 @@ public class BoardController {
     @GetMapping("/boardList")
     public String boardList(CriteriaAdd cri, Model model){
 
-
-        System.out.println("model.getAttribute(list) = " + model.getAttribute("list"));
-
-
-
-
         // 전체 글 개수
         int boardListCnt = service.boardListCnt();
 

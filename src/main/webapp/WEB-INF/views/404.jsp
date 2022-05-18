@@ -1,20 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
-  User: smhrd
-  Date: 2022-05-09
-  Time: 오후 9:17
+  User: khc92
+  Date: 2022-05-18
+  Time: 오후 11:26
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>☀ SolCaster - Solar Power Monitoring System</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <meta charset="utf-8" />
+    <title>SolCaster - Solar Power Monitoring System</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />
 
@@ -36,18 +32,24 @@
     <link href="lib/animate/animate.min.css" rel="stylesheet" />
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
-    <!-- ScoreDream 폰트 -->
-    <link href="css/font.css" rel="stylesheet" />
 
-    <style>
-        <%-- 스크롤바 숨기기 --%>
-        body{-ms-overflow-style:none; }
-        body::-webkit-scrollbar { display:none; }
-    </style>
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
 
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
 </head>
 
 <body>
+<!-- Spinner Start -->
+<div id="spinner"
+     class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<!-- Spinner End -->
+
 <!-- Topbar Start -->
 <div class="container-fluid bg-dark p-0">
     <div class="row gx-0 d-none d-lg-flex">
@@ -119,99 +121,54 @@
             <a href="/solarpred/" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block" id="btn-home">HOME<i
                     class="fa fa-arrow-right ms-3"></i></a>
         </div>
-    </div>
 </nav>
 <!-- Navbar End -->
 
-<div id="main" class="ScoreDream400">
 
-
-    <br/>
-
-    <br/><br/>
-    <div class="container" id="board-list">
-        <h1>Customer Service</h1>
-        <p>도움이 필요하신가요?</p>
-        <br>
-
-        <!-- Write Main -->
-        <section class="checkout spad">
-            <div class="container">
-                <div class="checkout__form">
-
-                    <%-- 글쓰기 폼 start --%>
-                    <form name="insertform" action="/solarpred/boardUpdate" method="post">
-                        <%-- <input type="hidden" name="command" value="qnaInsert">--%>
-                        <input type="hidden" name="mem_id" value="${sessionScope.member.mem_id}">
-                            <input type="hidden" name="qna_seq" value="${vo.qna_seq}">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6">
-                                <br><br>
-                                <div class="row">
-                                    <div class="col-lg-8">
-                                        <div class="checkout__input">
-                                            <h6>
-                                                제목
-                                                <span>
-                            *
-                          </span>
-                                            </h6>
-
-                                            <input data-testid="input-box" id="inquiry-subject" name="qna_title" placeholder="제목을 입력해주세요"
-                                                   type="text" height="44" class="boardWrte-title" value="${vo.qna_title}">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="checkout__input">
-                                            <h6>
-                                                카테고리
-                                                <span>
-                            *
-                          </span>
-                                            </h6>
-                                            <div>
-                                                <select class="form-select" aria-label="Default select example" name="qna_cat">
-                                                    <c:forEach var="list" items="${arr}">
-                                                        <option value="${list}"  <c:if test="${list eq  vo.qna_cat}">selected="selected"</c:if>>${list}</option>
-                                                    </c:forEach>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="input-div" style="padding: 50px 0px 0px 10px;">
-                                        <div class="checkout__input_2">
-                                            <h6>
-                                                글 내용
-                                                <span>
-                            *
-                          </span>
-                                            </h6>
-                                            <div class="form-floating">
-                          <textarea class="form-control" name="qna_content" placeholder="Leave a comment here" id="floatingTextarea2"
-                                    style="height: 250px">${vo.qna_content}</textarea>
-                                                <label for="floatingTextarea2">Comments</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                <button type="submit" class="btn btn-write btn-outline-primary">
-                                    등록
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                    <%-- 글쓰기 폼 end --%>
-
-                </div>
-            </div>
-        </section>
-
-
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5">
+    <div class="container py-5">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">
+            404 Error
+        </h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a class="text-white" href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a class="text-white" href="#">Pages</a>
+                </li>
+                <li class="breadcrumb-item text-white active" aria-current="page">
+                    404 Error
+                </li>
+            </ol>
+        </nav>
     </div>
 </div>
+<!-- Page Header End -->
 
+<!-- 404 Start -->
+<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <i class="bi bi-brightness-alt-high display-1 text-primary"></i>
+                <h1></h1>
+                <h1 class="display-1">404</h1>
+                <h1 class="mb-4">Page Not Found</h1>
+                <p class="mb-4">
+                    찾을 수 없는 페이지입니다.<br />
+                    요청하신 페이지가 사라졌거나, 잘못된 경로를 이용하셨어요 :)<br />
+                    <!-- We’re sorry, the page you have looked for does not exist in our
+                      website! Maybe go to our home page or try to use a search? -->
+                </p>
+                <a class="btn btn-primary rounded-pill py-3 px-5" href="/solarpred/">Go Back To Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 404 End -->
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-body footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container py-5">
@@ -282,13 +239,11 @@
 </div>
 
 <!-- Footer End -->
+
 <!-- Back to Top -->
 <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-<script src="./Document_files/jquery.min.js.다운로드"></script>
-<script type="text/javascript" src="./Document_files/bootstrap.js.다운로드"></script>
-
-</script>
+<!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="lib/wow/wow.min.js"></script>
@@ -301,14 +256,6 @@
 
 <!-- Template Javascript -->
 <script src="js/main.js"></script>
-<script>
-    window.onload = () => {
-        if(${sessionScope.member eq null}){
-            alert("잘못된 접근입니다");
-            history.back();
-        }
-    }
-</script>
 </body>
 
 </html>

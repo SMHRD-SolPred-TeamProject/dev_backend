@@ -159,7 +159,7 @@ public class DashBoardRestController {
     }
 
     /**
-     * 1시간 후 발전량 가져오기
+     * 1시간 후 예측 발전량 가져오기
      */
     @CrossOrigin("*") // 모든 요청에 접근 허용
     @RequestMapping(value = "/api/preGetAOD", method = RequestMethod.GET)
@@ -191,6 +191,9 @@ public class DashBoardRestController {
         return jsonMain;
     }
 
+    /**
+     * 안드로이드 실시간
+     */
     @CrossOrigin("*") // 모든 요청에 접근 허용
     @RequestMapping(value = "/api/dash", method = RequestMethod.GET)
     public JSONObject apiDash(){
@@ -227,7 +230,10 @@ public class DashBoardRestController {
         jsonMain.put("dash", jArray);
         return jsonMain;
     }
-    
+
+    /**
+     * 안드로이드 예측
+     */
     @CrossOrigin("*") // 모든 요청에 접근 허용
     @RequestMapping(value = "/api/pre", method = RequestMethod.GET)
     public JSONObject apiPre(){
@@ -262,7 +268,7 @@ public class DashBoardRestController {
         return jsonMain;
     }
 
-    // 현재 시간 % 형식에 맞춰 출력 메서드
+    // 현재 시간 % 형식에 맞춰 출력 메서드 => (2022-05-05 00:00:0%)
     public String currentTime(){
         //시간구하기
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -278,7 +284,7 @@ public class DashBoardRestController {
         return substring_date;
     }
 
-    // 한시간 후 % 형식에 맞춰 출력
+    // 한시간 후 % 형식에 맞춰 출력 => +1시간 후의 값 (2022-05-05 00:00:0%)
     public String currentTimeAddOneHour(){
         //시간구하기
         Timestamp timestamp = new Timestamp(System.currentTimeMillis()+3600000);
@@ -294,7 +300,7 @@ public class DashBoardRestController {
         return substring_date;
     }
 
-    // 현재 시간 % 형식에 맞춰 출력 메서드 (날짜까지)
+    // 현재 날짜형식으로 출력 => (2022-05-05%)
     public String currentTime2(){
         //시간구하기
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -310,7 +316,7 @@ public class DashBoardRestController {
         return substring_date;
     }
 
-    // 현재 시간 % 형식에 맞춰 출력 메서드
+    // 현재 시간 출력 =>  (2022-05-15 14:12:25)
     public String currentTime3(){
         //시간구하기
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -323,7 +329,7 @@ public class DashBoardRestController {
         return current_time;
     }
 
-    // 한시간 후 시간 %형식에 맞춰 출력 메서드
+    // 
     public String preTotal(){
         //시간구하기
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -352,7 +358,7 @@ public class DashBoardRestController {
         return substring_date;
     }
 
-    // 한시간 후 % 형식에 맞춰 출력
+    // 한시간 후 % 형식에 맞춰 출력 => +59분 후의 값 (2022-05-05 00:00:0%)
     public String currentTimeAddOneHour2(){
         //시간구하기
         Timestamp timestamp = new Timestamp(System.currentTimeMillis()+3540000);

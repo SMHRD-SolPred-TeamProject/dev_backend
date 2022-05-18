@@ -76,11 +76,11 @@
                 <div class="col-md-8 mb-3 margin_center">
                     <label for="address">주소</label>
                     <input type="text" class="form-control , col-3" id="sample6_postcode" name="mem_zipcode" placeholder="우편번호"
-                           style="margin-bottom: 10px" readonly />
+                           style="margin-bottom: 10px" readonly/>
                     <input type="text" class="form-control , col-12" id="sample6_address" name="mem_addr" placeholder="주소" readonly
-                           style="margin-bottom: 10px" />
+                           style="margin-bottom: 10px"/>
                     <input type="text" class="form-control , col-12" id="sample6_detailAddress" name="mem_addrdetail" placeholder="상세주소"
-                           style="margin-bottom: 10px" />
+                           style="margin-bottom: 10px"required />
                     <div class="addr__container">
                         <input type="button" class="daumBtn , btn btn-warning" value="우편번호 찾기" onclick="openDaumPostCode()" />
                     </div>

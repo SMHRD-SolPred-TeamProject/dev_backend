@@ -163,6 +163,12 @@
   window.addEventListener(
           "load",
           () => {
+
+            if(${sessionScope.member eq null}){
+              alert("로그인 후 이용해주세요");
+              history.back();
+            }
+
             const forms = document.getElementsByClassName("validation-form");
 
             Array.prototype.filter.call(forms, (form) => {

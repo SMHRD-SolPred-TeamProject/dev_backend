@@ -50,7 +50,7 @@ public class DashBoardRestController {
         Double prevTotalValue = service.getFirstTotal(parsingTime1,parsingTime2,cnt);
 
         // cnt 갯수 중 - 1 한 나머지 값들을 Dashboard 객체에 담기
-        List<DashBoard> remainValues = service.remainValues(parsingTime, cnt - 1);
+        List remainValues = service.remainValues(parsingTime, cnt - 1);
         JSONArray jArray = new JSONArray(); // json배열
 
         Double total = prevTotalValue;
@@ -63,9 +63,9 @@ public class DashBoardRestController {
             if(i == 0){
                 row.put("r_aod_total",total);
             }else {
-                DashBoard items2 = remainValues.get(i-1);
-                total += items2.getR_aod();
-                row.put("r_aod_total",total);
+                Double items2 = (Double) remainValues.get(i-1);
+                total += items2;
+                row.put("r_aod_total",(total*100)/100);
             }
             jArray.add(i,row);
         }
@@ -105,35 +105,53 @@ public class DashBoardRestController {
     }
 
     /**
-     * 대시보드에서 20개의 예측 발전량 값 져오기
+     * 예측 발전량 값들과 누적된 발전량 값 가져오기
      */
     @CrossOrigin("*") // 모든 요청에 접근 허용
     @RequestMapping(value = "/api/getPreAOD", method = RequestMethod.GET)
     public JSONObject getPreAOD(){
 
         // 현재시간 SQL문에 알맞는 형식으로 불러오기
-        String parsingTime = currentTimeAddOneHour();
+        String parsingTime = currentTimeAddOneHour(); // +1 시간 후 형식 SQL
+        String parsingTime2 = currentTime2(); // 자정시간 SQL
+
+        int cnt = 20;
+
+        // cnt 갯수에서 제일 시간이 오래된 첫번째 누적된 값
+        Double prevTotalValue = service.getPreFirstTotal(parsingTime,parsingTime2,cnt);
+//        int preTotalValueChange = Integer.parseInt(prevTotalValue.toString());
+
+        // cnt 갯수 중 - 1 한 나머지 값들을 Dashboard 객체에 담기
+        List remainPreValues = service.remainPreValues(parsingTime, cnt - 1);
+
+        // 20개 이전 값 가져오기
+        List<Prediction> list = service.getPreAOD(parsingTime);
 
         // json-simple 라이브러리 추가 필요(JSON 객체 생성)
         JSONObject jsonMain = new JSONObject(); // json 객체
-
-        List<Prediction> list = service.getPreAOD(parsingTime);
         JSONArray jArray = new JSONArray(); // json배열
 
-        for(int i=0; i<list.size(); i++){
-            Prediction items = list.get(i);
+        Double total = prevTotalValue;
+
+        for(int i=0; i<cnt; i++){
             JSONObject row = new JSONObject();
+            Prediction items1 = list.get(i);
 
-            // json객체.put("변수명",값)
-            row.put("pred_aod", items.getPred_aod());
-            row.put("pred_time", items.getPred_time());
+            if(items1.getPred_aod() < 0){
+                items1.setPred_aod(0);
+            }
 
-            // 배열에 추가
-            // json배열.add(인덱스,json객체)
-            //jArray.add(i,row);
+            row.put("pred_aod",items1.getPred_aod());
+
+            if(i == 0){
+                row.put("pred_aod_total",total);
+            }else {
+                Double items2 = (Double) remainPreValues.get(i-1);
+                total += items2;
+                row.put("pred_aod_total",total);
+            }
             jArray.add(i,row);
         }
-
         // json객체에 배열을 넣음
         jsonMain.put("pred_aod", jArray);
 

@@ -10,7 +10,7 @@ setInterval(function (){
       .then(res => res.json())
       .then(res => {
         y = res['pred_aod'][0]['pred_aod'];
-        y2 += res['pred_aod'][0]['pred_aod'];
+        y2 += res['pred_aod'][0]['pred_aod']/1000;
       });
 },10000);
 
@@ -22,25 +22,15 @@ fetch('http://59.0.236.34:9090/solarpred/api/getPreAOD')
     .then(res => {
       for (let x = 0; x <= 19; x += 1) {
         // aod[x] = parseInt(res['pred_aod'][x]['pred_aod']);
-        aod[x] = parseInt(res['pred_aod'][19-x]['pred_aod']);
-        totalY += aod[x];
+        aod[x] = res['pred_aod'][19-x]['pred_aod'];
+        aod2[x] = res['pred_aod'][x]['pred_aod_total'];
 
-        // 누적발전량
-        if(x > 0){
-          // aod2[x] = aod2[x-1] + parseInt(res['pred_aod'][x]['pred_aod']);
-          // aod2[x] = aod2[x-1] + parseInt(res['pred_aod'][19-x]['pred_aod']);
-          aod2[x] = aod2[x-1] + aod[x];
-        }else{
-          // aod2[x] = aod[x];
-          aod2[x] = aod[x];
-        }
-        // console.log(`aod2[${x}] = ${aod2[x]}`)
       }
       // 누적값에 이전에 보여진 20개의 값 더해주기
-      y2 = totalY;
+      y2 = Math.round((aod2[19] * 10) / 10);
 
       // 상단에 실시간 예측 발전량 이전에 보여진 20개의 누적값으로 변경 출력
-      realTimeGerateDom.innerText = y2;
+      realTimeGerateDom.innerText = aod[19];
 
     })
     .then(res => {
@@ -154,8 +144,6 @@ fetch('http://59.0.236.34:9090/solarpred/api/getPreAOD')
                 var x = new Date().getTime(); // current time
                 // let y = Math.random() * 3000;
 
-                // 10초 단위로 바꿈!
-                realTimeGerateDom.innerText = y2;
                 series.addPoint([x, y2], true, true);
               }, 10000);
             },
@@ -191,6 +179,8 @@ fetch('http://59.0.236.34:9090/solarpred/api/getPreAOD')
           title: {
             text: "실시간 발전량",
           },
+          floor: aod2[0]-30,
+          ceiling: aod2[0]+30,
           plotLines: [
             {
               value: 0,

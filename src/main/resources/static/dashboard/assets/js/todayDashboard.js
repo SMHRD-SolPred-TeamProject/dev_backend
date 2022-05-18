@@ -2,7 +2,6 @@ let realTimeGerateDom = document.getElementById("realtimeAOD");
 let realTimeTotalAOD = document.getElementById("integratedAOD");
 let y = 0;
 let y2 = 0;
-let total = 0;
 
 // solution페이지의 실시간누적발전량
 let sol_realTimeTotalAOD = document.getElementById("integratedAOD2");
@@ -14,7 +13,7 @@ setInterval(function (){
       .then(res => res.json())
       .then(res => {
         y = res['r_aod'][0]['r_aod'];
-        y2 += res['r_aod'][0]['r_aod'];
+        y2 += res['r_aod'][0]['r_aod']/1000;
       });
 },10000);
 
@@ -26,13 +25,15 @@ fetch('http://59.0.236.34:9090/solarpred/api/getAOD')
     .then(res => {
       for (let x = 0; x <= 19; x += 1) {
         aod[x] = res['r_aod'][19-x]['r_aod'];
-        total += res['r_aod'][x]['r_aod_total'];
-        aod2[x] = total;
+        aod2[x] = res['r_aod'][x]['r_aod_total'];
       }
       // 누적값에 이전에 보여진 20개의 값 더해주기
-      y2 = Math.round(aod2[19] * 10) / 10;
+      y2 = Math.round((aod2[19] * 10) / 10);
 
-      // Today dashboard 페이지 실시간 누적발전량 바꿈!
+      // 페이지 로딩 시 실시간 발전량 변경
+      realTimeGerateDom.innerText = aod[19];
+
+      // 페이지 로딩 시 실시간 누적발전량  변경
       realTimeTotalAOD.innerText = y2;
 
       // solution 페이지 실시간 누적발전량 바꿈!
@@ -193,9 +194,13 @@ fetch('http://59.0.236.34:9090/solarpred/api/getAOD')
           title: {
             text: "실시간 발전량",
           },
+          floor: aod2[0]-30,
+          ceiling: aod2[0]+30,
+          //min , max +30 정도
+          startOnTick: false,
           plotLines: [
             {
-              value: 0,
+              value: 1000,
               width: 1,
               color: "#808080",
             },

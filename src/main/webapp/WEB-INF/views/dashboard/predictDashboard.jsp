@@ -239,7 +239,7 @@
                             <div class="text-end pt-1">
                                 <h5 class="text-m mb-0 text-capitalize ScoreDream500">실시간 예측 발전량</h5>
                                 <h3 id="realtimeAOD" class="mb-0 ScoreDream500 inline">0</h3><span
-                                    class="text-primary text-md font-weight-bolder">ㅤKW</span>
+                                    class="text-primary text-md font-weight-bolder">ㅤW</span>
                             </div>
                         </div>
 

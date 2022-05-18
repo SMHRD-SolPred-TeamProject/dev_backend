@@ -1,16 +1,16 @@
 let realTimeGerateDom = document.getElementById("realtimeAOD");
 let realTimeTotalAOD = document.getElementById("integratedAOD");
 let y = 0;
-let totalY = 0;
 let y2 = 0;
+let total = 0;
 
 // solution페이지의 실시간누적발전량
 let sol_realTimeTotalAOD = document.getElementById("integratedAOD2");
 
 // 10초마다 발전량 api 요청 후 y값 대입
 setInterval(function (){
-  // fetch('http://59.0.236.34:9090/solarpred/api/currentGetAOD')
-  fetch('http://192.168.0.8:9090/solarpred/api/currentGetAOD')
+  fetch('http://59.0.236.34:9090/solarpred/api/currentGetAOD')
+  // fetch('http://192.168.0.8:9090/solarpred/api/currentGetAOD')
       .then(res => res.json())
       .then(res => {
         y = res['r_aod'][0]['r_aod'];
@@ -20,30 +20,17 @@ setInterval(function (){
 
 let aod = [];
 let aod2 = [];
-// fetch('http://59.0.236.34:9090/solarpred/api/getAOD')
-fetch('http://192.168.0.8:9090/solarpred/api/getAOD')
+fetch('http://59.0.236.34:9090/solarpred/api/getAOD')
+// fetch('http://192.168.0.8:9090/solarpred/api/getAOD')
     .then(res => res.json())
     .then(res => {
       for (let x = 0; x <= 19; x += 1) {
-        aod[x] = parseInt(res['r_aod'][19-x]['r_aod']);
-        totalY += aod[x];
-
-        // 누적발전량
-        // if(x > 0){
-        //   aod2[x] = aod2[x-1] + parseInt(res['r_aod'][x]['r_aod']);
-        // }else{
-        //   aod2[x] = aod[x];
-        // }
-
-        if(x > 0){
-          aod2[x] = aod2[x-1] + aod[x];
-        }else{
-          aod2[x] = aod[x];
-        }
-        // console.log(`aod2[${x}] = ${aod2[x]}`)
+        aod[x] = res['r_aod'][19-x]['r_aod'];
+        total += res['r_aod'][x]['r_aod_total'];
+        aod2[x] = total;
       }
       // 누적값에 이전에 보여진 20개의 값 더해주기
-      y2 = totalY;
+      y2 = Math.round(aod2[19] * 10) / 10;
 
       // Today dashboard 페이지 실시간 누적발전량 바꿈!
       realTimeTotalAOD.innerText = y2;
@@ -141,7 +128,7 @@ fetch('http://192.168.0.8:9090/solarpred/api/getAOD')
                 data.push({
                   x: time + i * 10000,
                   // y: aod[19-(19+i)],
-                  y: aod2[19+i],
+                  y: aod[19+i],
                 });
               }
               // console.log("JSON.stringify(data) = "+JSON.stringify(data));

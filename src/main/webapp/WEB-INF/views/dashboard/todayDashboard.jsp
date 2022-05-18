@@ -241,7 +241,7 @@
 
                                 <div>
                                     <h3 id="realtimeAOD" class="mb-0 ScoreDream500 inline">0</h3> <span
-                                        class="text-success text-m font-weight-bolder">ㅤKW</span>
+                                        class="text-success text-m font-weight-bolder">ㅤW</span>
                                 </div>
 
                             </div>

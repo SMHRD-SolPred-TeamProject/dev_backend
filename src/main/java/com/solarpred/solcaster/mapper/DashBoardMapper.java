@@ -12,7 +12,13 @@ import org.mybatis.spring.annotation.MapperScan;
 public interface DashBoardMapper {
 
     // 20개 현재 발전량 값 가져오기
-    public List<DashBoard> getAOD(String parsingTime);
+    public List<DashBoard> getAOD(@Param("parsingTime")String parsingTime, @Param("cnt")int cnt);
+
+    // 누적된 현재 발전량 값 몇 개 중 제일 오래된 값 가져오기
+    public Double getFirstTotal(@Param("parsingTime1")String parsingTime1, @Param("parsingTime2")String parsingTime2, @Param("cnt")int cnt);
+
+    // 누적된 현재 발전량 값 몇개 중에서 -1 된 값들 가져오기
+    public List<DashBoard> remainValues(@Param("parsingTime2")String parsingTime2, @Param("cnt")int cnt);
 
     // 현재시간 발전량 가져오기
     public DashBoard currentGetAOD(String parsingTime);

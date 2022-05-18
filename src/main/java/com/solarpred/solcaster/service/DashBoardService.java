@@ -19,8 +19,22 @@ public class DashBoardService {
     /**
      * 대시보드에서 20개의 현재 발전량 값 져오기
      */
-    public List<DashBoard> getAOD(String parsingTime){
-        return mapper.getAOD(parsingTime);
+    public List<DashBoard> getAOD(String parsingTime, int cnt){
+        return mapper.getAOD(parsingTime, cnt);
+    }
+
+    /**
+     * 누적된 현재 발전량 값 몇 개 중 제일 오래된 값 가져오기
+     */
+    public Double getFirstTotal(String parsingTime1,String parsingTime2,int cnt){
+        return mapper.getFirstTotal(parsingTime1,parsingTime2,cnt);
+    }
+
+    /**
+     * 누적된 현재 발전량 값 몇개 중에서 -1 된 값들 가져오기
+     */
+    public List<DashBoard> remainValues(String parsingTime2,int cnt){
+        return mapper.remainValues(parsingTime2,cnt);
     }
 
     /**

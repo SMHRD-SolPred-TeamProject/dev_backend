@@ -112,7 +112,7 @@ public class DashBoardRestController {
     public JSONObject getPreAOD(){
 
         // 현재시간 SQL문에 알맞는 형식으로 불러오기
-        String parsingTime = currentTimeAddOneHour(); // +1 시간 후 형식 SQL
+        String parsingTime = currentTimeAddOneHour2(); // +1 시간 후 형식 SQL
         String parsingTime2 = currentTime2(); // 자정시간 SQL
 
         int cnt = 20;
@@ -166,7 +166,7 @@ public class DashBoardRestController {
     public JSONObject preGetAOD(){
 
         // 현재시간 SQL문에 알맞는 형식으로 불러오기
-        String parsingTime = currentTimeAddOneHour();
+        String parsingTime = currentTimeAddOneHour2();
 
         // json-simple 라이브러리 추가 필요(JSON 객체 생성)
         JSONObject jsonMain = new JSONObject(); // json 객체
@@ -174,6 +174,10 @@ public class DashBoardRestController {
         Prediction item = service.preGetAOD(parsingTime);
         JSONArray jArray = new JSONArray(); // json배열
         JSONObject row = new JSONObject();
+
+        if(item.getPred_aod() < 0){
+            item.setPred_aod(0);
+        }
 
         // json객체.put("변수명",값)
         row.put("pred_aod", item.getPred_aod());
@@ -347,4 +351,22 @@ public class DashBoardRestController {
         String substring_date = afterHour.substring(0,10)+"%";
         return substring_date;
     }
+
+    // 한시간 후 % 형식에 맞춰 출력
+    public String currentTimeAddOneHour2(){
+        //시간구하기
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis()+3540000);
+        //시간형식 맞출 객체 생성
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        //현재 시간 변수
+        String current_time = sdf.format(timestamp);
+
+        //sql문에 들어갈 현재시간 변수에 '%' 합치기 (2022-05-05 00:00:0% 이런 형식)
+        //SELECT * FROM temp_weather WHERE date_time LIKE '2022-05-05 00:00:0%' ;
+        String substring_date = current_time.substring(0,18)+"%";
+        return substring_date;
+    }
+
+
 }

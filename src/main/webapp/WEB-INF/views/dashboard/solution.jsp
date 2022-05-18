@@ -333,7 +333,7 @@
 <!--   Core JS Files   -->
 <script src="./dashboard/assets/js/core/popper.min.js"></script>
 <script src="./dashboard/assets/js/core/bootstrap.min.js"></script>
-<script src="./dashboard/assets/js/todayDashboard.js"></script>
+<%--<script src="./dashboard/assets/js/todayDashboard.js"></script>--%>
 <script src="./dashboard/assets/js/plugins/perfect-scrollbar.min.js"></script>
 <script src="./dashboard/assets/js/plugins/smooth-scrollbar.min.js"></script>
 <script src="./dashboard/assets/js/plugins/chartjs.min.js"></script>
@@ -346,57 +346,94 @@
 
 
 <script>
-    // solarEnergy = 실시간 누적발전량
     // content = 출력문구
     var solarEnergy = 0;
-    // var content = "ㅤ태양광패널이 열심히 전력을 생산하고 있습니다.ㅤ";
-    var content = "ㅤㅤ";
-    const text = document.querySelector(".text");
+    let y3 = 0;
+    // solution페이지의 실시간누적발전량
+    let sol_realTimeTotalAOD = document.getElementById("integratedAOD2");
 
-    // 한 자씩 타이핑하듯이 문구 나오게 하는 코드 start
-    let i = 0;
+    // 10초마다 발전량 api 요청 후 y값 대입
+    setInterval(function (){
+        fetch('http://59.0.236.34:9090/solarpred/api/currentGetAOD')
+            // fetch('http://192.168.0.8:9090/solarpred/api/currentGetAOD')
+            .then(res => res.json())
+            .then(res => {
+                y3 += res['r_aod'][0]['r_aod']/1000;
+                sol_realTimeTotalAOD.innerText = y3.toFixed(2);
+                solarEnergy = y3.toFixed(2);
+            });
+    },10000);
 
-    function typing() {
-        if (i < content.length) {
-            let txt = content.charAt(i);
-            text.innerHTML += txt;
-            i++;
+    let aod3 = [];
+    fetch('http://59.0.236.34:9090/solarpred/api/getAOD')
+        // fetch('http://192.168.0.8:9090/solarpred/api/getAOD')
+        .then(res => res.json())
+        .then(res => {
+            for (let x = 0; x <= 19; x += 1) {
+                aod3[x] = res['r_aod'][x]['r_aod_total'];
+            }
+            // 누적값에 이전에 보여진 20개의 값 더해주기
+            y3 = Math.round((aod3[19] * 10) / 10);
+
+            // solution 페이지 실시간 누적발전량 바꿈!
+            sol_realTimeTotalAOD.innerText = y3.toFixed(2);
+            solarEnergy = y3.toFixed(2);
+        })
+    .then(res => {
+        // solarEnergy = 실시간 누적발전량
+        // // content = 출력문구
+        // var solarEnergy = 0;
+        // var content = "ㅤ태양광패널이 열심히 전력을 생산하고 있습니다.ㅤ";
+        var content = "ㅤㅤ";
+        const text = document.querySelector(".text");
+
+        // 한 자씩 타이핑하듯이 문구 나오게 하는 코드 start
+        let i = 0;
+
+        function typing() {
+            if (i < content.length) {
+                let txt = content.charAt(i);
+                text.innerHTML += txt;
+                i++;
+            }
         }
-    }
-    setInterval(typing, 100);
-    // end
+        setInterval(typing, 100);
+        // end
 
-    if (solarEnergy <= 3) {
-        solutionImg = "./dashboard/assets/img/solution/ing.png";
-        content = "ㅤ태양광패널이 열심히 전력을 생산하고 있습니다.ㅤ";
-    } else if (solarEnergy <= 6) {
-        document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/1_1280x835.jpg"
-        content = "ㅤ따끈따끈 전기밥솥을 5시간 사용할 수 있는 전력량이 생산됐어요ㅤ";
-    } else if (solarEnergy <= 9) {
-        document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/2_1280x835.jpg"
-        content = "ㅤ우리집을 남극으로!🐧 에어컨을 5시간 사용할 수 있는 전력량이 생산됐어요ㅤ";
-    } else if (solarEnergy <= 12) {
-        document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/3_1280x835.jpg"
-        content = "ㅤ뽀득뽀득 식기세척기를 5시간 사용할 수 있는 전력량이 생산됐어요ㅤ";
-    } else if (solarEnergy <= 15) {
-        document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/4_1280x835.jpg"
-        content = "ㅤ편리한 인덕션을 5시간 사용할 수 있는 전력량이 생산됐어요ㅤ";
-    } else if (solarEnergy >= 77 && solarEnergy <= 100) {
-        document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/5_1280.jpg"
-        content = "ㅤ1인 가구가 한 달간 사용할 수 있는 전력량이 생산됐어요ㅤ";
-    } else if (solarEnergy >= 100 && solarEnergy <= 150) {
-        document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/6_1280.png"
-        content = "ㅤ전기차를 완충할 수 있는 전력량이 생산됐어요ㅤ";
-    } else if (solarEnergy >= 150 && solarEnergy <= 300) {
-        document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/7_1280.jpg"
-        content = "ㅤ2인 가구의 한 달 전력량이 생산됐어요ㅤ";
-    } else if (solarEnergy >= 300 && solarEnergy <= 900) {
-        document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/8_1280.jpg"
-        content = "ㅤ4인 가구의 한 달 전력량이 생산됐어요ㅤ";
-    } else if (solarEnergy >= 900) {
-        document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/8_1280.jpg"
-        content = "ㅤ4인 가구의 세 달 전력량이 생산됐어요ㅤ";
-    }
+        if (solarEnergy <= 3) {
+            solutionImg = "./dashboard/assets/img/solution/ing.png";
+            content = "ㅤ태양광패널이 열심히 전력을 생산하고 있습니다.ㅤ";
+        } else if (solarEnergy <= 6) {
+            document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/1_1280x835.jpg"
+            content = "ㅤ따끈따끈 전기밥솥을 5시간 사용할 수 있는 전력량이 생산됐어요ㅤ";
+        } else if (solarEnergy <= 9) {
+            document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/2_1280x835.jpg"
+            content = "ㅤ우리집을 남극으로!🐧 에어컨을 5시간 사용할 수 있는 전력량이 생산됐어요ㅤ";
+        } else if (solarEnergy <= 12) {
+            document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/3_1280x835.jpg"
+            content = "ㅤ뽀득뽀득 식기세척기를 5시간 사용할 수 있는 전력량이 생산됐어요ㅤ";
+        } else if (solarEnergy <= 15) {
+            document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/4_1280x835.jpg"
+            content = "ㅤ편리한 인덕션을 5시간 사용할 수 있는 전력량이 생산됐어요ㅤ";
+        } else if (solarEnergy >= 77 && solarEnergy <= 100) {
+            document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/5_1280.jpg"
+            content = "ㅤ1인 가구가 한 달간 사용할 수 있는 전력량이 생산됐어요ㅤ";
+        } else if (solarEnergy >= 100 && solarEnergy <= 150) {
+            document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/6_1280.png"
+            content = "ㅤ전기차를 완충할 수 있는 전력량이 생산됐어요ㅤ";
+        } else if (solarEnergy >= 150 && solarEnergy <= 300) {
+            document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/7_1280.jpg"
+            content = "ㅤ2인 가구의 한 달 전력량이 생산됐어요ㅤ";
+        } else if (solarEnergy >= 300 && solarEnergy <= 900) {
+            document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/8_1280.jpg"
+            content = "ㅤ4인 가구의 한 달 전력량이 생산됐어요ㅤ";
+        } else if (solarEnergy >= 900) {
+            document.querySelector(".solution-img").src = "./dashboard/assets/img/solution/8_1280.jpg"
+            content = "ㅤ4인 가구의 세 달 전력량이 생산됐어요ㅤ";
+        }
+    })
+
+    <%-----------------------------------------------------------------------------%>
 
 </script>
 <script async defer src="https://buttons.github.io/buttons.js"></script>

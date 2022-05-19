@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -129,7 +130,7 @@
 <div class="container-fluid page-header py-5 mb-5">
     <div class="container py-5">
         <h1 class="display-3 text-white mb-3 animated slideInDown">
-            404 Error
+            Error
         </h1>
         <nav aria-label="breadcrumb animated slideInDown">
             <ol class="breadcrumb">
@@ -140,7 +141,7 @@
                     <a class="text-white" href="#">Pages</a>
                 </li>
                 <li class="breadcrumb-item text-white active" aria-current="page">
-                    404 Error
+                    Error
                 </li>
             </ol>
         </nav>
@@ -155,7 +156,7 @@
             <div class="col-lg-6">
                 <i class="bi bi-brightness-alt-high display-1 text-primary"></i>
                 <h1></h1>
-                <h1 class="display-1">404</h1>
+                <h1 class="display-1">Error</h1>
                 <h1 class="mb-4">Page Not Found</h1>
                 <p class="mb-4">
                     찾을 수 없는 페이지입니다.<br />

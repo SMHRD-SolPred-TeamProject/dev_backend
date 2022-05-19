@@ -1,4 +1,4 @@
-package com.solarpred.solcaster.solcaster.test;
+package com.solarpred.solcaster.test;
 
 import com.solarpred.solcaster.controller.DashBoardRestController;
 import com.solarpred.solcaster.service.DashBoardService;

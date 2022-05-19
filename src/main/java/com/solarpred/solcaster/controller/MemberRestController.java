@@ -41,6 +41,7 @@ public class MemberRestController {
             // json객체.put("변수명",값)
             row.put("mem_id", items.getMem_id());
             row.put("mem_pw", items.getMem_pw());
+            row.put("mem_purchase", items.getMem_purchase());
             // 배열에 추가
             // json배열.add(인덱스,json객체)
             //jArray.add(i,row);

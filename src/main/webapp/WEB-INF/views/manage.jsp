@@ -54,7 +54,7 @@
 
     <style>
         html{
-            overflow: hidden;
+            /*overflow: hidden;*/
         }
 
         body {

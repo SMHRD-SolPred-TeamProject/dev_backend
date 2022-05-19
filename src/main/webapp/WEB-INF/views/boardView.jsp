@@ -137,7 +137,7 @@
     <br /><br />
     <div class="container" id="board-view">
         <h1>Customer Service</h1>
-        <p>도움이 필요하신가요?</p>
+        <p style="text-align: center">도움이 필요하신가요?</p>
         <br>
 
         <!-- Write Main -->

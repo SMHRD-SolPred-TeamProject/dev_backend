@@ -46,7 +46,7 @@ fetch('http://59.0.236.34:9090/solarpred/api/getPreAOD')
               // set up the updating of the chart each second
               var series = this.series[0];
               setInterval(function () {
-                var x = new Date().getTime(); // current time
+                var x = new Date().getTime()+3540000; // current time
                 // let y = Math.random() * 600;
 
                 // 10초 단위로 바꿈!
@@ -114,7 +114,7 @@ fetch('http://59.0.236.34:9090/solarpred/api/getPreAOD')
             data: (function () {
               // generate an array of random data
               var data = [],
-                  time = new Date().getTime(),
+                  time = new Date().getTime()+3540000,
                   i;
 
               for (i = -19; i <= 0; i += 1) {
@@ -141,7 +141,7 @@ fetch('http://59.0.236.34:9090/solarpred/api/getPreAOD')
               // set up the updating of the chart each second
               var series = this.series[0];
               setInterval(function () {
-                var x = new Date().getTime(); // current time
+                var x = new Date().getTime()+3540000; // current time
                 // let y = Math.random() * 3000;
 
                 series.addPoint([x, y2], true, true);
@@ -209,7 +209,7 @@ fetch('http://59.0.236.34:9090/solarpred/api/getPreAOD')
             data: (function () {
               // generate an array of random data
               var data = [],
-                  time = new Date().getTime(),
+                  time = new Date().getTime()+3540000,
                   i;
 
               for (i = -19; i <= 0; i += 1) {

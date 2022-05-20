@@ -289,10 +289,10 @@
                                 <i class="material-icons opacity-10">equalizer</i>
                             </div>
                             <div class="text-end pt-1">
-                                <h4 class="text-lg mb-0 text-capitalize ScoreDream500">예측률</h4>
+                                <h4 class="text-lg mb-0 text-capitalize ScoreDream500">오차범위</h4>
 
                                 <!-- 여기 예측률이 나와야함! -->
-                                <h3 class="mb-0 ScoreDream500">97.3<span class="text-success text-md font-weight-bolder">ㅤ%</span>
+                                <h3 class="mb-0 ScoreDream500">&#177;<span style="font-size: 5px"> </span>10<span class="text-success text-md font-weight-bolder">ㅤw</span>
                                 </h3>
                             </div>
                         </div>
@@ -302,7 +302,7 @@
                             <p class="text-sm mb-0 ScoreDream400"><span
                                     class="text-success text-md font-weight-bolder ScoreDream400" id="pre_date">
                   </span>기준
-                                계산된 예측률입니다.
+                                계산된 범위입니다.
                             </p>
                         </div>
                     </div>

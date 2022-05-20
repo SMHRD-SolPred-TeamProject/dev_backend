@@ -521,7 +521,7 @@
         <div class="row g-0 mx-lg-0">
             <div class="col-lg-6 ps-lg-0 wow fadeIn" data-wow-delay="0.1s" style="min-height: 400px">
                 <div class="video position-relative h-100">
-                    <iframe width="600" height="350" src="https://www.youtube.com/embed/QPUjV7epJqE" frameborder="0"
+                    <iframe width="600" height="350" src="https://www.youtube.com/embed/UvpgjdzwIE8" frameborder="0"
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 

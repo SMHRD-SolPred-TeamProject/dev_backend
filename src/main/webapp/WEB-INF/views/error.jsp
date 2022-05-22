@@ -85,7 +85,7 @@
 
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
-    <a href="/solarpred/" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
+    <a href="/" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
         <img src="./img/logo.png" class="logo" />
     </a>
     <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -119,7 +119,7 @@
                     <a href="goLogOut" class="nav-item nav-link">LOGOUT</a>
                 </c:otherwise>
             </c:choose>
-            <a href="/solarpred/" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block" id="btn-home">HOME<i
+            <a href="/" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block" id="btn-home">HOME<i
                     class="fa fa-arrow-right ms-3"></i></a>
         </div>
 </nav>
@@ -164,7 +164,7 @@
                     <!-- We’re sorry, the page you have looked for does not exist in our
                       website! Maybe go to our home page or try to use a search? -->
                 </p>
-                <a class="btn btn-primary rounded-pill py-3 px-5" href="/solarpred/">Go Back To Home</a>
+                <a class="btn btn-primary rounded-pill py-3 px-5" href="/">Go Back To Home</a>
             </div>
         </div>
     </div>
@@ -195,7 +195,7 @@
             </div>
             <div class="col-lg-3 col-md-6 quick-links">
                 <h5 class="text-white mb-4">Quick Links</h5>
-                <a class="btn btn-link" href="/solarpred/">HOME</a>
+                <a class="btn btn-link" href="/">HOME</a>
                 <a class="btn btn-link" href="about">About Us</a>
                 <c:choose>
                     <c:when test="${sessionScope.member == null}">
@@ -231,7 +231,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 vertical-center">
-                <a href="/solarpred/">
+                <a href="/">
                     <img src="./img/logo.png" class="footer-logo" />
                 </a>
             </div>

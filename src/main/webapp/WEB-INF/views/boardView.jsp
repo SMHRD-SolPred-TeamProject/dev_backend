@@ -87,7 +87,7 @@
 
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
-    <a href="/solarpred/" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
+    <a href="/" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
         <img src="./img/logo.png" class="logo" />
     </a>
     <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -121,7 +121,7 @@
                     <a href="goLogOut" class="nav-item nav-link">LOGOUT</a>
                 </c:otherwise>
             </c:choose>
-            <a href="/solarpred/" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block" id="btn-home">HOME<i
+            <a href="/" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block" id="btn-home">HOME<i
                     class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </div>
@@ -143,11 +143,11 @@
         <!-- Write Main -->
         <!-- Main -->
         <div class="board-btn-group" role="group" aria-label="Basic outlined example">
-            <button type="button" class="btn btn-primary" onClick="location.href='/solarpred/boardList'">전체목록</button>
+            <button type="button" class="btn btn-primary" onClick="location.href='boardList'">전체목록</button>
             <!-- 이 수정 삭제 버튼은 관리자나 글쓴 사람한테만 보여야 할 것 같아요 -->
             <c:if test="${vo.mem_id == sessionScope.member.mem_id}">
-                <button type="button" class="btn btn-outline-primary" onclick="location.href='/solarpred/boardUpdateForm?seq=${vo.qna_seq}'">수정</button>
-                <button type="button" class="btn btn-outline-primary" onclick="location.href='/solarpred/boardDelete?seq=${vo.qna_seq}'">삭제</button>
+                <button type="button" class="btn btn-outline-primary" onclick="location.href='boardUpdateForm?seq=${vo.qna_seq}'">수정</button>
+                <button type="button" class="btn btn-outline-primary" onclick="location.href='boardDelete?seq=${vo.qna_seq}'">삭제</button>
             </c:if>
         </div>
 
@@ -242,7 +242,7 @@
             </div>
             <div class="col-lg-3 col-md-6 quick-links">
                 <h5 class="text-white mb-4">Quick Links</h5>
-                <a class="btn btn-link" href="/solarpred/">HOME</a>
+                <a class="btn btn-link" href="/">HOME</a>
                 <a class="btn btn-link" href="about">About Us</a>
                 <c:choose>
                     <c:when test="${sessionScope.member == null}">
@@ -278,7 +278,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 vertical-center">
-                <a href="/solarpred/">
+                <a href="/">
                     <img src="./img/logo.png" class="footer-logo" />
                 </a>
             </div>
@@ -326,7 +326,7 @@
     //댓글 불러오기
     function loadReply(){
         $.ajax({
-            url : "/solarpred/reply?seq="+seq_uri,
+            url : "reply?seq="+seq_uri,
             type : "get",
             dataType : "json",
             success : replyView,
@@ -341,7 +341,7 @@
         const data = $("#frm").serialize();
 
         $.ajax({
-            url : "/solarpred/boardReply",
+            url : "boardReply",
             type : "post",
             data : data,
             success : loadReply,
@@ -380,7 +380,7 @@
     // 댓글 삭제
     function replyDelete(reply_seq){
         $.ajax({
-            url : "/solarpred/replyDelete",
+            url : "replyDelete",
             type : "get",
             data : {"reply_seq":reply_seq},
             success : loadReply,
@@ -408,7 +408,7 @@
         let reply_content = $("#editInput"+reply_seq).val();
         console.log(reply_content);
         $.ajax({
-            url : "/solarpred/replyUpdate",
+            url : "replyUpdate",
             type : "post",
             data : {"reply_seq":reply_seq, "reply_content":reply_content},
             success : loadReply,

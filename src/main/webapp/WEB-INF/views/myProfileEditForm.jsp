@@ -41,7 +41,7 @@
 <div class="container">
     <div class="input-form-backgroud row">
         <div class="input-form col-md-12">
-            <a href="/solarpred/">
+            <a href="/">
                 <img src="./img/logo.png" class="logo" />
             </a>
             <!-- 폼에 method, action 채워야 함! -->

@@ -354,8 +354,8 @@
 
     // 10초마다 발전량 api 요청 후 y값 대입
     setInterval(function (){
-        fetch('http://59.0.236.34:9090/solarpred/api/currentGetAOD')
-            // fetch('http://192.168.0.8:9090/solarpred/api/currentGetAOD')
+        fetch('http://59.0.236.34:9090/api/currentGetAOD')
+            // fetch('http://192.168.0.8:9090/api/currentGetAOD')
             .then(res => res.json())
             .then(res => {
                 y3 += res['r_aod'][0]['r_aod']/1000;
@@ -365,8 +365,8 @@
     },10000);
 
     let aod3 = [];
-    fetch('http://59.0.236.34:9090/solarpred/api/getAOD')
-        // fetch('http://192.168.0.8:9090/solarpred/api/getAOD')
+    fetch('http://59.0.236.34:9090/api/getAOD')
+        // fetch('http://192.168.0.8:9090/api/getAOD')
         .then(res => res.json())
         .then(res => {
             for (let x = 0; x <= 19; x += 1) {

@@ -290,7 +290,7 @@
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
     <a
-            href="/solarpred/"
+            href="/"
             class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5"
     >
         <img src="./img/logo.png" class="logo" />
@@ -332,7 +332,7 @@
                 </c:otherwise>
             </c:choose>
             <a
-                    href="/solarpred/"
+                    href="/"
                     class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block"
                     id="btn-home"
             >HOME<i class="fa fa-arrow-right ms-3"></i
@@ -485,7 +485,7 @@
             </div>
             <div class="col-lg-3 col-md-6 quick-links">
                 <h5 class="text-white mb-4">Quick Links</h5>
-                <a class="btn btn-link" href="/solarpred/">HOME</a>
+                <a class="btn btn-link" href="/">HOME</a>
                 <a class="btn btn-link" href="about">About Us</a>
                 <c:choose>
                     <c:when test="${sessionScope.member == null}">
@@ -522,7 +522,7 @@
             </div>
             <div class="col-lg-3 col-md-6 vertical-center">
                 <a
-                        href="/solarpred/"
+                        href="/"
                 >
                     <img src="./img/logo.png" class="footer-logo" />
                 </a>
@@ -557,7 +557,7 @@
         console.log($("#inlineFormCustomSelect").val())
         let purchase_val = $("#inlineFormCustomSelect").val();
         $.ajax({
-            url : "/solarpred/purchaseUpdate",
+            url : "purchaseUpdate",
             type : "get",
             data : {"mem_id":mem_id, "mem_purchase":purchase_val},
             success : function() {

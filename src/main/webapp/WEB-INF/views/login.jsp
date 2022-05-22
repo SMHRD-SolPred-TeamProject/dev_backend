@@ -42,12 +42,12 @@
 <div class="container">
     <div class="input-form-backgroud row">
         <div class="input-form col-md-12">
-            <a href="/solarpred/">
+            <a href="/">
                 <img src="./img/logo.png" class="logo"/>
             </a>
 
             <!-- 폼에 method, action 채워야 함! -->
-            <form action="/solarpred/login" class="validation-form" style="align-items: center" novalidate method="post">
+            <form action="login" class="validation-form" style="align-items: center" novalidate method="post">
                 <div class="col-md-8 mb-3 margin_center">
                     <div class="invalid-feedback">이름을 입력해주세요.</div>
                 </div>
@@ -73,7 +73,7 @@
                 <div class="btn-groups">
                     <button id="btnLogin" class="login loginBtn, btn btn-warning btn-lg" type="submit">로그인</button>
                     <button class="join-l joinBtn, btn btn-warning btn-lg" type="button"
-                            onClick="location.href='/solarpred/join'">가입하기
+                            onClick="location.href='join'">가입하기
                     </button>
                 </div>
             </form>

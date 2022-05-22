@@ -82,7 +82,7 @@
 
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
-    <a href="/solarpred/" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
+    <a href="/" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
         <img src="./img/logo.png" class="logo" />
     </a>
     <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -116,7 +116,7 @@
                     <a href="goLogOut" class="nav-item nav-link">LOGOUT</a>
                 </c:otherwise>
             </c:choose>
-            <a href="/solarpred/" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block" id="btn-home">HOME<i
+            <a href="/" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block" id="btn-home">HOME<i
                     class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </div>
@@ -140,7 +140,7 @@
                 <div class="checkout__form">
 
                     <%-- 글쓰기 폼 start --%>
-                    <form name="insertform" action="/solarpred/boardUpdate" method="post">
+                    <form name="insertform" action="boardUpdate" method="post">
                         <%-- <input type="hidden" name="command" value="qnaInsert">--%>
                         <input type="hidden" name="mem_id" value="${sessionScope.member.mem_id}">
                             <input type="hidden" name="qna_seq" value="${vo.qna_seq}">
@@ -237,7 +237,7 @@
             </div>
             <div class="col-lg-3 col-md-6 quick-links">
                 <h5 class="text-white mb-4">Quick Links</h5>
-                <a class="btn btn-link" href="/solarpred/">HOME</a>
+                <a class="btn btn-link" href="/">HOME</a>
                 <a class="btn btn-link" href="about">About Us</a>
                 <c:choose>
                     <c:when test="${sessionScope.member == null}">
@@ -273,7 +273,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 vertical-center">
-                <a href="/solarpred/">
+                <a href="/">
                     <img src="./img/logo.png" class="footer-logo" />
                 </a>
             </div>

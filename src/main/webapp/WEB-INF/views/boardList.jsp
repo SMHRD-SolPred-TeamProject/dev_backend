@@ -112,7 +112,7 @@
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
     <a
-            href="/solarpred/"
+            href="/"
             class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5"
     >
         <img src="./img/logo.png" class="logo" />
@@ -154,7 +154,7 @@
                 </c:otherwise>
             </c:choose>
             <a
-                    href="/solarpred/"
+                    href="/"
                     class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block"
                     id="btn-home"
             >HOME<i class="fa fa-arrow-right ms-3"></i
@@ -202,7 +202,7 @@
         </ul>
 
         <%-- 게시판 start --%>
-        <form action="/solarpred/boardList" method="get">
+        <form action="boardList" method="get">
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -217,7 +217,7 @@
                 <c:forEach var="list" items="${list}" >
                     <tr>
                         <td>${list.qna_seq}</td>
-                        <td><a href="/solarpred/boardView?seq=${list.qna_seq}&qna_cat=${list.qna_cat}&session_mem_id=${sessionScope.member.mem_id}"><b>[${list.qna_cat}]</b> ${list.qna_title}</a></td>
+                        <td><a href="boardView?seq=${list.qna_seq}&qna_cat=${list.qna_cat}&session_mem_id=${sessionScope.member.mem_id}"><b>[${list.qna_cat}]</b> ${list.qna_title}</a></td>
                         <td>${list.mem_id}</td>
                         <td>
                                 ${fn:substring(list.qna_date,0,10)}
@@ -230,7 +230,7 @@
         </form>
         <%-- 게시판 end --%>
 
-        <button type="button" class="btn btn-write btn-outline-primary"  onClick="location.href='/solarpred/boardWrite'">글작성</button>
+        <button type="button" class="btn btn-write btn-outline-primary"  onClick="location.href='boardWrite'">글작성</button>
         <br><br>
 
         <%-- 게시판하단 페이징 버튼 start --%>
@@ -304,7 +304,7 @@
             </div>
             <div class="col-lg-3 col-md-6 quick-links">
                 <h5 class="text-white mb-4">Quick Links</h5>
-                <a class="btn btn-link" href="/solarpred/">HOME</a>
+                <a class="btn btn-link" href="/">HOME</a>
                 <a class="btn btn-link" href="about">About Us</a>
                 <c:choose>
                     <c:when test="${sessionScope.member == null}">
@@ -341,7 +341,7 @@
             </div>
             <div class="col-lg-3 col-md-6 vertical-center">
                 <a
-                        href="/solarpred/"
+                        href="/"
                 >
                     <img src="./img/logo.png" class="footer-logo" />
                 </a>
@@ -384,7 +384,7 @@
     // 전체 게시글 불러오기
     function loadBoardList(){
         $.ajax({
-            url : "/solarpred/loadBoardList",
+            url : "loadBoardList",
             type : "get",
             dataType : "json",
             success : loadList,
@@ -398,7 +398,7 @@
     // 선택된 카테고리 게시글 불러오기
     function loadCategoryList(qna_cat){
         $.ajax({
-            url : "/solarpred/category?category="+qna_cat,
+            url : "category?category="+qna_cat,
             type : "get",
             dataType : "json",
             success : loadList,
@@ -425,7 +425,7 @@
     // 검색된 게시글 불러오기
     function loadSearchList(qna_title){
         $.ajax({
-            url : "/solarpred/boardSearch?qna_title="+qna_title,
+            url : "boardSearch?qna_title="+qna_title,
             type : "get",
             dataType : "json",
             success : loadList,
@@ -466,7 +466,7 @@
             result += "</td>";
 
             result += "<td>";
-            result += '<a href="/solarpred/boardView?seq='+vo.qna_seq+'&session_mem_id='+valId+'"><b>['+vo.qna_cat+']</b> '+vo.qna_title+'</a>';
+            result += '<a href="boardView?seq='+vo.qna_seq+'&session_mem_id='+valId+'"><b>['+vo.qna_cat+']</b> '+vo.qna_title+'</a>';
             result += "</td>";
 
             result += "<td>";
@@ -497,15 +497,18 @@
             pagingResult += '</li>';
         }
 
-        console.log("pagingData = "+ pagingData)
-        console.log("pagingData['test'] = "+ pagingData['test'])
-        console.log("pagingData['test'].startPage = "+ pagingData['test'].startPage)
-        console.log("pagingData['test'].endPage = " + pagingData['test'].endPage)
+        // console.log("JSON.stringify(data) = " + JSON.stringify(data));
+        // console.log("JSON.stringify(data[0]) = " + JSON.stringify(data[0].qna_cat));
+        // console.log("pagingData = "+ pagingData)
+        // console.log("pagingData['test'] = "+ pagingData['test'])
+        // console.log("pagingData['test'].startPage = "+ pagingData['test'].startPage)
+        // console.log("pagingData['test'].endPage = " + pagingData['test'].endPage)
 
         // 페이지 숫자 부분
         for(var num = pagingData['test'].startPage;num <= pagingData['test'].endPage;num++){
             pagingResult += '<li class="page-item">';
-            pagingResult += '<a class="page-link" href="/solarpred/category2?page2='+num+'&qna_cat=구매문의">'+num+'</a>';
+            pagingResult += '<a class="page-link" href="category2?page2='+num+'&qna_cat='+data[num].qna_cat+'">'+num+'</a>';
+            // pagingResult += '<a class="page-link" href="category2?page2='+num+'&qna_cat=구매문의">'+num+'</a>';
             <%--pagingResult += `<a class="page-link" href="<c:url value="/boardList?page=${num}"/>${num+1}</a>`;--%>
             pagingResult += '</li>';
         }

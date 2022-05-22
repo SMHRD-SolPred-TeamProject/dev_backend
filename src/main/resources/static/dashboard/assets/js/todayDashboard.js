@@ -156,9 +156,7 @@ fetch('http://59.0.236.34:9090/solarpred/api/getAOD')
 
                 // Today dashboard 페이지 실시간 누적발전량 10초 단위로 바꿈!
                 realTimeTotalAOD.innerText = y2.toFixed(2);
-                
-                // solution 페이지 실시간 누적발전량 10초 단위로 바꿈!
-                sol_realTimeTotalAOD.innerText = y2.toFixed(2);
+
                 series.addPoint([x, y2], true, true);
               }, 10000);
             },

@@ -240,6 +240,7 @@ public class DashBoardRestController {
 
     	// 현재시간 SQL문에 알맞는 형식으로 불러오기
         String parsingTime = preTotal();
+        String parsingTime2 = currentTimeAddOneHour();
         //DashBoard dash = service.DashBoardSelect();
 
         // json-simple 라이브러리 추가 필요(JSON 객체 생성)
@@ -247,7 +248,7 @@ public class DashBoardRestController {
         JSONObject row2 = new JSONObject();
         // {변수명:값, 변수명:값}
         // {sendData:[{변수명:값},{변수명:값},...]}
-        List<Prediction> items = service.PredictionSelect();
+        List<Prediction> items = service.PredictionSelect(parsingTime2);
         Double total = service.PreTotalSelect(parsingTime);
         JSONArray jArray = new JSONArray(); // json배열
 

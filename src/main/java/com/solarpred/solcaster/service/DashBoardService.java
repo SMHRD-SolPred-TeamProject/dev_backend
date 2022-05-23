@@ -78,8 +78,8 @@ public class DashBoardService {
     	return mapper.DashBoardSelect(parsingTime);
     }
 
-    public List<Prediction> PredictionSelect(){
-    	return mapper.PredictionSelect();
+    public List<Prediction> PredictionSelect(String parsingTime2){
+    	return mapper.PredictionSelect(parsingTime2);
     }
 
     public Double PreTotalSelect(String parsingTime){

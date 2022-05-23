@@ -69,8 +69,8 @@
         select * from s_real_data where r_date like #{parsingTime} order by r_date desc limit 1
     </select>
 
-    <select id="PredictionSelect"  resultType="com.solarpred.solcaster.domain.Prediction">
-        select * from s_prediction order by pred_time desc limit 1
+    <select id="PredictionSelect" parameterType="String" resultType="com.solarpred.solcaster.domain.Prediction">
+        select * from s_prediction where pred_time like #{parsingTime2}
     </select>
 
     <select id="PreTotalSelect" parameterType="String" resultType="double">
